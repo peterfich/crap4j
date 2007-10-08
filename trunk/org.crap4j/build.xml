@@ -1,0 +1,16 @@
+<project default="publish" name="crap4j">
+  <import file="../../agitarsvn/build.system/common/common.xml"/>
+
+
+  <property name="is.eclipse.plugin" value="true"/>
+  <property name="jdk.version" value="1.5"/>
+
+  <fileset id="module.libraries" dir="dist/crap4j/lib">
+    <include name="args4j-2.0.1.jar"/>
+    <include name="asmlib"/>
+  </fileset>
+
+  <property name="module.dependencies" value="com.agitar.common"/>
+
+  <import file="../../agitarsvn/build.system/common/module.xml"/>
+</project>

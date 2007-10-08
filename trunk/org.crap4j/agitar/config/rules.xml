@@ -1,0 +1,1096 @@
+<?xml version="1.0" ?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.1//EN" "http://0.0.0.0/dtds/configuration_1_1.dtd">
+<module name="Checker">
+	<module name="com.agitar.rules.BytecodeWalker">
+		<module name="com.agitar.lib.rules.checks.NoMethodCallsFromConstructorCheck">
+			<metadata name="id" value="Avoid calling non-static, non-final, non-private methods from constructors"/>
+			<metadata name="name" value="Avoid calling non-static, non-final, non-private methods from constructors"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Non-final methods may be over-ridden by sub classes causing unexpected results."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.CollectionInterfaceCheck">
+			<metadata name="id" value="Declare List, Set, and Map variables by interface"/>
+			<metadata name="name" value="Declare List, Set, and Map variables by interface"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Fields and variables of type List, Set, and Map should be declared by interface name, not the concrete type."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.FinalBeforeNonFinalCheck">
+			<metadata name="id" value="Declare final fields and methods before non-finals"/>
+			<metadata name="name" value="Declare final fields and methods before non-finals"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="All final fields should be declared before non-final fields, and final methods before non-final methods."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.DependencyCyclesCheck">
+			<metadata name="id" value="Dependency cycles check"/>
+			<metadata name="name" value="Dependency cycles check"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Checks for cycles in the dependency between packages."/>
+			<metadata name="batchOnly" value="true"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoNewStringStringCheck">
+			<metadata name="id" value="Do not call new String(String)"/>
+			<metadata name="name" value="Do not call new String(String)"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Since String is immutable, this constructor is a waste of resources."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ThrowsExceptionCheck">
+			<metadata name="id" value="Do not declare &#39;throws Exception&#39; or &#39;throws Throwable&#39;"/>
+			<metadata name="name" value="Do not declare &#39;throws Exception&#39; or &#39;throws Throwable&#39;"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Checked exceptions should be explicit; consider wrapping them."/>
+			<property name="severity" value="Ignore"/>
+			<property name="ignoreInTestCase" value="true"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.DefaultConstructorCheck">
+			<metadata name="id" value="Provide a default constructor"/>
+			<metadata name="name" value="Provide a default constructor"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="All classes should provide a default (no-argument) constructor."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ServletDefaultConstructorCheck">
+			<metadata name="id" value="Declare &#39;public&#39; constructor that takes no parameters for Servlets"/>
+			<metadata name="name" value="Declare &#39;public&#39; constructor that takes no parameters for Servlets"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="The servlet class must have a &#39;public&#39; constructor that takes no parameters. The Container uses this constructor to create an instance of the servlet class."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.EJBAvoidLoadNativesCheck">
+			<metadata name="id" value="Do not load natives"/>
+			<metadata name="name" value="Do not load natives"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="EJB implementations should not load native libraries."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.EJBAvoidThreadsCheck">
+			<metadata name="id" value="Do not manipulate threads"/>
+			<metadata name="name" value="Do not manipulate threads"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="EJB implementations should not create, start, stop, or otherwise manipulate threads."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JUnitTestCaseConstructorCheck">
+			<metadata name="id" value="Do no work in JUnit constructor"/>
+			<metadata name="name" value="Do no work in JUnit constructor"/>
+			<metadata name="category" value="JUnit"/>
+			<metadata name="description" value="Do not do test setup in the TestCase constructor, use the setUp() method instead."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JUnitMessageInAssertionsCheck">
+			<metadata name="id" value="JUnit assertions need messages"/>
+			<metadata name="name" value="JUnit assertions need messages"/>
+			<metadata name="category" value="JUnit"/>
+			<metadata name="description" value="Do not use the messageless forms of assert() calls."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JUnitSetUpMethodCheck">
+			<metadata name="id" value="JUnit setUp method check"/>
+			<metadata name="name" value="JUnit setUp method check"/>
+			<metadata name="category" value="JUnit"/>
+			<metadata name="description" value="JUnit setUp() methods should always call super.setUp()."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JUnitSuiteMethodCheck">
+			<metadata name="id" value="JUnit suite method check"/>
+			<metadata name="name" value="JUnit suite method check"/>
+			<metadata name="category" value="JUnit"/>
+			<metadata name="description" value="JUnit suite() methods should be public and static, take no parameters and return TestSuite."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JUnitTearDownMethodCheck">
+			<metadata name="id" value="JUnit tearDown method check"/>
+			<metadata name="name" value="JUnit tearDown method check"/>
+			<metadata name="category" value="JUnit"/>
+			<metadata name="description" value="JUnit tearDown() methods should always call super.tearDown()."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.ClassDependencyMetrics">
+			<metadata name="id" value="Class dependency metrics"/>
+			<metadata name="name" value="Class dependency metrics"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Enforce various limits for class dependencies."/>
+			<metadata name="batchOnly" value="true"/>
+			<property name="maxTotalFanOut" value="20"/>
+			<property name="maxInterPackageFanIn" value="10"/>
+			<property name="maxTotalFanIn" value="20"/>
+			<property name="maxInterPackageFanOut" value="10"/>
+			<property name="maxIntraPackageFanOut" value="10"/>
+			<property name="maxIntraPackageFanIn" value="10"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.ClassesInPackageMetrics">
+			<metadata name="id" value="Classes in package"/>
+			<metadata name="name" value="Classes in package"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Check number of classes in package(s)."/>
+			<metadata name="batchOnly" value="true"/>
+			<property name="severity" value="Ignore"/>
+			<property name="maxAbstractInterfaceClassesInPackage" value="10"/>
+			<property name="maxConcreteClassesInPackage" value="10"/>
+			<property name="maxClassesInPackage" value="20"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.HalsteadMetrics">
+			<metadata name="id" value="Halstead metrics"/>
+			<metadata name="name" value="Halstead metrics"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Rule to check various Halstead metrics."/>
+			<property name="maxVolume" value="1000"/>
+			<property name="maxLength" value="200"/>
+			<property name="maxEffort" value="100000"/>
+			<property name="maxVocabulary" value="100"/>
+			<property name="severity" value="Ignore"/>
+			<property name="maxDifficulty" value="100"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.PackageDependencyMetrics">
+			<metadata name="id" value="Package dependency metrics"/>
+			<metadata name="name" value="Package dependency metrics"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks various package coupling and dependency metrics."/>
+			<metadata name="batchOnly" value="true"/>
+			<property name="minAbstract" value="0.1"/>
+			<property name="maxInstability" value="0.9"/>
+			<property name="maxAfferentCoupling" value="5"/>
+			<property name="severity" value="Ignore"/>
+			<property name="maxEfferentCoupling" value="5"/>
+			<property name="maxDistance" value="0.5"/>
+			<property name="maxAbstract" value="0.9"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.ProgramVolumeMetrics">
+			<metadata name="id" value="Program volume metrics"/>
+			<metadata name="name" value="Program volume metrics"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks various limits for program volume metrics."/>
+			<property name="maxConstructors" value="5"/>
+			<property name="maxPrivateFields" value="25"/>
+			<property name="maxPrivateMethods" value="50"/>
+			<property name="maxProtectedFields" value="25"/>
+			<property name="maxProtectedMethods" value="50"/>
+			<property name="severity" value="Ignore"/>
+			<property name="maxPackageMethods" value="50"/>
+			<property name="maxPublicFields" value="0"/>
+			<property name="maxFields" value="25"/>
+			<property name="maxPublicMethods" value="50"/>
+			<property name="maxMethods" value="50"/>
+			<property name="maxPackageFields" value="25"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.SEIMaintainability">
+			<metadata name="id" value="SEI maintainability index"/>
+			<metadata name="name" value="SEI maintainability index"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks SEI Maintainability Index metric."/>
+			<property name="minIndex" value="120"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ExceptionNamingCheck">
+			<metadata name="id" value="Exception name format"/>
+			<metadata name="name" value="Exception name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format of exception classes, as *Exception."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UseSetForSetterMethodCheck">
+			<metadata name="id" value="Prefix setter methods with &#39;set&#39;"/>
+			<metadata name="name" value="Prefix setter methods with &#39;set&#39;"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Check to ensure that all simple setter methods are prefixed with &quot;set&quot;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.HideSuperStaticMethodCheck">
+			<metadata name="id" value="Avoid hiding inherited &#39;static&#39; member methods"/>
+			<metadata name="name" value="Avoid hiding inherited &#39;static&#39; member methods"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Avoid hiding inherited &#39;static&#39; member methods."/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoExposedFieldCheck">
+			<metadata name="id" value="Do not expose fields"/>
+			<metadata name="name" value="Do not expose fields"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Fields should be kept as private as possible."/>
+			<property name="packageAllowed" value="true"/>
+			<property name="severity" value="Ignore"/>
+			<property name="protectedAllowed" value="true"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.HideSuperFieldCheck">
+			<metadata name="id" value="Do not hide fields from superclass"/>
+			<metadata name="name" value="Do not hide fields from superclass"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Fields in a subclass named the same as a superclass can be confusing to maintain."/>
+			<property name="ignorePrivate" value="true"/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.InheritanceLevelCheck">
+			<metadata name="id" value="Do not inherit too deeply"/>
+			<metadata name="name" value="Do not inherit too deeply"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Do not place classes too deeply in the inheritance hierarchy."/>
+			<property name="maximumDepth" value="5"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NestedInnerClassCheck">
+			<metadata name="id" value="Do not nest inner classes too deeply"/>
+			<metadata name="name" value="Do not nest inner classes too deeply"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Do not use more than two levels of nested inner classes."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.HideSuperPrivateMethodCheck">
+			<metadata name="id" value="Do not reuse private method signatures"/>
+			<metadata name="name" value="Do not reuse private method signatures"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Methods in a subclass named the same as a superclass, but not overriding them, can be confusing."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ImplementInterfacesCheck">
+			<metadata name="id" value="Implement interfaces non-trivially"/>
+			<metadata name="name" value="Implement interfaces non-trivially"/>
+			<metadata name="category" value="Object Oriented Programming"/>
+			<metadata name="description" value="Interface implementations should either be abstract or non-trivial."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.StringEqualsLiteralCheck">
+			<metadata name="id" value="Avoid calling &#39;String.equals (literal)&#39; or &#39;String.equalsIgnoreCase(literal)&#39;"/>
+			<metadata name="name" value="Avoid calling &#39;String.equals (literal)&#39; or &#39;String.equalsIgnoreCase(literal)&#39;"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Disallows calling &#39;String.equals ()&#39; and &#39;String.equalsIgnoreCase()&#39; when the caller is a variable and the parameter is a string literal.  Checking literal.equals(String) prevents NPE."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoLowerPrecisionCastingCheck">
+			<metadata name="id" value="Avoid casting primitive data types to lower precision"/>
+			<metadata name="name" value="Avoid casting primitive data types to lower precision"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Casting this way truncates the value.  If the original value cannot be represented by the new type, then the new value will be different."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.FloatingPointCompareCheck">
+			<metadata name="id" value="Avoid comparing floats/doubles with &#39;==&#39;"/>
+			<metadata name="name" value="Avoid comparing floats/doubles with &#39;==&#39;"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Use a method to compare to a specific degree of precision."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoRuntimeExceptionSubClassCheck">
+			<metadata name="id" value="Avoid defining direct or indirect subclasses of &#39;RuntimeException&#39;"/>
+			<metadata name="name" value="Avoid defining direct or indirect subclasses of &#39;RuntimeException&#39;"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Exceptions in java.lang.RuntimeException and its subclasses are used for avoidable exceptions. The Java compiler does not check the correct handling of these exceptions, so erroneous exception handling may not be noticed."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoErrorThrowableSubclassCheck">
+			<metadata name="id" value="Avoid defining direct subclasses of &#39;Throwable&#39; or &#39;Error&#39;"/>
+			<metadata name="name" value="Avoid defining direct subclasses of &#39;Throwable&#39; or &#39;Error&#39;"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Disallows direct and indirect subclassing of &#39;Error&#39; and &#39;Throwable&#39;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoMethodWithClassNameCheck">
+			<metadata name="id" value="Avoid giving non-constructor methods the same name as the class"/>
+			<metadata name="name" value="Avoid giving non-constructor methods the same name as the class"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Requires that only constructors have the same name as the class to prevent confusion."/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.CallSuperFinalizeCheck">
+			<metadata name="id" value="Call super.finalize()"/>
+			<metadata name="name" value="Call super.finalize()"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="finalize method should call super.finalize."/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.DontCreateConnectionsCheck">
+			<metadata name="id" value="Do not create connections"/>
+			<metadata name="name" value="Do not create connections"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Don&#39;t create java.sql.Connection objects other than by looking them up from a javax.sql.DataSource."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.SerializableNeedsReadObjectCheck">
+			<metadata name="id" value="Implement &#39;readObject()&#39; for serializable classes"/>
+			<metadata name="name" value="Implement &#39;readObject()&#39; for serializable classes"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Even if your class uses the default serialized form you should still use &#39;readObject ()&#39; to guarantee security and class invariants."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.EqualsHashcodeCheck">
+			<metadata name="id" value="Override hashCode() with equals()"/>
+			<metadata name="name" value="Override hashCode() with equals()"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Always override hashCode() when equals() is overridden."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoObjectEqualEqualCheck">
+			<metadata name="id" value="Use &#39;equals ()&#39; when comparing Objects"/>
+			<metadata name="name" value="Use &#39;equals ()&#39; when comparing Objects"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="To check if two objects have the same value, the &#39;equals()&#39; method should be used."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoStringEqualEqualCheck">
+			<metadata name="id" value="Use &#39;equals ()&#39; when comparing Strings"/>
+			<metadata name="name" value="Use &#39;equals ()&#39; when comparing Strings"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="To check if two Strings have the same value, the &#39;equals()&#39; method should be used."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoOtherMainMethodCheck">
+			<metadata name="id" value="Use the method name &#39;main()&#39; only for the entry point method"/>
+			<metadata name="name" value="Use the method name &#39;main()&#39; only for the entry point method"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Use the method name &#39;main()&#39; only for the entry point method."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UnusedPrivateFieldCheck">
+			<metadata name="id" value="Avoid unused private fields"/>
+			<metadata name="name" value="Avoid unused private fields"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Private fields that are never used should be removed."/>
+			<property name="severity" value="Info"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UnusedPrivateMethodCheck">
+			<metadata name="id" value="Avoid unused private methods"/>
+			<metadata name="name" value="Avoid unused private methods"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Private methods that are never called should be removed."/>
+			<property name="severity" value="Info"/>
+		</module>
+	</module>
+	<module name="TreeWalker">
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.IllegalCatchCheck">
+			<metadata name="id" value="Avoid catch all"/>
+			<metadata name="name" value="Avoid catch all"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Avoid catching Throwable, Exception, Error, or RuntimeException."/>
+			<property name="illegalClassNames" value="java.lang.Error, java.lang.Exception, java.lang.Throwable, java.lang.RuntimeException"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck">
+			<metadata name="id" value="Avoid import .*"/>
+			<metadata name="name" value="Avoid import .*"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Do not use imports with &#39;.*&#39; wildcards."/>
+			<property name="excludes" value="java.awt, java.swing, java.io, java.util"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.DescendantTokenCheck">
+			<metadata name="id" value="Avoid switch with too many cases"/>
+			<metadata name="name" value="Avoid switch with too many cases"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Avoid creating extremely large switch statements, use polymorphism if possible."/>
+			<property name="maximumNumber" value="10"/>
+			<property name="maximumDepth" value="2"/>
+			<property name="limitedTokens" value="LITERAL_CASE"/>
+			<property name="maximumMessage" value="Too many cases in switch."/>
+			<property name="tokens" value="LITERAL_SWITCH"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ChainConstructorsCheck">
+			<metadata name="id" value="Chain constructors"/>
+			<metadata name="name" value="Chain constructors"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Chain constructors to avoid duplication of code."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoForWithoutConditionIncrementCheck">
+			<metadata name="id" value="Declare &#39;for&#39; loops with at least two of declaration, condition and increment statements"/>
+			<metadata name="name" value="Declare &#39;for&#39; loops with at least two of declaration, condition and increment statements"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Declare &#39;for&#39; loops with at least two of declaration, condition and increment statements."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.ParameterAssignmentCheck">
+			<metadata name="id" value="Do not assign parameters"/>
+			<metadata name="name" value="Do not assign parameters"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Java uses pass-by-value so assigning to a parameter has no effect; if the new value is needed locally, declare a variable."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoMultipleTypesInOneDeclarationCheck">
+			<metadata name="id" value="Do not declare arrays and non-arrays together"/>
+			<metadata name="name" value="Do not declare arrays and non-arrays together"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Declaring arrays and non-arrays on the same line can be confusing."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoDeclareMultipleVariablesInStatementCheck">
+			<metadata name="id" value="Do not declare multiple variables in one statement"/>
+			<metadata name="name" value="Do not declare multiple variables in one statement"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Declaring multiple variables in a single statement can be confusing."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.DontNestAssignmentsCheck">
+			<metadata name="id" value="Do not nest assignments"/>
+			<metadata name="name" value="Do not nest assignments"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Nesting assignments can be confusing."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.InlineConstantsCheck">
+			<metadata name="id" value="Do not use inline constants"/>
+			<metadata name="name" value="Do not use inline constants"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Declare constants as static final fields."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.WrongCastAfterInstanceofCheck">
+			<metadata name="id" value="Don&#39;t check for one type with instanceof and then immediately cast to another."/>
+			<metadata name="name" value="Don&#39;t check for one type with instanceof and then immediately cast to another."/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="This warns of probable ClassCastExceptions caused by editing errors."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.FinalLocalVariableCheck">
+			<metadata name="id" value="Final local variables"/>
+			<metadata name="name" value="Final local variables"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Declare constant local variables final."/>
+			<property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck">
+			<metadata name="id" value="Hide utility constructors"/>
+			<metadata name="name" value="Hide utility constructors"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Utility classes (all static methods) should not have a public constructor."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck">
+			<metadata name="id" value="Order imports"/>
+			<metadata name="name" value="Order imports"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Groups of import should be in a specific order."/>
+			<property name="separated" value="false"/>
+			<property name="caseSensitive" value="true"/>
+			<property name="groups" value="java, javax"/>
+			<property name="ordered" value="true"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck">
+			<metadata name="id" value="Use conventional ordering"/>
+			<metadata name="name" value="Use conventional ordering"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Compilation units should be ordered according to Code Conventions for Java."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.UpperEllCheck">
+			<metadata name="id" value="Use uppercase &#39;L&#39;"/>
+			<metadata name="name" value="Use uppercase &#39;L&#39;"/>
+			<metadata name="category" value="Coding Conventions"/>
+			<metadata name="description" value="Use &#39;L&#39; instead of &#39;l&#39; to express &#39;long&#39; integer constants to prevent confusion."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.ArrayTypeStyleCheck">
+			<metadata name="id" value="Array declaration style"/>
+			<metadata name="name" value="Array declaration style"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Place the array square brackets right after the type."/>
+			<property name="javaStyle" value="true"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoLoneOpenBraceCheck">
+			<metadata name="id" value="Avoid lonely left brace"/>
+			<metadata name="name" value="Avoid lonely left brace"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Place opening braces at the end of the preceding line, not on their own line."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoStatementAfterCurlyCheck">
+			<metadata name="id" value="Avoid placing statements after opening braces on the same line"/>
+			<metadata name="name" value="Avoid placing statements after opening braces on the same line"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Avoid placing statements after opening braces on the same line."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck">
+			<metadata name="id" value="Braces for condition blocks"/>
+			<metadata name="name" value="Braces for condition blocks"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Use left and right curly braces to mark condition blocks."/>
+			<property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_IF, LITERAL_FOR, LITERAL_WHILE"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.TabCharacterCheck">
+			<metadata name="id" value="Do not use tabs"/>
+			<metadata name="name" value="Do not use tabs"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Use spaces instead of tab characters."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
+			<metadata name="id" value="Eighty character lines"/>
+			<metadata name="name" value="Eighty character lines"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Lines should be no longer than 80 characters long."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="80"/>
+			<property name="ignorePattern" value="^$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck">
+			<metadata name="id" value="Four space indentation"/>
+			<metadata name="name" value="Four space indentation"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Line indentation should be multiple of 4 spaces."/>
+			<property name="basicOffset" value="4"/>
+			<property name="severity" value="Ignore"/>
+			<property name="caseIndent" value="4"/>
+			<property name="braceAdjustment" value="0"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck">
+			<metadata name="id" value="Left brace on new line"/>
+			<metadata name="name" value="Left brace on new line"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Left braces should be on a new line."/>
+			<property name="option" value="nl"/>
+			<property name="tokens" value="CLASS_DEF, CTOR_DEF, INTERFACE_DEF, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_SWITCH, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, METHOD_DEF"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck">
+			<metadata name="id" value="Lonely right brace"/>
+			<metadata name="name" value="Lonely right brace"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires that a closing right brace be alone on a line."/>
+			<property name="option" value="alone"/>
+			<property name="tokens" value="LITERAL_CATCH, LITERAL_ELSE, LITERAL_TRY"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck">
+			<metadata name="id" value="No white space before unary postfix"/>
+			<metadata name="name" value="No white space before unary postfix"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Do not put white space before unary ++ and -- postfix operators."/>
+			<property name="tokens" value="POST_DEC, POST_INC"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck">
+			<metadata name="id" value="No whites pace after unary prefix"/>
+			<metadata name="name" value="No whites pace after unary prefix"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Do not put white space after unary ++ and -- pre operators."/>
+			<property name="tokens" value="INC, DEC"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoMultipleStatementsInLineCheck">
+			<metadata name="id" value="One statement per line"/>
+			<metadata name="name" value="One statement per line"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Limit Lines to a single statement."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NeedTwoBlankLinesBeforeClassCheck">
+			<metadata name="id" value="Place two blank lines before &#39;class&#39; or &#39;interface&#39; declarations"/>
+			<metadata name="name" value="Place two blank lines before &#39;class&#39; or &#39;interface&#39; declarations"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Place two blank lines before &#39;class&#39; or &#39;interface&#39; declarations."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.WhitespaceBeforeArgumentsCheck">
+			<metadata name="id" value="Space before arguments"/>
+			<metadata name="name" value="Space before arguments"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Put a space between the method name and opening parenthesis for a method call."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck">
+			<metadata name="id" value="White space after comma"/>
+			<metadata name="name" value="White space after comma"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires whitespace after commas."/>
+			<property name="tokens" value="COMMA"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space after conditional literals"/>
+			<metadata name="name" value="White space after conditional literals"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces after conditional literals."/>
+			<property name="tokens" value="LITERAL_ASSERT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck">
+			<metadata name="id" value="White space after semicolon"/>
+			<metadata name="name" value="White space after semicolon"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires semicolons to be followed by a whitespace."/>
+			<property name="tokens" value="SEMI"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck">
+			<metadata name="id" value="White space after typecast"/>
+			<metadata name="name" value="White space after typecast"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires typecast to be followed by at least one whitespace."/>
+			<property name="tokens" value="TYPECAST"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space around assignment"/>
+			<metadata name="name" value="White space around assignment"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces around assignment operators."/>
+			<property name="tokens" value="ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space around bitwise operators"/>
+			<metadata name="name" value="White space around bitwise operators"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces around bitwise operators."/>
+			<property name="tokens" value="BAND, BOR, BSR, BXOR, SL, SR"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space around conditional operators"/>
+			<metadata name="name" value="White space around conditional operators"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces around conditional operators."/>
+			<property name="tokens" value="QUESTION"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space around logical operators"/>
+			<metadata name="name" value="White space around logical operators"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces around logical operators."/>
+			<property name="tokens" value="LAND, LOR"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck">
+			<metadata name="id" value="White space around relational operators"/>
+			<metadata name="name" value="White space around relational operators"/>
+			<metadata name="category" value="Formatting"/>
+			<metadata name="description" value="Requires spaces around relational operators."/>
+			<property name="tokens" value="EQUAL, GE, GT, LE, LT, NOT_EQUAL"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JDBCConnectionsMustBeClosedCheck">
+			<metadata name="id" value="Close JDBC connections in &#39;finally&#39; blocks"/>
+			<metadata name="name" value="Close JDBC connections in &#39;finally&#39; blocks"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="Close JDBC connections in &#39;finally&#39; blocks."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.LocalHomeInterfaceCheck">
+			<metadata name="id" value="Comply with EJBLocalHome rules"/>
+			<metadata name="name" value="Comply with EJBLocalHome rules"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="EJBLocalHome instances must follow all J2EE rules about field and method declarations."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.LocalInterfaceCheck">
+			<metadata name="id" value="Comply with EJBLocalObject rules"/>
+			<metadata name="name" value="Comply with EJBLocalObject rules"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="EJBLocalObject instances must follow all J2EE rules about field and method declarations."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.EntityBeanCheck">
+			<metadata name="id" value="Comply with EntityBean rules"/>
+			<metadata name="name" value="Comply with EntityBean rules"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="EntityBean instances must follow all J2EE rules about field and method declarations."/>
+			<property name="severity" value="Ignore"/>
+			<property name="persistence" value="mixed"/>
+			<property name="version" value="2.0"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.MessageBeanCheck">
+			<metadata name="id" value="Comply with MessageBean rules"/>
+			<metadata name="name" value="Comply with MessageBean rules"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="MessageBean instances must follow all J2EE rules about field and method declarations."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.SessionBeanCheck">
+			<metadata name="id" value="Comply with SessionBean rules"/>
+			<metadata name="name" value="Comply with SessionBean rules"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="SessionBean instances must follow all J2EE rules about field and method declarations."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.ThisParameterCheck">
+			<metadata name="id" value="Do not pass &#39;this&#39;"/>
+			<metadata name="name" value="Do not pass &#39;this&#39;"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="Do not pass the &#39;this&#39; reference as a method parameter."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.ThisReturnCheck">
+			<metadata name="id" value="Do not return &#39;this&#39;"/>
+			<metadata name="name" value="Do not return &#39;this&#39;"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="Do not return the &#39;this&#39; reference from a method."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.j2ee.FinalStaticCheck">
+			<metadata name="id" value="Make static fields final"/>
+			<metadata name="name" value="Make static fields final"/>
+			<metadata name="category" value="J2EE"/>
+			<metadata name="description" value="All static fields should be declared &#39;final&#39;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck">
+			<metadata name="id" value="Document fields"/>
+			<metadata name="name" value="Document fields"/>
+			<metadata name="category" value="Javadoc"/>
+			<metadata name="description" value="Public fields and constants must have a Javadoc comment."/>
+			<property name="severity" value="Ignore"/>
+			<property name="scope" value="public"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.JavadocMethodCheck">
+			<metadata name="id" value="Document methods"/>
+			<metadata name="name" value="Document methods"/>
+			<metadata name="category" value="Javadoc"/>
+			<metadata name="description" value="Public methods must have a Javadoc comment."/>
+			<property name="ruleSourceName" value="com.agitar.lib.rules.checks.JavadocMethodCheck"/>
+			<property name="allowThrowsTagsForSubclasses" value="true"/>
+			<property name="allowUndeclaredRTE" value="true"/>
+			<property name="allowMissingParamTags" value="false"/>
+			<property name="severity" value="Ignore"/>
+			<property name="scope" value="public"/>
+			<property name="allowMissingReturnTag" value="false"/>
+			<property name="allowMissingThrowsTags" value="true"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck">
+			<metadata name="id" value="Document types"/>
+			<metadata name="name" value="Document types"/>
+			<metadata name="category" value="Javadoc"/>
+			<metadata name="description" value="Public classes and interfaces must have a Javadoc comment."/>
+			<property name="severity" value="Ignore"/>
+			<property name="scope" value="public"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.PercentOfJavadocCommentsCheck">
+			<metadata name="id" value="Minimum percentage of javadoc comments related to fields and methods in a class or interface"/>
+			<metadata name="name" value="Minimum percentage of javadoc comments related to fields and methods in a class or interface"/>
+			<metadata name="category" value="Javadoc"/>
+			<metadata name="description" value="Minimum percentage of javadoc comments related to fields and methods in a class or interface."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UseAtConcurrencyForSynchronizedMethodsCheck">
+			<metadata name="id" value="Use &#39;@concurrency&#39; javadoc tag for public/protected synchronized methods"/>
+			<metadata name="name" value="Use &#39;@concurrency&#39; javadoc tag for public/protected synchronized methods"/>
+			<metadata name="category" value="Javadoc"/>
+			<metadata name="description" value="Use &#39;@concurrency&#39; javadoc tag for public/protected synchronized methods."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.metrics.CyclomaticComplexityCheck">
+			<metadata name="id" value="Cyclomatic complexity"/>
+			<metadata name="name" value="Cyclomatic complexity"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum cyclomatic complexity per method."/>
+			<property name="severity" value="Error"/>
+			<property name="max" value="15"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck">
+			<metadata name="id" value="Maximum class line count"/>
+			<metadata name="name" value="Maximum class line count"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number of lines per class."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="2000"/>
+		</module>
+		<module name="com.agitar.lib.rules.metrics.StatementsPerClassCheck">
+			<metadata name="id" value="Maximum class statement count"/>
+			<metadata name="name" value="Maximum class statement count"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number of statements per class."/>
+			<property name="maxStatements" value="2000"/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanOutComplexityCheck">
+			<metadata name="id" value="Maximum classes referenced"/>
+			<metadata name="name" value="Maximum classes referenced"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number classes referenced per class."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="20"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck">
+			<metadata name="id" value="Maximum method line count"/>
+			<metadata name="name" value="Maximum method line count"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number of lines per method."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="100"/>
+			<property name="countEmpty" value="false"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.sizes.ExecutableStatementCountCheck">
+			<metadata name="id" value="Maximum method statement count"/>
+			<metadata name="name" value="Maximum method statement count"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number of statements per method."/>
+			<property name="severity" value="Error"/>
+			<property name="max" value="100"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck">
+			<metadata name="id" value="Maximum parameters in method or constructor"/>
+			<metadata name="name" value="Maximum parameters in method or constructor"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks maximum number of parameters per method and/or constructor."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="5"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NumberOfCommentsInClassCheck">
+			<metadata name="id" value="Number of comment lines in a class or interface"/>
+			<metadata name="name" value="Number of comment lines in a class or interface"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks the number of comment lines in a class or interface."/>
+			<property name="min" value="1"/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="100"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NumberOfCommentsInMethodCheck">
+			<metadata name="id" value="Number of comment lines in a method"/>
+			<metadata name="name" value="Number of comment lines in a method"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks the number of comment lines in a method."/>
+			<property name="min" value="1"/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="100"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NumberOfMethodCallsCheck">
+			<metadata name="id" value="Number of method calls made from a method"/>
+			<metadata name="name" value="Number of method calls made from a method"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks the number of method calls made from a method."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="100"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NumberOfReturnsCheck">
+			<metadata name="id" value="Number of return statements from a method"/>
+			<metadata name="name" value="Number of return statements from a method"/>
+			<metadata name="category" value="Metrics"/>
+			<metadata name="description" value="Checks the number of return statements from a method."/>
+			<property name="severity" value="Ignore"/>
+			<property name="max" value="5"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoReservedPackageNamesCheck">
+			<metadata name="id" value="Avoid using a reserved package name"/>
+			<metadata name="name" value="Avoid using a reserved package name"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Avoid using a package name that is reserved by Sun."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.TypeNameCheck">
+			<metadata name="id" value="Class name format"/>
+			<metadata name="name" value="Class name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for class names."/>
+			<property name="tokens" value="CLASS_DEF"/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck">
+			<metadata name="id" value="Constant name format"/>
+			<metadata name="name" value="Constant name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for static final fields."/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.TypeNameCheck">
+			<metadata name="id" value="Interface name format"/>
+			<metadata name="name" value="Interface name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for interface names."/>
+			<property name="tokens" value="INTERFACE_DEF"/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck">
+			<metadata name="id" value="Local variable name format"/>
+			<metadata name="name" value="Local variable name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for local variable names."/>
+			<property name="tokens" value="VARIABLE_DEF"/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck">
+			<metadata name="id" value="Method name format"/>
+			<metadata name="name" value="Method name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for method names."/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck">
+			<metadata name="id" value="Non-static field name format"/>
+			<metadata name="name" value="Non-static field name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for non-static fields."/>
+			<property name="applyToProtected" value="true"/>
+			<property name="applyToPublic" value="true"/>
+			<property name="severity" value="Ignore"/>
+			<property name="applyToPackage" value="true"/>
+			<property name="applyToPrivate" value="true"/>
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.PackageNameCheck">
+			<metadata name="id" value="Package name format"/>
+			<metadata name="name" value="Package name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for packages."/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck">
+			<metadata name="id" value="Parameter name format"/>
+			<metadata name="name" value="Parameter name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for method parameter names and exception parameter names."/>
+			<property name="tokens" value="PARAMETER_DEF"/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UseGetForGetterMethodCheck">
+			<metadata name="id" value="Prefix getter methods with &#39;get&#39;"/>
+			<metadata name="name" value="Prefix getter methods with &#39;get&#39;"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Check to ensure that all simple getter methods are prefixed with &quot;get&quot;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck">
+			<metadata name="id" value="Static field name format"/>
+			<metadata name="name" value="Static field name format"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Enforce naming format for static fields."/>
+			<property name="severity" value="Ignore"/>
+			<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoIsWithoutBooleanCheck">
+			<metadata name="id" value="Use &#39;is...&#39; only for naming methods that return a &#39;boolean&#39;"/>
+			<metadata name="name" value="Use &#39;is...&#39; only for naming methods that return a &#39;boolean&#39;"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Checks to ensure that boolean getter methods use the prefix &quot;is&quot;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoLowercaseInInterfaceFieldsCheck">
+			<metadata name="id" value="Use all uppercase letters for the names of fields in an interface"/>
+			<metadata name="name" value="Use all uppercase letters for the names of fields in an interface"/>
+			<metadata name="category" value="Naming"/>
+			<metadata name="description" value="Checks to ensure that all field names in an anterfaces are upper case."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoAssignmentInIfCheck">
+			<metadata name="id" value="Avoid assignment within an &#39;if&#39; condition"/>
+			<metadata name="name" value="Avoid assignment within an &#39;if&#39; condition"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Avoid assignment within an &#39;if&#39; condition to prevent confusion."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.DanglingElseCheck">
+			<metadata name="id" value="Avoid dangling &#39;else&#39; statements"/>
+			<metadata name="name" value="Avoid dangling &#39;else&#39; statements"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Associate else blocks with if blocks, if potentially ambiguous, by using &#39;{ }&#39;."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck">
+			<metadata name="id" value="Avoid empty catch blocks"/>
+			<metadata name="name" value="Avoid empty catch blocks"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Avoid empty catch blocks, they can obsure errors."/>
+			<property name="option" value="text"/>
+			<property name="tokens" value="LITERAL_CATCH"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck">
+			<metadata name="id" value="Avoid empty for blocks"/>
+			<metadata name="name" value="Avoid empty for blocks"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Avoid empty for blocks."/>
+			<property name="option" value="text"/>
+			<property name="tokens" value="LITERAL_FOR"/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck">
+			<metadata name="id" value="Avoid empty if blocks"/>
+			<metadata name="name" value="Avoid empty if blocks"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Avoid empty if blocks."/>
+			<property name="option" value="text"/>
+			<property name="tokens" value="LITERAL_IF"/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.DescendantTokenCheck">
+			<metadata name="id" value="Avoid labels in switch"/>
+			<metadata name="name" value="Avoid labels in switch"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="A mistyped &#39;case&#39; may be interpreted as a label by the compiler."/>
+			<property name="maximumNumber" value="0"/>
+			<property name="limitedTokens" value="LABELED_STAT"/>
+			<property name="maximumMessage" value="Do not use labels in switch statements; they may be confused with cases."/>
+			<property name="tokens" value="LITERAL_SWITCH"/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.SuperCloneCheck">
+			<metadata name="id" value="Call super.clone()"/>
+			<metadata name="name" value="Call super.clone()"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="clone() methods should call super.clone."/>
+			<property name="severity" value="Error"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.ResourcesMustBeClosedCheck">
+			<metadata name="id" value="Close input output resources in &#39;finally&#39; blocks"/>
+			<metadata name="name" value="Close input output resources in &#39;finally&#39; blocks"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Close input output resources in &#39;finally&#39; blocks."/>
+			<property name="types" value="java.io.FileInputStream,java.io.FileOutputStream,java.sql.Statement"/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.NoAssignmentToLoopVariablesCheck">
+			<metadata name="id" value="Do not assign loop control variables in the body of a &#39;for&#39; loop"/>
+			<metadata name="name" value="Do not assign loop control variables in the body of a &#39;for&#39; loop"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Do not assign loop control variables in the body of a &#39;for&#39; loop."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck">
+			<metadata name="id" value="Provide &#39;default:&#39; for switch"/>
+			<metadata name="name" value="Provide &#39;default:&#39; for switch"/>
+			<metadata name="category" value="Possible Bugs"/>
+			<metadata name="description" value="Often the &#39;case&#39; statements in a switch are the only logical options, so a &#39;default&#39; statement should be added to catch any options that are outside the accepted range of inputs."/>
+			<property name="severity" value="Warning"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UnusedLocalVariableCheck">
+			<metadata name="id" value="Avoid Unused Local Variables"/>
+			<metadata name="name" value="Avoid Unused Local Variables"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Local variables that are never used should be removed."/>
+			<property name="severity" value="Info"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportCheck">
+			<metadata name="id" value="Avoid redundant imports"/>
+			<metadata name="name" value="Avoid redundant imports"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Duplicate imports, imports of java.lang, or imports from the same package should be removed."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.modifier.RedundantModifierCheck">
+			<metadata name="id" value="Avoid redundant modifiers"/>
+			<metadata name="name" value="Avoid redundant modifiers"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Unnecessary modifiers such as &#39;public&#39; on an interface method should be removed."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck">
+			<metadata name="id" value="Avoid unused imports"/>
+			<metadata name="name" value="Avoid unused imports"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="Imports of unused classes and packages should be removed."/>
+			<property name="severity" value="Ignore"/>
+		</module>
+		<module name="com.agitar.lib.rules.checks.UnusedParameterCheck">
+			<metadata name="id" value="Avoid unused parameters"/>
+			<metadata name="name" value="Avoid unused parameters"/>
+			<metadata name="category" value="Unused Code"/>
+			<metadata name="description" value="All method parameters should be used."/>
+			<property name="ignoreCatch" value="true"/>
+			<property name="severity" value="Ignore"/>
+		</module>
+	</module>
+</module>

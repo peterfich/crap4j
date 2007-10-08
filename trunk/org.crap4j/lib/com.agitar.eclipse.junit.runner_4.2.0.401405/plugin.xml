@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <!--
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            name="%LaunchConfig.name"
+            delegate="com.agitar.eclipse.junit.ui.AgitarJUnitLaunchConfiguration"
+            modes="run, debug"
+            id="com.agitar.eclipse.junit.launchConfiguration"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+         <fileExtension
+               default="false"
+               extension="java">
+         </fileExtension>
+         <fileExtension
+               default="false"
+               extension="class">
+         </fileExtension>
+      </launchConfigurationType>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            label="%LaunchConfig.name"
+            class="com.agitar.eclipse.junit.ui.AgitarJUnitLaunchShortcut"
+            modes="run, debug"
+            icon="icons/agitator_junit_tab.gif"
+            id="com.agitar.eclipse.junit.junitShortcut">
+         <contextualLaunch>
+            <enablement>
+               <with variable="selection">
+                  <count value="1"/>
+               		<iterate>
+                 		<or>
+                 			<test property="org.eclipse.jdt.launching.extendsInterface" args="junit.framework.Test"/>
+                 			<test property="org.eclipse.jdt.launching.hasMethod" args="suite, ()QTest;, public static"/>
+                 			<and>
+                 				<test property="org.eclipse.jdt.launching.isContainer"/>
+                 				<test property="org.eclipse.jdt.launching.buildpathReference" args="junit"/>
+                 			</and>
+                      <test property="org.eclipse.jdt.launching.hasMethodWithAnnotation" args="Test, public"/>
+		                  <test property="org.eclipse.jdt.launching.hasMethodWithAnnotation" args="Test, public final"/>
+                 			<test property="org.eclipse.jdt.launching.hasTypeWithAnnotation" args="RunWith"/>
+                 		</or>
+               		</iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaHierarchyPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.debug.ui.DebugPerspective">
+         </perspective>
+      </shortcut>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            sequence="M3+M2+X B"
+            commandId="com.agitar.eclipse.junit.junitShortcut.run"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            sequence="M3+M2+D B"
+            commandId="com.agitar.eclipse.junit.junitShortcut.debug"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="%LaunchConfig.desc.debug"
+            description="%LaunchConfig.desc.debug"
+            id="com.agitar.eclipse.junit.junitShortcut.debug"
+            categoryId="org.eclipse.debug.ui.category.run">
+      </command>
+       <command
+            name="%LaunchConfig.desc.run"
+            description="%LaunchConfig.desc.run"
+            id="com.agitar.eclipse.junit.junitShortcut.run"
+            categoryId="org.eclipse.debug.ui.category.run">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            icon="icons/agitator_junit_tab.gif"
+            configTypeID="com.agitar.eclipse.junit.launchConfiguration"
+            id="com.agitar.eclipse.junit.launchimage"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            type="com.agitar.eclipse.junit.launchConfiguration"
+            helpContextId="org.eclipse.jdt.junit.junit_tab_group"
+            class="org.eclipse.jdt.internal.junit.launcher.JUnitTabGroup"
+            id="org.eclipse.jdt.junit.launchConfigurationTabGroup.junit">
+         <launchMode
+               perspective="org.eclipse.debug.ui.DebugPerspective"
+               description="%RunJUnitShortcut.description.debug"
+               mode="debug">
+         </launchMode>
+         <launchMode
+               description="%RunJUnitShortcut.description.run"
+               mode="run">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+   -->
+
+   <extension
+         point="org.eclipse.jdt.junit.internal_testKinds">
+     <kind id="com.agitar.eclipse.junit.loader"
+           displayName="%LaunchConfig.name"
+           finderClass="org.eclipse.jdt.internal.junit.launcher.JUnit4TestFinder"
+           loaderPluginId="com.agitar.eclipse.junit.runner"
+           loaderClass="com.agitar.eclipse.junit.runner.AgitarJUnitTestLoader">
+        <runtimeClasspathEntry pluginId="org.eclipse.jdt.junit" pathToJar="junitsupport.jar"/>
+        <runtimeClasspathEntry pluginId="org.eclipse.jdt.junit.runtime" pathToJar="junitruntime.jar"/>
+        <runtimeClasspathEntry pluginId="org.eclipse.jdt.junit4.runtime"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.runner" pathToJar="%runner.classpath.value.runner"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.mockingbird" pathToJar="%runner.classpath.value.mockingbird"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.testrunner" pathToJar="%runner.classpath.value.testrunner"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.coverage" pathToJar="%runner.classpath.value.coverage"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.common" pathToJar="%runner.classpath.value.common"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.asm" pathToJar="%runner.classpath.value.asm"/>
+        <runtimeClasspathEntry pluginId="%runner.classpath.name.asmtree" pathToJar="%runner.classpath.value.asmtree"/>
+     </kind>
+   </extension>
+
+  <extension
+        id="agitarJUnit4Runner"
+        point="com.agitar.eclipse.api.runner">
+    <runner runnerClass="com.agitar.eclipse.junit.ui.AgitarJUnitLaunchShortcut" 
+    		id="agitarJUnit4Runner"
+            priority="20"/>
+  </extension>
+
+</plugin>

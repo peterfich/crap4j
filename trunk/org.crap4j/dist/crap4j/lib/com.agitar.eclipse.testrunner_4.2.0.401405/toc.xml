@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Agitar Test Manager Help" topic="tm-opening-topic-1.html">
+
+  <topic
+      label="The Agitar Test Manager"
+      href="tm-using-1.html">
+
+    <topic
+        label="Running JUnit Tests Using the Agitar Test Manager"
+        href="tm-using-2.html">
+
+      <topic
+          label="Diagnosing Test Failures"
+          href="tm-using-2.html#wp1008215"/>
+
+      <topic
+          label="Rerunning Tests"
+          href="tm-using-2.html#wp1008285"/>
+    </topic>
+
+    <topic
+        label="Viewing Coverage"
+        href="tm-using-3.html">
+
+      <topic
+          label="Coverage From Specific Tests"
+          href="tm-using-3.html#wp1008637"/>
+
+      <topic
+          label="Which Test Classes Cover Which Source Methods?"
+          href="tm-using-3.html#wp1007641"/>
+    </topic>
+  </topic>
+
+  <topic
+      label="Copyright"
+      href="help-copyright-1.html"/>
+</toc>

@@ -1,0 +1,20 @@
+<project default="publish" name="com.agitar.eclipse.api">
+  <import file="../../agitarsvn/build.system/common/common.xml"/>
+
+  <property name="modules"
+            value="crap4j"
+            description="Lists the modules to be included in this plugin"
+      />
+
+  <property name="plugin.dependencies"
+            value="com.agitar.coverage"
+            description="Lists the plugins on which this one depends"
+      />
+
+  <property name="plugin.should.export"
+            value="true"
+            description="Forces all agitar bundles and packages to be re-exported"
+      />
+
+  <import file="../../agitarsvn/build.system/common/plugin.xml"/>
+</project>

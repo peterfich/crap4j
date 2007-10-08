@@ -1,0 +1,12 @@
+<project default="all" name="com.agitar.crap4j.eclipse">
+  <import file="../../agitarsvn/build.system/common/common.xml"/>
+
+  <property name="plugins" value="crap4j, com.agitar.crap4j.eclipse"/>
+  <property name="feature.dependencies" value="com.agitar.eclipse.testrunner,com.agitar.eclipse.junit.runner,com.agitar.eclipse.api"/>
+
+  <property name="feature.label" value="Crap4j"/>
+  <property name="feature.description"
+            value="A tool to determine how much C.R.A.P. your project has."/>
+
+  <import file="../../agitarsvn/build.system/common/feature.xml"/>
+</project>
