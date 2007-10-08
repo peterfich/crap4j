@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<project name="crap4j" default="run-crap4j" basedir="..">
+
+	<!-- <property name="crap4j.home" value="/Users/bobevans/Documents/projects/svnworkspace/crap4j"/> -->
+		
+	<!-- Define the Crap4j task -->
+	<taskdef name="crap4j" classname="com.xagitarlabs.crap4j.anttask.Crap4jAntTask" >
+		<classpath>
+		  <!-- this entry lets me do runs from my development environment without repackaging -->
+			<pathElement location="${CRAP4J_HOME}/bin" /> 
+			<fileset dir="${CRAP4J_HOME}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+
+	<!-- Use of ${project.dir.crap4j} allows for the resolution of relative paths even when this file is imported in another build file -->
+	<dirname file="${ant.file.crap4j}" property="import.dir.crap4j" />
+	<condition property="project.dir.crap4j" value="${import.dir.crap4j}/.." else="${basedir}">
+		<isset property="import.dir.crap4j" />
+	</condition>
+
+	<!-- Use crap4j on the project -->
+	<target name="run-crap4j">
+		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="true" debug="false">
+			<classDirs>
+				<pathElement location="${project.dir.crap4j}/bin" />
+			</classDirs>
+			<srcDirs>
+				<pathElement location="${project.dir.crap4j}/src" />
+			</srcDirs>
+			<testClassDirs>
+				<pathElement location="${project.dir.crap4j}/test_bin" />
+				<pathElement location="${project.dir.crap4j}/integration_tests_bin" />
+				<pathElement location="${project.dir.crap4j}/agitar/test_bin" />
+			</testClassDirs>
+			<libClasspath>
+				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</libClasspath>
+		</crap4j>
+	</target>
+</project>

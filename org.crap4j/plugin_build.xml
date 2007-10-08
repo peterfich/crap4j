@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="crap4j">
+    <property environment="env"/>
+    <property name="AGITAR_MOCK_OBJECTS5" value="../../../../Applications/eclipse - evil/plugins/XXX.com.agitar.eclipse.api_5.0.0.401628/lib/ext/org.agitar.mock5.jar"/>
+    <property name="AGITAR_TEST_LIB" value="../../../../Applications/eclipse - evil/plugins/XXX.com.agitar.eclipse.api_5.0.0.401628/XXX.com.agitar.mockingbird.jar"/>
+    <property name="ECLIPSE_HOME" value="../../../../Applications/eclipse - evil"/>
+    <property name="workspace_loc:com.agitar.agitator" value="../../agitarsvn/com.agitar.agitator"/>
+    <property name="workspace_loc:com.agitar.common" value="../../agitarsvn/com.agitar.common"/>
+    <property name="workspace_loc:com.agitar.dashboard" value="../../agitarsvn/com.agitar.dashboard"/>
+    <property name="workspace_loc:agitar-tutorial" value="../agitar-tutorial"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="JUnit 3.8.1.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_3.8.1/junit.jar"/>
+    </path>
+    <path id="Plug-in Dependencies.libraryclasspath">
+        <pathelement location="../../../../../../com.agitar.eclipse.testrunner"/>
+        <pathelement location="../../../../../../com.agitar.eclipse.coverage"/>
+        <pathelement location="../../../../../../com.agitar.eclipse.core"/>
+        <pathelement location="../../../../../../com.agitar.common"/>
+        <pathelement location="../../../../../../com.agitar.eclipse.project.mock"/>
+        <pathelement location="../../../../../../com.agitar.coverage"/>
+        <pathelement location="../../../../../../com.agitar.check"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.help.base_3.2.1.R321_v20060822.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.apache.lucene_1.4.103.v20060601/lucene-1.4.3.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.apache.lucene_1.4.103.v20060601/parser.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.help_3.2.1.R321_v20060920.jar"/>
+        <pathelement location="../../../../../../com.agitar.eclipse.api"/>
+    </path>
+    <path id="crap4j.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="test_bin"/>
+        <pathelement location="integration_tests_bin"/>
+        <pathelement location="dist/crap4j/lib/args4j-2.0.1.jar"/>
+        <path refid="JUnit 3.8.1.libraryclasspath"/>
+        <pathelement location="${AGITAR_MOCK_OBJECTS5}"/>
+        <pathelement location="${AGITAR_TEST_LIB}"/>
+        <pathelement location="agitar/test_bin"/>
+        <pathelement location="../../MDTWorkspace/crap4j/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="dist/crap4j/lib/asmlib"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <mkdir dir="test_bin"/>
+        <mkdir dir="integration_tests_bin"/>
+        <mkdir dir="agitar/test_bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="test_bin">
+            <fileset dir="test" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="integration_tests_bin">
+            <fileset dir="integration_tests" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="agitar/test_bin">
+            <fileset dir="agitar/test" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete dir="test_bin"/>
+        <delete dir="integration_tests_bin"/>
+        <delete dir="agitar/test_bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="crap4j.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="test_bin" source="${source}" target="${target}">
+            <src path="test"/>
+            <classpath refid="crap4j.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="integration_tests_bin" source="${source}" target="${target}">
+            <src path="integration_tests"/>
+            <classpath refid="crap4j.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="agitar/test_bin" source="${source}" target="${target}">
+            <src path="agitar/test"/>
+            <classpath refid="crap4j.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="CRAP4j agitar.agitator">
+        <java classname="com.xagitarlabs.crap4j.Main" dir="${workspace_loc:com.agitar.agitator}" failonerror="true" fork="yes">
+            <jvmarg line="-Xmx1024m"/>
+            <arg line="-f projectConfig.sample -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="CRAP4j agitar.common">
+        <java classname="com.xagitarlabs.crap4j.Main" dir="${workspace_loc:com.agitar.common}" failonerror="true" fork="yes">
+            <arg line="-f projectConfig.sample -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="CRAP4j agitar.dashboard">
+        <java classname="com.xagitarlabs.crap4j.Main" dir="${workspace_loc:com.agitar.dashboard}" failonerror="true" fork="yes">
+            <arg line="-f projectConfig.sample -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="Crap4j on tutorial">
+        <java classname="com.xagitarlabs.crap4j.Main" dir="${workspace_loc:agitar-tutorial}" failonerror="true" fork="yes">
+            <arg line="-f projectConfig.sample -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="Main (1)">
+        <java classname="com.xagitarlabs.crap4j.Main" failonerror="true" fork="yes">
+            <arg line="-f doc/projectConfig.sample  -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="Main (2)">
+        <java classname="com.xagitarlabs.crap4j.Main" failonerror="true" fork="yes">
+            <arg line="-f doc/projectConfig.sample  -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+    <target name="Main">
+        <java classname="com.xagitarlabs.crap4j.Main" failonerror="true" fork="yes">
+            <arg line="-f doc/projectConfig.sample  -dontTest"/>
+            <classpath refid="crap4j.classpath"/>
+        </java>
+    </target>
+</project>

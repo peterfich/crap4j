@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Main Topic</title>
+</head>
+
+<body>
+<h1>Using Crap4j</h1>
+<p><h2><a name="running">Running Crap4j</a></h2>
+To get a CRAP report for your project:</p>
+
+<ol>
+<li>In the <strong>Package Explorer</strong>, select the project to be analyzed.
+<p>The Crap4j icon becomes enabled in the toolbar and on the menu bar.</p>
+</li>
+
+<li>Click the icon or select the menu item.
+<p>The Crap4j tool analyzes your codebase. It opens the JUnit runner and runs all tests in the 
+project.</p>
+
+<p>When the analyisis is finished, an HTML report opens displaying the results of the analysis.
+This html report is located in &lt;project root&gt;/agitar/reports/crap4j.
+</p>
+</li>
+</ol>
+
+
+<H2><a name="interpreting">Reading the Report</a></H2>
+<p>The CRAP report shows the percentage of methods in the project that are above the CRAP threshold of 8.  
+It also shows the number of methods that are above the CRAP threshold and other statistics.</p>
+
+<p>At the bottom of the report are links to method-level details sorted by various criteria. 
+</p>
+
+<H2><a name="Definitions">Definitions</a></H2>
+<p>
+<dl>
+<dt>CRAP
+<dd>The method CRAP level as defined by the equation:
+<pre>
+(complexity ^ 2)((1 - coverage) ^ 3) + complexity
+</pre>
+<dt>CRAP Threshold
+<dd>The CRAP score beyond which the code is deemed to be crappy. Currently, 8.
+<dt>CRAP Load
+<dd>The amount of work required to reduce the code to below the CRAP Threshold. This can be a combination of adding tests for code missing coverage, or refactoring code into smaller methods with lower complexity.
+</dl>
+
+</pre>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="com.agitar.eclipse.testrunner.JavaLaunchableTester"
+            id="org.eclipse.jdt.launching.JavaLaunchableTester"
+            namespace="org.eclipse.jdt.launching"
+            properties="hasMain, extendsClass, extendsInterface, hasMethod, isContainer, hasProjectNature, buildpathReference, hasMethodWithAnnotation, hasTypeWithAnnotation"
+            type="org.eclipse.core.runtime.IAdaptable"/>            
+   </extension>
+   
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            name="Agitar JUnit"
+            delegate="com.agitar.eclipse.testrunner.RunJUnitTestsLaunchDelegate"
+            modes="run, debug"
+            id="com.agitar.eclipse.testrunner.runjunittests"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+         <fileExtension
+               default="false"
+               extension="java">
+         </fileExtension>
+         <fileExtension
+               default="false"
+               extension="class">
+         </fileExtension>            
+      </launchConfigurationType>
+   </extension>
+      <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            type="com.agitar.eclipse.testrunner.runjunittests"
+            class="com.agitar.eclipse.testrunner.TestRunnerTabGroup"
+            id="com.agitar.eclipse.testrunner.launchConfigurationTabGroup">
+         <launchMode
+               perspective="org.eclipse.debug.ui.DebugPerspective"
+               description="Debug Agitar JUnit"
+               mode="debug">
+         </launchMode>
+         <launchMode
+               description="SuperRunner"
+               mode="run">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+      <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            icon="icons/agitator_junit_tab.gif"
+            configTypeID="com.agitar.eclipse.testrunner.runjunittests"
+            id="com.agitar.eclipse.testrunner.launchimage"          
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+         <fileExtension
+               default="false"
+               extension="java">
+         </fileExtension>
+         <fileExtension
+               default="false"
+               extension="class">
+         </fileExtension>
+      </launchConfigurationTypeImage>
+   </extension>
+    <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            label="Agitar JUnit Test"
+            icon="icons/agitator_junit_tab.gif"
+            class="com.agitar.eclipse.testrunner.RunJUnitTestsShortcut"
+            modes="run, debug"
+            id="com.agitar.eclipse.testrunner.runJUnitTestsShortcut">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+               		<iterate>
+                 		<or>
+                 			<test property="org.eclipse.jdt.launching.extendsInterface" args="junit.framework.Test"/>
+                 			<test property="org.eclipse.jdt.launching.hasMethod" args="suite, ()QTest;, public static"/>
+                 			<and>
+                 				<test property="org.eclipse.jdt.launching.isContainer"/>
+                 				<test property="org.eclipse.jdt.launching.buildpathReference" args="junit"/>
+                 			</and>
+                            <test property="org.eclipse.jdt.launching.hasMethodWithAnnotation" args="Test, public"/>
+                            <test property="org.eclipse.jdt.launching.hasMethodWithAnnotation" args="Test, public final"/>
+                 			<test property="org.eclipse.jdt.launching.hasTypeWithAnnotation" args="RunWith"/>
+	                 		<test property="org.eclipse.jdt.junit.isTest"/>
+                 		</or>
+               		</iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaHierarchyPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.jdt.ui.JavaBrowsingPerspective">
+         </perspective>
+         <perspective
+               id="org.eclipse.debug.ui.DebugPerspective">
+         </perspective>
+         <perspective
+         	id="com.agitar.eclipse.project.AgitationPerspective">
+         </perspective>
+      </shortcut>
+   </extension>
+
+    <extension
+        point="org.eclipse.ui.popupMenus">
+        <viewerContribution
+            targetID="#CompilationUnitEditorContext"
+            id="com.agitar.eclipse.testrunner.actions.findAndRunTestsEditorContribution">
+         <menu
+            label="%Menu.agitator"
+            id="com.agitar.eclipse.project.agitator.editorpopupmenu">
+            <separator name="group0"/>
+            <separator name="group1"/>
+            <separator name="group2"/>
+
+         </menu>
+      	  <action
+               label="%Menu.findAndRunTests"
+               menubarPath="com.agitar.eclipse.project.agitator.editorpopupmenu/group1"
+               icon="icons/generate.gif"
+               class="com.agitar.eclipse.testrunner.actions.FindAndRunTestsEditorActionDelegate"
+               enablesFor="*"
+               id="com.agitar.eclipse.testrunner.actions.findAndRunTestsEditorActionDelegate">
+         </action>    
+       </viewerContribution>
+       <objectContribution
+            objectClass="org.eclipse.jdt.core.IJavaElement"
+            id="com.agitar.eclipse.testrunner.actions.findAndRunTestsObjectContribution">
+          <menu
+            label="%Menu.agitator"
+            id="com.agitar.eclipse.project.agitator.popupmenu">
+            <separator name="group0"/>
+            <separator name="group1"/>
+            <separator name="group2"/>
+         </menu>
+     	  <action
+               label="%Menu.findAndRunTests"
+               menubarPath="com.agitar.eclipse.project.agitator.popupmenu/group1"    
+               icon="icons/generate.gif"
+               class="com.agitar.eclipse.testrunner.actions.FindAndRunTestsObjectActionDelegate"
+               enablesFor="1"
+               id="com.agitar.eclipse.testrunner.actions.findAndRunTestsObjectActionDelegate">
+         </action>                
+       </objectContribution>
+   </extension> 
+
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            sequence="M3+M2+X G"
+            commandId="com.agitar.eclipse.testrunner.runJUnitTestsShortcut.run"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            sequence="M3+M2+D G"
+            commandId="com.agitar.eclipse.testrunner.runJUnitTestsShortcut.debug"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+	  <!-- COMMAND+ALT+Q is "Hide/Show Dock" on carbon, so don't overwrite it -->
+
+   </extension>
+      <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="%RunJUnitShortcut.description.debug"
+            description="%RunJUnitShortcut.description.debug"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="com.agitar.eclipse.testrunner.runJUnitTestsShortcut.debug">
+            
+      </command>
+       <command
+            name="%RunJUnitShortcut.description.run"
+            description="%RunJUnitShortcut.description.run"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="com.agitar.eclipse.testrunner.runJUnitTestsShortcut.run">
+      </command>
+   </extension>
+
+  <extension
+        id="agitarJUnit3Runner"
+        point="com.agitar.eclipse.api.runner">
+    <runner runnerClass="com.agitar.eclipse.testrunner.RunJUnitTestsShortcut" 
+    		id="agitarJUnit3Runner"
+            priority="10"/>
+  </extension>
+
+</plugin>
+
