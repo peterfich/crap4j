@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<project name="org.crap4j.eclipse.feature" basedir="." default="build">
+
+	<property name="project_dir" value="${basedir}" />
+	<property name="build_dir" value="${project_dir}/build" />
+
+	<!-- get the version number in the file, build.number -->
+	<!-- for now it also gets the juf_version -->
+	<!-- also, used to get the eclipse_home for finding the juf plugins -->
+	<property file="../build.number" />
+	<property name="build_version" value="${major_version}.${minor_version}.${patch_version}" />
+	<echo message="Now building version ${build_version}" />
+
+	<target name="build" depends="clean, jar_feature">
+	</target>
+
+	<target name="clean">
+		<delete dir="${build_dir}" />
+	</target>
+
+	<target name="jar_feature" depends="copy_and_update_feature.xml">
+		<zip destfile="${build_dir}/org.crap4j.eclipse.feature_${build_version}.jar" basedir="${build_dir}" />
+	</target>
+
+	<target name="copy_and_update_feature.xml" depends="make_build_dir">
+		<exec executable="${project_dir}/rewrite_feature.rb">
+			<arg value="${build_version}" />
+			<arg value="${juf_version}" />
+			<arg value="feature.xml" />
+			<arg value="${build_dir}/feature.xml" />
+		</exec>
+	</target>
+
+	<target name="make_build_dir" >
+		<mkdir dir="${build_dir}" />
+	</target>
+</project>
