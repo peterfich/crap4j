@@ -27,8 +27,14 @@
 		<delete dir="${project_dir}/build" />
 	</target>
 
-	<target name="build" depends="clean, build_crap4j_eclipse_feature, 
-									copy_and_update_site.xml, copy_plugins, copy_features" />
+	<target name="build" depends="clean, zip_site" />
+	
+	<target name="zip_site" depends="build_crap4j_eclipse_feature, 
+									 copy_and_update_site.xml, 
+									 copy_plugins, 
+									 copy_features">
+		<zip destfile="${build_dir}/org.crap4j.eclipse.updatesite_${build_version}.zip" basedir="${build_dir}"/>
+	</target>
 	
 	<target name="make_build_dir" >
 		<mkdir dir="${build_dir}" />
@@ -63,8 +69,7 @@
 	</target>
 
 	<target name="copy_crap4j_plugins" depends="make_build_dir, build_crap4j_eclipse_feature">
-		<echo message="Not yet implemented copy_crap4j_plugins" />
-		<copy toDir="${plugins_dir}" file="${org.crap4j.eclipse_build_dir}/org.crap4j.eclipse._${build_version}.jar" />
+		<copy toDir="${plugins_dir}" file="${org.crap4j.eclipse_build_dir}/org.crap4j.eclipse_${build_version}.jar" />
 		<copy toDir="${plugins_dir}" file="${org.crap4j_build_dir}/org.crap4j_${build_version}.jar" />
 	</target>
 

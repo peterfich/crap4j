@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/com.agitar.crap4j.eclipse_0.1.13.jar" id="com.agitar.crap4j.eclipse" version="0.1.13">
+   <feature url="features/org.crap4j.eclipse.feature_0.1.13.jar" id="org.crap4j.eclipse.feature" version="0.1.13">
       <category name="Crap4j"/>
    </feature>
    <feature url="features/com.agitar.eclipse.testrunner_2.0.0.000495.jar" id="com.agitar.eclipse.testrunner" version="2.0.0.000495">
