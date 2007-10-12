@@ -1,26 +1,23 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Crap4jEclipsePlug-in
-Bundle-SymbolicName: com.agitar.crap4j.eclipse;singleton:=true
-Bundle-Version: 0.3.0
+Bundle-SymbolicName: org.crap4j.eclipse;singleton:=true
+Bundle-Version: 0.1.13
 Bundle-Activator: com.xagitarlabs.crap4jeclipse.Activator
-Bundle-Vendor: Agitar Software
+Bundle-Vendor: Bob Evans, Alberto Savoia
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="3.2.0",
  org.eclipse.core.runtime;bundle-version="3.2.0",
  org.eclipse.core.resources;bundle-version="3.2.0",
  org.eclipse.jdt.ui,
  org.eclipse.jdt.core,
- crap4j,
+ org.crap4j,
  com.agitar.eclipse.coverage,
  com.agitar.eclipse.testrunner,
  com.agitar.eclipse.junit.runner,
  org.eclipse.jdt.junit,
  org.eclipse.jdt.launching,
- org.eclipse.core.filebuffers
+ org.eclipse.core.filebuffers,
+ org.eclipse.debug.core
 Eclipse-LazyStart: true
-Export-Package: com.xagitarlabs.crap4jeclipse.actions,
- com.xagitarlabs.crap4jeclipse.popup.actions,
- com.xagitarlabs.crap4jeclipse.preferences,
- com.xagitarlabs.crap4jeclipse.views
-Bundle-ClassPath: bin/
+Bundle-ClassPath: org.crap4j.eclipse.jar
