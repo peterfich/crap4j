@@ -5,6 +5,8 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.crap4j.Crap4jRunner;
+import org.crap4j.CrapProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Preferences;
@@ -19,9 +21,8 @@ import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PartInitException;
 
-import com.agitar.org.objectweb.asm.tree.analysis.AnalyzerException;
-import com.xagitarlabs.crap4j.Crap4jRunner;
-import com.xagitarlabs.crap4j.CrapProject;
+import org.objectweb.asm.tree.analysis.AnalyzerException;
+
 import com.xagitarlabs.crap4jeclipse.Activator;
 import com.xagitarlabs.crap4jeclipse.preferences.PreferenceConstants;
 
@@ -111,7 +112,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
     }
   }
 
-  private void runJob(Crap4jRunner runner, final CrapProject project) throws IOException, AnalyzerException, PartInitException, MalformedURLException {
+  private void runJob(Crap4jRunner runner, final CrapProject project) throws Exception /* Evil eclipse plugin builds arrghh  IOException, AnalyzerException, PartInitException, MalformedURLException*/ {
     runner.doProject(project);
   }
 

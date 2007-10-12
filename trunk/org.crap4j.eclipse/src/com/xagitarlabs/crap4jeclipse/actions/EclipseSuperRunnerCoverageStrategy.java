@@ -3,6 +3,10 @@ package com.xagitarlabs.crap4jeclipse.actions;
 import java.io.IOException;
 import java.net.URL;
 
+import org.crap4j.CoverageGeneratorStrategy;
+import org.crap4j.Crap4jRunner;
+import org.crap4j.CrapProject;
+import org.crap4j.util.FileUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
@@ -11,10 +15,6 @@ import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
 
 import com.agitar.eclipse.testrunner.RunJUnitTestsShortcut;
-import com.xagitarlabs.crap4j.CoverageGeneratorStrategy;
-import com.xagitarlabs.crap4j.Crap4jRunner;
-import com.xagitarlabs.crap4j.CrapProject;
-import com.xagitarlabs.crap4j.util.FileUtil;
 
 public class EclipseSuperRunnerCoverageStrategy implements
     CoverageGeneratorStrategy {
