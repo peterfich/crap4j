@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.agitar.crap4j.eclipse"
+      id="org.crap4j.eclipse.feature"
       label="Crap4jEclipseFeature (for Eclipse 3.2.1 or greater)"
-      version="0.1.12"
-      provider-name="Agitar Software">
+      version="0.1.13"
+      provider-name="Bob Evans, Alberto Savoia">
 
-   <description url="http://sourceforge.net/projects/crap4j/">
+   <description url="http://www.crap4j.org/">
       This is an Eclipse plugin that will run the crap4j tool on Eclipse workspace projects.
    </description>
 
    <copyright>
-      This work is subject to the license Agreement.
+      This work is subject to the license Agreement in the Eclipse Public License.
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -48,15 +48,15 @@
    </requires>
 
    <plugin
-         id="com.agitar.crap4j.eclipse"
+         id="org.crap4j.eclipse"
          download-size="0"
          install-size="0"
-         version="0.3.0"/>
+         version="0.1.13"/>
 
    <plugin
-         id="crap4j"
+         id="org.crap4j"
          download-size="0"
          install-size="0"
-         version="1.0.6"/>
+         version="0.1.13"/>
 
 </feature>
