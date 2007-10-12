@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="plugins/com.agitar.eclipse.api_5.0.0.000000.jar"/>
+	<classpathentry kind="lib" path="plugins/com.agitar.eclipse.junit.runner_5.0.0.000000.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jbehave101"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/crap4j"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
