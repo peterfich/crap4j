@@ -4,10 +4,10 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.crap4j.external.AntRunner;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.xagitarlabs.crap4j.external.AntRunner;
 
 
 
