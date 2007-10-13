@@ -1,19 +1,19 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: crap4j
-Bundle-SymbolicName: crap4j
-Bundle-Version: 1.0.6
+Bundle-SymbolicName: org.crap4j
+Bundle-Version: 0.1.13
 Bundle-ClassPath: 
- bin/,
+ org.crap4j.jar,
  dist/crap4j/lib/args4j-2.0.1.jar,
  dist/crap4j/lib/asmlib/
 Bundle-Localization: plugin
-Provide-Package: com.xagitarlabs.crap4j,
- com.xagitarlabs.crap4j.anttask,
- com.xagitarlabs.crap4j.complexity,
- com.xagitarlabs.crap4j.external,
- com.xagitarlabs.crap4j.gauge,
- com.xagitarlabs.crap4j.util,
+Provide-Package: org.crap4j.anttask,
+ org.crap4j.complexity,
+ org.crap4j.crap4j,
+ org.crap4j.external,
+ org.crap4j.gauge,
+ org.crap4j.util,
  org.objectweb.asm,
  org.objectweb.asm.commons,
  org.objectweb.asm.signature,
@@ -21,12 +21,12 @@ Provide-Package: com.xagitarlabs.crap4j,
  org.objectweb.asm.tree.analysis,
  org.objectweb.asm.util,
  org.objectweb.asm.xml
-Bundle-Vendor: Agitar Software
+Bundle-Vendor: Bob Evans, Alberto Savoia
 Require-Bundle: com.agitar.eclipse.testrunner,
  com.agitar.eclipse.coverage
-Export-Package: com.xagitarlabs.crap4j.util,
- com.xagitarlabs.crap4j.gauge,
- com.xagitarlabs.crap4j.external,
- com.xagitarlabs.crap4j.complexity,
- com.xagitarlabs.crap4j.anttask,
- com.xagitarlabs.crap4j
+Export-Package: org.crap4j.anttask,
+ org.crap4j.complexity,
+ org.crap4j.crap4j,
+ org.crap4j.external,
+ org.crap4j.gauge,
+ org.crap4j.util
