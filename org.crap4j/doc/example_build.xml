@@ -7,10 +7,15 @@
 	<taskdef name="crap4j" classname="com.xagitarlabs.crap4j.anttask.Crap4jAntTask" >
 		<classpath>
 		  <!-- this entry lets me do runs from my development environment without repackaging -->
-			<pathElement location="${CRAP4J_HOME}/bin" /> 
+			<pathElement location="${CRAP4J_HOME}/../../bin" /> 
 			<fileset dir="${CRAP4J_HOME}/lib">
 				<include name="**/*.jar" />
 			</fileset>
+<!--				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
+					<include name="**/*.jar" />
+				</fileset>
+-->	
+			<pathElement location="${CRAP4J_HOME}/lib/asmlib" />
 		</classpath>
 	</taskdef>
 
@@ -23,7 +28,7 @@
 
 	<!-- Use crap4j on the project -->
 	<target name="run-crap4j">
-		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="true" debug="false">
+		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="false" debug="true">
 			<classDirs>
 				<pathElement location="${project.dir.crap4j}/bin" />
 			</classDirs>
@@ -39,6 +44,10 @@
 				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib">
 					<include name="**/*.jar" />
 				</fileset>
+				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
+					<include name="**/*.jar" />
+				</fileset>
+				<pathElement location="${project.dir.crap4j}/dist/crap4j/lib/asmlib" />
 			</libClasspath>
 		</crap4j>
 	</target>

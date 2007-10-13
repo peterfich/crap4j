@@ -7,14 +7,13 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="AGITAR_MOCK_OBJECTS5"/>
-	<classpathentry kind="var" path="AGITAR_TEST_LIB"/>
 	<classpathentry kind="src" output="agitar/test_bin" path="agitar/test"/>
-	<classpathentry kind="lib" path="/Users/bobevans/Documents/projects/MDTWorkspace/crap4j/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins">
 		<accessrules>
 			<accessrule kind="accessible" pattern="com/agitar/coverage/ClassCoverage"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="dist/crap4j/lib/asmlib"/>
+	<classpathentry exported="true" kind="lib" path="dist/crap4j/lib/asmlib" sourcepath="/Users/bobevans/Documents/projects/crap4j_agitar_svn/asm3.0/src"/>
+	<classpathentry kind="lib" path="lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
