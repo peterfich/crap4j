@@ -1,4 +1,4 @@
-package org.xagitarlabs.crap4jeclipse.views;
+package org.crap4j.crap4jeclipse.views;
 
 
 import org.eclipse.swt.widgets.Composite;

@@ -1,4 +1,4 @@
-package org.xagitarlabs.crap4jeclipse.actions;
+package org.crap4j.crap4jeclipse.actions;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.crap4j.Crap4jRunner;
 import org.crap4j.CrapProject;
+import org.crap4j.crap4jeclipse.Activator;
+import org.crap4j.crap4jeclipse.preferences.PreferenceConstants;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Preferences;
@@ -22,8 +24,6 @@ import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PartInitException;
 
 import org.objectweb.asm.tree.analysis.AnalyzerException;
-import org.xagitarlabs.crap4jeclipse.Activator;
-import org.xagitarlabs.crap4jeclipse.preferences.PreferenceConstants;
 
 
 /**

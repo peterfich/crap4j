@@ -1,9 +1,9 @@
-package org.xagitarlabs.crap4jeclipse.preferences;
+package org.crap4j.crap4jeclipse.preferences;
 
+import org.crap4j.crap4jeclipse.Activator;
 import org.eclipse.jface.preference.*;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbench;
-import org.xagitarlabs.crap4jeclipse.Activator;
 
 
 /**

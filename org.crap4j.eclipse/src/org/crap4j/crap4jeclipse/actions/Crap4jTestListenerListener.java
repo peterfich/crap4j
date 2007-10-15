@@ -1,4 +1,4 @@
-package org.xagitarlabs.crap4jeclipse.actions;
+package org.crap4j.crap4jeclipse.actions;
 
 public interface Crap4jTestListenerListener {
   

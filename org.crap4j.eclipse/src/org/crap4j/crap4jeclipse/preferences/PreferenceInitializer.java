@@ -1,8 +1,8 @@
-package org.xagitarlabs.crap4jeclipse.preferences;
+package org.crap4j.crap4jeclipse.preferences;
 
+import org.crap4j.crap4jeclipse.Activator;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.xagitarlabs.crap4jeclipse.Activator;
 
 
 
