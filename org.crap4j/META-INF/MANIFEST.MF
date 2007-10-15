@@ -26,7 +26,6 @@ Require-Bundle: com.agitar.eclipse.testrunner,
  com.agitar.eclipse.coverage
 Export-Package: org.crap4j.anttask,
  org.crap4j.complexity,
- org.crap4j.crap4j,
  org.crap4j.external,
  org.crap4j.gauge,
  org.crap4j.util
