@@ -20,7 +20,7 @@
                class="org.crap4j.crap4jeclipse.actions.Crap4jAction"
                disabledIcon="icons/tp_disabled16.gif"
                icon="icons/tp16.gif"
-               id="com.xagitarlabs.crap4jeclipse.actions.Crap4jAction"
+               id="org.crap4j.crap4jeclipse.actions.Crap4jAction"
                label="&amp;Run Crap4j"
                menubarPath="crap4jMenu/crap4jGroup"
                toolbarPath="crap4jGroup"
@@ -44,7 +44,7 @@
       <page
             name="Crap4j"
             class="org.crap4j.crap4jeclipse.preferences.Crap4jPreferencePage"
-            id="com.xagitarlabs.crap4jeclipse.preferences.Crap4jPreferencePage">
+            id="org.crap4j.crap4jeclipse.preferences.Crap4jPreferencePage">
       </page>
    </extension>
    <extension
