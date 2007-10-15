@@ -1,4 +1,4 @@
-package com.xagitarlabs.crap4jeclipse;
+package org.xagitarlabs.crap4jeclipse;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IStartup;

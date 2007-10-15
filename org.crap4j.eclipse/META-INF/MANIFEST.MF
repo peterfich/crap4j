@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Crap4jEclipsePlug-in
 Bundle-SymbolicName: org.crap4j.eclipse;singleton:=true
 Bundle-Version: 0.1.13
-Bundle-Activator: com.xagitarlabs.crap4jeclipse.Activator
+Bundle-Activator: org.xagitarlabs.crap4jeclipse.Activator
 Bundle-Vendor: Bob Evans, Alberto Savoia
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="3.2.0",

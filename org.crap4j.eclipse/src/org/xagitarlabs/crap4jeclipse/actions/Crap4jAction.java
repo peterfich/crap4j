@@ -1,4 +1,4 @@
-package com.xagitarlabs.crap4jeclipse.actions;
+package org.xagitarlabs.crap4jeclipse.actions;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,9 +22,9 @@ import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PartInitException;
 
 import org.objectweb.asm.tree.analysis.AnalyzerException;
+import org.xagitarlabs.crap4jeclipse.Activator;
+import org.xagitarlabs.crap4jeclipse.preferences.PreferenceConstants;
 
-import com.xagitarlabs.crap4jeclipse.Activator;
-import com.xagitarlabs.crap4jeclipse.preferences.PreferenceConstants;
 
 /**
  * Our sample action implements workbench action delegate.

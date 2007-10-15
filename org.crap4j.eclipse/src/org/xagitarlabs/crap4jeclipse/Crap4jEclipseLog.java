@@ -1,4 +1,4 @@
-package com.xagitarlabs.crap4jeclipse;
+package org.xagitarlabs.crap4jeclipse;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
