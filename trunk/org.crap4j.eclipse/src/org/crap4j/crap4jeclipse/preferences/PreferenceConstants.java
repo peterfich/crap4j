@@ -1,4 +1,4 @@
-package org.xagitarlabs.crap4jeclipse.preferences;
+package org.crap4j.crap4jeclipse.preferences;
 
 /**
  * Constant definitions for plug-in preferences

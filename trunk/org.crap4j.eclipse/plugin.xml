@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               class="org.xagitarlabs.crap4jeclipse.actions.Crap4jAction"
+               class="org.crap4j.crap4jeclipse.actions.Crap4jAction"
                disabledIcon="icons/tp_disabled16.gif"
                icon="icons/tp16.gif"
                id="com.xagitarlabs.crap4jeclipse.actions.Crap4jAction"
@@ -43,14 +43,14 @@
          point="org.eclipse.ui.preferencePages">
       <page
             name="Crap4j"
-            class="org.xagitarlabs.crap4jeclipse.preferences.Crap4jPreferencePage"
+            class="org.crap4j.crap4jeclipse.preferences.Crap4jPreferencePage"
             id="com.xagitarlabs.crap4jeclipse.preferences.Crap4jPreferencePage">
       </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="org.xagitarlabs.crap4jeclipse.preferences.PreferenceInitializer">
+            class="org.crap4j.crap4jeclipse.preferences.PreferenceInitializer">
       </initializer>
    </extension>
 <!--   <extension
@@ -83,6 +83,6 @@
 
  <extension
        point="org.eclipse.jdt.junit.testRunListeners">
-    <testRunListener class="org.xagitarlabs.crap4jeclipse.actions.TestRunListener"/>
+    <testRunListener class="org.crap4j.crap4jeclipse.actions.TestRunListener"/>
  </extension>
 </plugin>
