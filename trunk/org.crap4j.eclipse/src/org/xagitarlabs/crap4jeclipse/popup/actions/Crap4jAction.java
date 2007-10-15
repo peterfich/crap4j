@@ -1,4 +1,4 @@
-package com.xagitarlabs.crap4jeclipse.popup.actions;
+package org.xagitarlabs.crap4jeclipse.popup.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;

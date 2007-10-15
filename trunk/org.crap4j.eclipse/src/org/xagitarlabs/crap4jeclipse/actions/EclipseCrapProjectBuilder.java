@@ -1,4 +1,4 @@
-package com.xagitarlabs.crap4jeclipse.actions;
+package org.xagitarlabs.crap4jeclipse.actions;
 
 import java.util.ArrayList;
 import java.util.Collections;

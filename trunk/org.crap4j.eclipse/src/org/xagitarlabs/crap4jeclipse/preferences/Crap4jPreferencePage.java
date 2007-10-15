@@ -1,10 +1,10 @@
-package com.xagitarlabs.crap4jeclipse.preferences;
+package org.xagitarlabs.crap4jeclipse.preferences;
 
 import org.eclipse.jface.preference.*;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbench;
+import org.xagitarlabs.crap4jeclipse.Activator;
 
-import com.xagitarlabs.crap4jeclipse.Activator;
 
 /**
  * This class represents a preference page that
