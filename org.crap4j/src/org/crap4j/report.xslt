@@ -84,7 +84,7 @@
 			  	<td class="value"><xsl:value-of select="methodCount"/></td>
 			</tr>
 			<tr>
-				<th class="stat">CRAPpy Method Count (CRAP &ge;<xsl:value-of select="crapThreshold"/>)</th>
+				<th class="stat">CRAPpy Method Count (CRAP &gt;<xsl:value-of select="crapThreshold"/>)</th>
 			  	<td class="value"><xsl:value-of select="crapMethodCount"/></td>
 			</tr>
 			
