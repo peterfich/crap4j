@@ -130,21 +130,21 @@
 		
     <target name="init">
         <mkdir dir="${classes_dir}"/>
-        <mkdir dir="test_bin"/>
-        <mkdir dir="integration_tests_bin"/>
-        <mkdir dir="agitar/test_bin"/>
+        <mkdir dir="${project_dir}/test_bin"/>
+        <mkdir dir="${project_dir}/integration_tests_bin"/>
+        <mkdir dir="${project_dir}/agitar/test_bin"/>
 
     	<copy includeemptydirs="false" todir="${classes_dir}">
             <fileset dir="${project_dir}/src" excludes="**/*.launch, **/*.java"/>
         </copy>
-        <copy includeemptydirs="false" todir="test_bin">
-            <fileset dir="test" excludes="**/*.launch, **/*.java"/>
+        <copy includeemptydirs="false" todir="${project_dir}/test_bin">
+            <fileset dir="${project_dir}/test" excludes="**/*.launch, **/*.java"/>
         </copy>
-        <copy includeemptydirs="false" todir="integration_tests_bin">
-            <fileset dir="integration_tests" excludes="**/*.launch, **/*.java"/>
+        <copy includeemptydirs="false" todir="${project_dir}/integration_tests_bin">
+            <fileset dir="${project_dir}/integration_tests" excludes="**/*.launch, **/*.java"/>
         </copy>
-        <copy includeemptydirs="false" todir="agitar/test_bin">
-            <fileset dir="agitar/test" excludes="**/*.launch, **/*.java"/>
+        <copy includeemptydirs="false" todir="${project_dir}/agitar/test_bin">
+            <fileset dir="${project_dir}/agitar/test" excludes="**/*.launch, **/*.java"/>
         </copy>
     </target>
 
@@ -164,7 +164,7 @@
 	
     <target name="init_test" depends="init" >
         <copy includeemptydirs="false" todir="${classes_dir}">
-            <fileset dir="agitar/test" excludes="**/*.launch, **/*.java"/>
+            <fileset dir="${project_dir}/agitar/test" excludes="**/*.launch, **/*.java"/>
         </copy>
     </target>
 
