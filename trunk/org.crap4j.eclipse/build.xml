@@ -155,7 +155,7 @@
 	
     <target name="init_test" depends="init" >
         <copy includeemptydirs="false" todir="${classes_dir}">
-            <fileset dir="agitar/test" excludes="**/*.launch, **/*.java"/>
+            <fileset dir="${project_dir}/agitar/test" excludes="**/*.launch, **/*.java"/>
         </copy>
     </target>
 
