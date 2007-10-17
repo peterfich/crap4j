@@ -60,5 +60,6 @@ public class Activator extends AbstractUIPlugin  {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
+	
 
 }

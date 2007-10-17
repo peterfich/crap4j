@@ -8,6 +8,7 @@ import java.util.List;
 import org.crap4j.Crap4jRunner;
 import org.crap4j.CrapProject;
 import org.crap4j.crap4jeclipse.Activator;
+import org.crap4j.crap4jeclipse.Crap4jEclipseLog;
 import org.crap4j.crap4jeclipse.preferences.PreferenceConstants;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -82,8 +83,8 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
         crapThreshold, crapPercentWarningThreshold, crapPercentCriticalThreshold);
     try {
       runJob(runner, ecpb.getCrapProject());
-    } catch (Exception e) {
-      e.printStackTrace();
+    } catch (Throwable t) {
+      Crap4jEclipseLog.logError(t);
     }
 //    Job job = new  Crap4jJob(runner, ecpb.getCrapProject());
 //    job.schedule();

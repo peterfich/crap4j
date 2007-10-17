@@ -6,6 +6,7 @@ import java.net.URL;
 import org.crap4j.CoverageGeneratorStrategy;
 import org.crap4j.Crap4jRunner;
 import org.crap4j.CrapProject;
+import org.crap4j.crap4jeclipse.Crap4jEclipseLog;
 import org.crap4j.util.FileUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
@@ -39,7 +40,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
       RunJUnitTestsShortcut testrunner = new RunJUnitTestsShortcut();
       TestRunListener.addListener(new Crap4jTestListenerListener() {
         public void cancelled() {
-          System.out.println("cancelled the test run.");
+        	Crap4jEclipseLog.logInfo("cancelled the test run.");
           TestRunListener.removeListener(this);
         }
         public void finished() {
@@ -47,7 +48,11 @@ public class EclipseSuperRunnerCoverageStrategy implements
           TestRunListener.removeListener(this);
         }
       });
+      try {
       testrunner.launch(selection, "run");
+      } catch (Throwable t) {
+    	  Crap4jEclipseLog.logError("Could not run tests", t);
+      }
     } else {
       finishComputingCrap(runner, crapProject);
     }
@@ -59,8 +64,8 @@ public class EclipseSuperRunnerCoverageStrategy implements
         try {
           runner.readResults(crapProject);
           openURL(crapProject.getReportHtmlFile().toURL());
-        } catch (Exception e) {
-          e.printStackTrace();
+        } catch (Throwable t) {
+          Crap4jEclipseLog.logError("Could not read results", t);
         }
       }
     };
