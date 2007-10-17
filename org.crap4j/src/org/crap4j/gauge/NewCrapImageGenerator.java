@@ -138,7 +138,7 @@ public class NewCrapImageGenerator {
 	
 	private void drawGreenRect(Graphics2D imageGraphics, int xOffset, int yOffset, int x, int y) {
 		Color defGreen = getDefGreen();
-		Color darkerGreen = new Color(144,250,144);
+		Color darkerGreen = getDarkGreen();
 	    GradientPaint greenPaint = new GradientPaint(xOffset, yOffset*2, darkerGreen, xOffset+x, yOffset*2,
 	            defGreen);
 	    imageGraphics.setPaint(greenPaint);
@@ -146,10 +146,31 @@ public class NewCrapImageGenerator {
 		imageGraphics.setColor(Color.BLACK);
 		imageGraphics.drawRect(xOffset, yOffset,x,y);
 	}
+
+	private Color getDarkGreen(){
+//		return new Color(224,255,224);
+		return new Color(156,235,136);
+	}
+
+	private Color getDefGreen() {
+//		return new Color(144,250,144);
+		return new Color(87,119,68);
+	}
+
+	private Color getDefRed(){
+//		return new Color(255,224,224);
+		return new Color(158, 56, 59);
+	}
+
+	private Color getDarkRed() {
+//		return new Color(221,50,50);
+//		return new Color(158, 56, 59);
+		return new Color(233, 21, 25);
+	}
 	
 	private void drawRedRect(Graphics2D imageGraphics, int xOffset, int yOffset, int x, int y) {
 		Color defRed = getDefRed();
-		Color darkerRed = new Color(221,50,50);
+		Color darkerRed = getDarkRed();
 	    GradientPaint redPaint = new GradientPaint(xOffset, yOffset*2, defRed, xOffset+x, yOffset*2,
 	            darkerRed);
 	    imageGraphics.setPaint(redPaint);
@@ -253,15 +274,8 @@ public class NewCrapImageGenerator {
 		big.drawString(Integer.toString(MAX_INCR)+"+", x, y);
 	}
 	
-	private Color getDefGreen(){
-		return new Color(224,255,224);
-	}
-	private Color getDefRed(){
-		return new Color(255,224,224);
-	}
-
 	private Color getBackgroundColor(float crapScore2) {
-		return crapScore > crapThreshold ? getDefRed() : getDefGreen();
+		return crapScore > crapThreshold ? getDarkRed() : getDarkGreen();
 	}
 
 	private static void showUsage() {
