@@ -6,8 +6,6 @@ import org.crap4j.external.AntBuilder;
 import org.crap4j.external.AntRunner;
 import org.crap4j.util.FileUtil;
 
-import com.agitar.org.objectweb.asm.tree.analysis.AnalyzerException;
-
 public class AntSuperrunnerCoverageStrategy implements CoverageGeneratorStrategy {
 
   private Main main;
@@ -32,16 +30,14 @@ public class AntSuperrunnerCoverageStrategy implements CoverageGeneratorStrategy
                                         main.junitLib,
                                         main.agitatorEclipseApiPluginDir, 
                                         debug);
-    antRunner.run();
+    
     try {
+    	antRunner.run();
       runner.readResults(crapProject);
-    } catch (IOException e) {
+    } catch (Throwable t) {
       // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (AnalyzerException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+      t.printStackTrace();
+    } 
 
   }
 }

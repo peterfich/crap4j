@@ -39,11 +39,11 @@ public class SuperRunnerCoverageReader {
       List<File> covFiles = FileUtil.getAllFilesInDirMatchingPattern(project.getCoverageDir(), ".*.acov", false);
       withoutTestFiles = FileUtil.removeTestClassFiles(covFiles);
     } catch (Exception e1) {
-//      e1.printStackTrace();
+      e1.printStackTrace(System.err);
       return list;
     }
     if (withoutTestFiles == null || withoutTestFiles.size() < 1) {
-      System.out.println("Cannot find coverage results files in "
+      System.err.println("Cannot find coverage results files in "
           + project.getCoverageDir());
       return list;
     } else {

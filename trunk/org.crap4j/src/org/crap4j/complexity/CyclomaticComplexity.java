@@ -205,7 +205,7 @@ public class CyclomaticComplexity {
   }
 
   public int newGetCyclomaticComplexity(String owner, MethodNode mn) {
-	  System.err.println("Getting complexity for owner:"+owner+", mn: "+mn.toString());
+//	  System.err.println("Getting complexity for owner:"+owner+", mn: "+mn.toString());
 		ComplexityMethodVisitor complexityCounter;
 		try {
 			complexityCounter = new ComplexityMethodVisitor();
