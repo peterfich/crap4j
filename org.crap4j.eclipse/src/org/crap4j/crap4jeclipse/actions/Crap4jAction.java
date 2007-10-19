@@ -84,7 +84,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
     try {
       runJob(runner, ecpb.getCrapProject());
     } catch (Throwable t) {
-      Crap4jEclipseLog.logError(t);
+      Crap4jEclipseLog.logError("Crap4j Error on project: "+firstProject.getPath(),t);
     }
 //    Job job = new  Crap4jJob(runner, ecpb.getCrapProject());
 //    job.schedule();
@@ -161,6 +161,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
       this.selection = null;
       action.setEnabled(false);
     }
+    
 	}
 
 //  protected void performSelectionChanged(IStructuredSelection structuredSelection) {

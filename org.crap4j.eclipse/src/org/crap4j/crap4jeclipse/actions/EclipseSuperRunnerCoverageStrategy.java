@@ -40,7 +40,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
       RunJUnitTestsShortcut testrunner = new RunJUnitTestsShortcut();
       TestRunListener.addListener(new Crap4jTestListenerListener() {
         public void cancelled() {
-        	Crap4jEclipseLog.logInfo("cancelled the test run.");
+        	Crap4jEclipseLog.logInfo("cancelled the test run on project: "+crapProject.getProjectName());
           TestRunListener.removeListener(this);
         }
         public void finished() {
@@ -51,7 +51,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
       try {
       testrunner.launch(selection, "run");
       } catch (Throwable t) {
-    	  Crap4jEclipseLog.logError("Could not run tests", t);
+    	  Crap4jEclipseLog.logError("Could not run tests on project: "+crapProject.getProjectName(), t);
       }
     } else {
       finishComputingCrap(runner, crapProject);
@@ -65,7 +65,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
           runner.readResults(crapProject);
           openURL(crapProject.getReportHtmlFile().toURL());
         } catch (Throwable t) {
-          Crap4jEclipseLog.logError("Could not read results", t);
+          Crap4jEclipseLog.logError("Could not read results on project: "+crapProject.getProjectName(), t);
         }
       }
     };
