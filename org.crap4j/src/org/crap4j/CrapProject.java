@@ -61,7 +61,8 @@ public class CrapProject {
   private List<String> makeAbsolute(List<String> sourceDirs2) {
     List<String> absolutePaths = new ArrayList<String>();
     for (String path : sourceDirs2) {
-      System.out.println("PATH = "+path);
+      if (path == null)
+    	continue;
       if (FileUtil.isAbsolute(path))
         absolutePaths.add(path);
       else {

@@ -147,25 +147,27 @@ public class NewCrapImageGenerator {
 		imageGraphics.drawRect(xOffset, yOffset,x,y);
 	}
 
-	private Color getDarkGreen(){
+	private Color getDefGreen(){
 //		return new Color(224,255,224);
 		return new Color(156,235,136);
 	}
 
-	private Color getDefGreen() {
+	private Color getDarkGreen() {
 //		return new Color(144,250,144);
 		return new Color(87,119,68);
 	}
 
-	private Color getDefRed(){
+	private Color getDarkRed(){
 //		return new Color(255,224,224);
-		return new Color(158, 56, 59);
+//		return new Color(158, 56, 59);
+		return new Color(204, 74, 76);
 	}
 
-	private Color getDarkRed() {
+	private Color getDefRed() {
 //		return new Color(221,50,50);
 //		return new Color(158, 56, 59);
-		return new Color(233, 21, 25);
+//		return new Color(233, 21, 25);
+		return new Color(255, 203, 201);
 	}
 	
 	private void drawRedRect(Graphics2D imageGraphics, int xOffset, int yOffset, int x, int y) {
@@ -275,7 +277,7 @@ public class NewCrapImageGenerator {
 	}
 	
 	private Color getBackgroundColor(float crapScore2) {
-		return crapScore > crapThreshold ? getDarkRed() : getDarkGreen();
+		return crapScore > crapThreshold ? getDefRed() : getDefGreen();
 	}
 
 	private static void showUsage() {

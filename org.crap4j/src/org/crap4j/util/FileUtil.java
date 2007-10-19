@@ -192,6 +192,8 @@ public class FileUtil {
   }
 
   public static boolean isAbsolute(String path) {
+	  if (path == null)
+		  return false;
     return path.startsWith(File.separator) || path.indexOf(':') != -1;
   }
 
