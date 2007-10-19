@@ -19,7 +19,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.CRAP_THRESHOLD, 30);
-		store.setDefault(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD, 15);
+		store.setDefault(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD, 5);
 		store.setDefault(PreferenceConstants.CRAP_PERCENT_WARNING_THRESHOLD, 5);
 	}
 
