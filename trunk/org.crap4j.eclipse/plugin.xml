@@ -19,12 +19,17 @@
          <action
                class="org.crap4j.crap4jeclipse.actions.Crap4jAction"
                disabledIcon="icons/tp_disabled16.gif"
+               enablesFor="1"
                icon="icons/tp16.gif"
                id="org.crap4j.crap4jeclipse.actions.Crap4jAction"
                label="&amp;Run Crap4j"
                menubarPath="crap4jMenu/crap4jGroup"
                toolbarPath="crap4jGroup"
                tooltip="Run Crap4j">
+            <selection
+                  class="org.eclipse.jdt.core.IJavaProject">
+            </selection>
+          
          </action>
       </actionSet>
       
