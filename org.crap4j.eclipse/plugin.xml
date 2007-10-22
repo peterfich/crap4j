@@ -43,6 +43,25 @@
    </extension>
    <extension
          point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.crap4j.eclipse.popContribution"
+            objectClass="org.eclipse.jdt.core.IJavaProject">
+         <action
+               class="org.crap4j.crap4jeclipse.actions.Crap4jAction"
+               enablesFor="1"
+               icon="icons/tp16.gif"
+               id="org.crap4j.eclipse.crap4jPopupAction"
+               label="&amp;Run Crap4j"
+               menubarPath="org.crap4j.eclipse.popupmenu">
+            <selection
+                  class="org.eclipse.jdt.core.IJavaProject">
+            </selection>
+         </action>
+         <menu
+               id="org.crap4j.eclipse.popupmenu"
+               label="Crap4j">
+         </menu>
+      </objectContribution>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">

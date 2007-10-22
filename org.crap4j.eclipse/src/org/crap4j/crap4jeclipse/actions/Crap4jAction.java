@@ -19,6 +19,8 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.IWorkingSet;
@@ -35,7 +37,7 @@ import org.objectweb.asm.tree.analysis.AnalyzerException;
  * delegated to it.
  * @see IWorkbenchWindowActionDelegate
  */
-public class Crap4jAction implements IWorkbenchWindowActionDelegate {
+public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActionDelegate {
 	private IWorkbenchWindow window;
   private ISelection selection;
   
@@ -153,14 +155,14 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#selectionChanged
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
-    if (selection instanceof IStructuredSelection && getOpenSelectedProjects(selection).size() > 0) {
+//    if (selection instanceof IStructuredSelection && getOpenSelectedProjects(selection).size() > 0) {
       this.selection = selection;
       //enable
-      action.setEnabled(true);
-    } else {
-      this.selection = null;
-      action.setEnabled(false);
-    }
+//      action.setEnabled(true);
+//    } else {
+//      this.selection = null;
+//      action.setEnabled(false);
+//    }
     
 	}
 
@@ -200,4 +202,12 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate {
 	public void init(IWorkbenchWindow window) {
 		this.window = window;
 	}
+	
+
+	/**
+	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+	 */
+	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+	}
+
 }
