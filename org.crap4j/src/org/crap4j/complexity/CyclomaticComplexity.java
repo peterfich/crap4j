@@ -155,7 +155,7 @@ public class CyclomaticComplexity {
 						methodDecl);
 				complexities.add(methodComplexity);
 				if (methodComplexity.getComplexity() == 0) {
-					System.out.println("Zero complexity! " + methodComplexity);
+					//System.out.println("Zero complexity! " + methodComplexity);
 				}
 			}
 		} finally {
@@ -274,8 +274,9 @@ class MyAnalyzer extends Analyzer {
 		// System.out.println("New edge "+src+" to "+dst);
 		Node s = (Node) getFrames()[src];
 		Node node = (Node) getFrames()[dst];
-		if (s == null || node == null)
-			System.out.println("Either s or node is null!!!!!");
+		if (s == null || node == null) {
+//			System.out.println("Either s or node is null!!!!!");
+		}
 		s.successors.add(node);
 	}
 

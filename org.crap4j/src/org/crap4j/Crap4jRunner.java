@@ -57,7 +57,7 @@ public class Crap4jRunner {
                                             crapPercentWarningThreshold,
                                             crapPercentCriticalThreshold);
     s.writeReport();
-    System.out.println(s.toString());
+//    System.out.println(s.toString());
   }
 
   private List<? extends Crap> buildMethodCrap(List<MethodCoverage> covs,
