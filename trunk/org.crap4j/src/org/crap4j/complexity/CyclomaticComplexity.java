@@ -136,8 +136,8 @@ public class CyclomaticComplexity {
 				String access = buildAccess(method.access);
 				String genericDecl = v.getDeclaration();
 				String genericReturn = v.getReturnType();
-//				if (genericReturn.equals(""))
-//					genericReturn = "java.lang.Object"; //prettifies the display only. Works around asm bug.
+				if (genericReturn.equals(""))
+					genericReturn = "java.lang.Object"; //prettifies the display only. Works around asm bug.
 				String genericExceptions = v.getExceptions();
 
 				String methodDecl = access + " " + genericReturn + " "
