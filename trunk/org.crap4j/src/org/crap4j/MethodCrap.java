@@ -68,7 +68,7 @@ public class MethodCrap extends MethodInfo implements Crap {
 			if (cov != null)
 				receivedCoverage = cov.getCoverage();
 			else {
-				System.out.println("No Coverage: "+complexity);
+//				System.out.println("No Coverage: "+complexity);
 			
 			}
 			
