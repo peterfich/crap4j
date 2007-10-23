@@ -102,9 +102,7 @@ public class CrapProject {
 
 	private List<File> getClassesIn(String dirName) {
 		List<File> classNames = new ArrayList<File>();
-		for (String classDir : classDirs) {
-			classNames.addAll(FileUtil.getAllFilesInDirMatchingPattern(classDir, ".*.class", false));	
-		}		
+		classNames.addAll(FileUtil.getAllFilesInDirMatchingPattern(dirName, ".*.class", false));	
 		return classNames;
 	}
 

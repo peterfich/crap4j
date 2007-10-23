@@ -69,20 +69,20 @@ import java.util.Set;
 
 import org.crap4j.MethodComplexity;
 
-//import org.objectweb.asm.AnnotationVisitor;
-//import org.objectweb.asm.Attribute;
-//import org.objectweb.asm.ClassReader;
-//import org.objectweb.asm.Label;
-//import org.objectweb.asm.MethodVisitor;
-//import org.objectweb.asm.Opcodes;
-//import org.objectweb.asm.signature.SignatureReader;
-//import org.objectweb.asm.tree.ClassNode;
-//import org.objectweb.asm.tree.MethodNode;
-//import org.objectweb.asm.tree.analysis.Analyzer;
-//import org.objectweb.asm.tree.analysis.AnalyzerException;
-//import org.objectweb.asm.tree.analysis.BasicInterpreter;
-//import org.objectweb.asm.tree.analysis.Frame;
-//import org.objectweb.asm.util.TraceSignatureVisitor;
+// import org.objectweb.asm.AnnotationVisitor;
+// import org.objectweb.asm.Attribute;
+// import org.objectweb.asm.ClassReader;
+// import org.objectweb.asm.Label;
+// import org.objectweb.asm.MethodVisitor;
+// import org.objectweb.asm.Opcodes;
+// import org.objectweb.asm.signature.SignatureReader;
+// import org.objectweb.asm.tree.ClassNode;
+// import org.objectweb.asm.tree.MethodNode;
+// import org.objectweb.asm.tree.analysis.Analyzer;
+// import org.objectweb.asm.tree.analysis.AnalyzerException;
+// import org.objectweb.asm.tree.analysis.BasicInterpreter;
+// import org.objectweb.asm.tree.analysis.Frame;
+// import org.objectweb.asm.util.TraceSignatureVisitor;
 //
 import com.agitar.org.objectweb.asm.AnnotationVisitor;
 import com.agitar.org.objectweb.asm.Attribute;
@@ -99,7 +99,6 @@ import com.agitar.org.objectweb.asm.tree.analysis.BasicInterpreter;
 import com.agitar.org.objectweb.asm.tree.analysis.Frame;
 import com.agitar.org.objectweb.asm.util.TraceSignatureVisitor;
 
-
 /**
  * 
  * ASM Guide example class.
@@ -112,13 +111,14 @@ import com.agitar.org.objectweb.asm.util.TraceSignatureVisitor;
 
 public class CyclomaticComplexity {
 
-	public List<MethodComplexity> getMethodComplexitiesFor(File classFile) throws IOException, AnalyzerException {
+	public List<MethodComplexity> getMethodComplexitiesFor(File classFile)
+			throws IOException, AnalyzerException {
 		List<MethodComplexity> complexities = new ArrayList<MethodComplexity>();
-    
-    
+
 		BufferedInputStream bufferedInputStream = null;
 		try {
-			bufferedInputStream = new BufferedInputStream(new FileInputStream(classFile));
+			bufferedInputStream = new BufferedInputStream(new FileInputStream(
+					classFile));
 			ClassReader cr = new ClassReader(bufferedInputStream);
 			ClassNode cn = new ClassNode();
 			cr.accept(cn, ClassReader.SKIP_DEBUG);
@@ -126,31 +126,36 @@ public class CyclomaticComplexity {
 			for (int i = 0; i < methods.size(); ++i) {
 				MethodNode method = (MethodNode) methods.get(i);
 				String signature = method.signature;
-					signature = method.desc;
-					TraceSignatureVisitor v = new TraceSignatureVisitor(method.access);
-          SignatureReader r = new SignatureReader(method.signature != null ? method.signature : method.desc);
-          r.accept(v);
-          String access = buildAccess(method.access);
-          String genericDecl = v.getDeclaration();
-          String genericReturn = v.getReturnType();
-          String genericExceptions = v.getExceptions();
+				signature = method.desc;
+				MyTraceSignatureVisitor v = new MyTraceSignatureVisitor(
+						method.access);
+				SignatureReader r = new SignatureReader(
+						method.signature != null ? method.signature
+								: method.desc);
+				r.accept(v);
+				String access = buildAccess(method.access);
+				String genericDecl = v.getDeclaration();
+				String genericReturn = v.getReturnType();
+//				if (genericReturn.equals(""))
+//					genericReturn = "java.lang.Object"; //prettifies the display only. Works around asm bug.
+				String genericExceptions = v.getExceptions();
 
-          String methodDecl = access + " " + genericReturn + " " + 
-            method.name + genericDecl;
-//          if(genericExceptions!=null) {
-//            methodDecl += " throws " + genericExceptions;
-//          }
-//            System.out.println("Pretty sig? "+methodDecl);
-				MethodComplexity methodComplexity = new MethodComplexity(cn.name.replace('/', '.') + "." + method.name + signature,
-                                                  cn.name.replace('/', '.'), 
-                                                  method.name, 
-                                                  signature,
-                                                  method.signature,
-										newGetCyclomaticComplexity(cn.name, method),
-                    methodDecl);
+				String methodDecl = access + " " + genericReturn + " "
+						+ method.name + genericDecl;
+				// if(genericExceptions!=null) {
+				// methodDecl += " throws " + genericExceptions;
+				// }
+				// System.out.println("Pretty sig? "+methodDecl);
+				MethodComplexity methodComplexity = new MethodComplexity(cn.name.replace('/', '.') + "." + method.name + signature, 
+						cn.name.replace('/', '.'),
+						method.name, 
+						signature, 
+						method.signature,
+						newGetCyclomaticComplexity(cn.name, method), 
+						methodDecl);
 				complexities.add(methodComplexity);
 				if (methodComplexity.getComplexity() == 0) {
-					System.out.println("Zero complexity! "+methodComplexity);
+					System.out.println("Zero complexity! " + methodComplexity);
 				}
 			}
 		} finally {
@@ -160,66 +165,68 @@ public class CyclomaticComplexity {
 	}
 
 	private String buildAccess(int access) {
-    StringBuilder b = new StringBuilder();
-    buildVisibility(access, b);
-    buildStatic(access, b);
-    buildFinal(access, b);
-    buildSynchronized(access, b);
-    buildNative(access, b);
-    buildAbstract(access, b);
-    return b.toString();
-  }
+		StringBuilder b = new StringBuilder();
+		buildVisibility(access, b);
+		buildStatic(access, b);
+		buildFinal(access, b);
+		buildSynchronized(access, b);
+		buildNative(access, b);
+		buildAbstract(access, b);
+		return b.toString();
+	}
 
-  private void buildAbstract(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_ABSTRACT) != 0)
-      b.append("abstract ");
-  }
+	private void buildAbstract(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_ABSTRACT) != 0)
+			b.append("abstract ");
+	}
 
-  private void buildNative(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_NATIVE) != 0)
-      b.append("native ");
-  }
+	private void buildNative(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_NATIVE) != 0)
+			b.append("native ");
+	}
 
-  private void buildSynchronized(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_SYNCHRONIZED) != 0)
-      b.append("synchronized ");
-  }
+	private void buildSynchronized(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_SYNCHRONIZED) != 0)
+			b.append("synchronized ");
+	}
 
-  private void buildFinal(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_FINAL) != 0)
-      b.append("final ");
-  }
+	private void buildFinal(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_FINAL) != 0)
+			b.append("final ");
+	}
 
-  private void buildStatic(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_STATIC) != 0)
-      b.append("static ");
-  }
+	private void buildStatic(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_STATIC) != 0)
+			b.append("static ");
+	}
 
-  private void buildVisibility(int access, StringBuilder b) {
-    if ((access & Opcodes.ACC_PUBLIC) != 0)
-      b.append("public ");
-    else if ((access & Opcodes.ACC_PRIVATE) != 0)
-      b.append("private ");
-    else if ((access & Opcodes.ACC_PROTECTED) != 0)
-      b.append("protected ");
-  }
+	private void buildVisibility(int access, StringBuilder b) {
+		if ((access & Opcodes.ACC_PUBLIC) != 0)
+			b.append("public ");
+		else if ((access & Opcodes.ACC_PRIVATE) != 0)
+			b.append("private ");
+		else if ((access & Opcodes.ACC_PROTECTED) != 0)
+			b.append("protected ");
+	}
 
-  public int newGetCyclomaticComplexity(String owner, MethodNode mn) {
-//	  System.err.println("Getting complexity for owner:"+owner+", mn: "+mn.toString());
+	public int newGetCyclomaticComplexity(String owner, MethodNode mn) {
+		// System.err.println("Getting complexity for owner:"+owner+", mn:
+		// "+mn.toString());
 		ComplexityMethodVisitor complexityCounter;
 		try {
 			complexityCounter = new ComplexityMethodVisitor();
 			mn.accept(complexityCounter);
 			return complexityCounter.complexity;
 		} catch (RuntimeException e) {
-			System.err.println("Caught Exception "+e.getMessage());
+			System.err.println("Caught Exception " + e.getMessage());
 			e.printStackTrace();
 			return 1;
 		}
-		
+
 	}
-	
-	public int getCyclomaticComplexity(String owner, MethodNode mn)	throws AnalyzerException {
+
+	public int getCyclomaticComplexity(String owner, MethodNode mn)
+			throws AnalyzerException {
 		MyAnalyzer a = new MyAnalyzer();
 		a.analyze(owner, mn);
 		Frame[] frames = a.getFrames();
@@ -227,18 +234,19 @@ public class CyclomaticComplexity {
 		int nodes = 0;
 		for (int i = 0; i < frames.length; i++) {
 			if (frames[i] != null) {
-				edges += ((Node) frames[i]).successors.size() ;
+				edges += ((Node) frames[i]).successors.size();
 				nodes++;
-			} 
+			}
 		}
-//		System.out.println("Edges: "+edges+", nodes: "+nodes+", compl: "+(edges - nodes + 2));
+		// System.out.println("Edges: "+edges+", nodes: "+nodes+", compl:
+		// "+(edges - nodes + 2));
 		return edges - nodes + 2;
 	}
 }
 
 class Node extends Frame {
 	Set<Node> successors = new HashSet<Node>();
-	
+
 	public Node(int nLocals, int nStack) {
 		super(nLocals, nStack);
 	}
@@ -249,10 +257,11 @@ class Node extends Frame {
 }
 
 class MyAnalyzer extends Analyzer {
-	
+
 	public MyAnalyzer() {
 		super(new BasicInterpreter());
-	}	
+	}
+
 	protected Frame newFrame(int nLocals, int nStack) {
 		return new Node(nLocals, nStack);
 	}
@@ -262,43 +271,42 @@ class MyAnalyzer extends Analyzer {
 	}
 
 	protected void newControlFlowEdge(int src, int dst) {
-//		System.out.println("New edge "+src+" to "+dst);
+		// System.out.println("New edge "+src+" to "+dst);
 		Node s = (Node) getFrames()[src];
 		Node node = (Node) getFrames()[dst];
 		if (s == null || node == null)
 			System.out.println("Either s or node is null!!!!!");
 		s.successors.add(node);
 	}
-	
 
 }
 
 class ComplexityMethodVisitor implements MethodVisitor {
-	int[] decisionOpcodes = {Opcodes.IFEQ, Opcodes.IFNE, Opcodes.IFLT, 
-			Opcodes.IFGE, Opcodes.IFGT, Opcodes.IFLE, 
-			Opcodes.IF_ICMPEQ, Opcodes.IF_ICMPNE, Opcodes.IF_ICMPLT, 
-			Opcodes.IF_ICMPGE, Opcodes.IF_ICMPGT, Opcodes.IF_ICMPLE, 
-			Opcodes.IF_ACMPEQ, Opcodes.IF_ACMPNE, Opcodes.IFNULL, Opcodes.IFNONNULL};
-	
+	int[] decisionOpcodes = { Opcodes.IFEQ, Opcodes.IFNE, Opcodes.IFLT,
+			Opcodes.IFGE, Opcodes.IFGT, Opcodes.IFLE, Opcodes.IF_ICMPEQ,
+			Opcodes.IF_ICMPNE, Opcodes.IF_ICMPLT, Opcodes.IF_ICMPGE,
+			Opcodes.IF_ICMPGT, Opcodes.IF_ICMPLE, Opcodes.IF_ACMPEQ,
+			Opcodes.IF_ACMPNE, Opcodes.IFNULL, Opcodes.IFNONNULL };
+
 	private int edges;
 	private int nodes;
 	int complexity = 1;
-	
+
 	public int compute() {
 		return edges - nodes + 2;
 	}
-	
+
 	private void incBoth() {
 		edges++;
 		nodes++;
 	}
-	
+
 	public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
 		return new AnnotationVisitor() {
 
 			public void visit(String name, Object value) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public AnnotationVisitor visitAnnotation(String name, String desc) {
@@ -313,14 +321,14 @@ class ComplexityMethodVisitor implements MethodVisitor {
 
 			public void visitEnd() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public void visitEnum(String name, String desc, String value) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		};
 	}
 
@@ -332,18 +340,20 @@ class ComplexityMethodVisitor implements MethodVisitor {
 	}
 
 	public void visitCode() {
-//		edges++;
+		// edges++;
 	}
 
 	public void visitEnd() {
-//		edges++;
+		// edges++;
 	}
 
-	public void visitFieldInsn(int opcode, String owner, String name, String desc) {
+	public void visitFieldInsn(int opcode, String owner, String name,
+			String desc) {
 		incBoth();
 	}
 
-	public void visitFrame(int type, int nLocal, Object[] local, int nStack, Object[] stack) {
+	public void visitFrame(int type, int nLocal, Object[] local, int nStack,
+			Object[] stack) {
 	}
 
 	public void visitIincInsn(int var, int increment) {
@@ -365,7 +375,7 @@ class ComplexityMethodVisitor implements MethodVisitor {
 			if (opcode == currOpcode) {
 				complexity++;
 				return;
-			}				
+			}
 		}
 	}
 
@@ -380,19 +390,21 @@ class ComplexityMethodVisitor implements MethodVisitor {
 	public void visitLineNumber(int line, Label start) {
 	}
 
-	public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
+	public void visitLocalVariable(String name, String desc, String signature,
+			Label start, Label end, int index) {
 	}
 
 	public void visitLookupSwitchInsn(Label dflt, int[] keys, Label[] labels) {
 		nodes++;
-		edges  += labels.length;
+		edges += labels.length;
 		complexity += labels.length;
 	}
 
 	public void visitMaxs(int maxStack, int maxLocals) {
 	}
 
-	public void visitMethodInsn(int opcode, String owner, String name, String desc) {
+	public void visitMethodInsn(int opcode, String owner, String name,
+			String desc) {
 		incBoth();
 	}
 
@@ -400,26 +412,28 @@ class ComplexityMethodVisitor implements MethodVisitor {
 		incBoth();
 	}
 
-	public AnnotationVisitor visitParameterAnnotation(int parameter, String desc, boolean visible) {
+	public AnnotationVisitor visitParameterAnnotation(int parameter,
+			String desc, boolean visible) {
 		return null;
 	}
 
-	public void visitTableSwitchInsn(int min, int max, Label dflt, Label[] labels) {
+	public void visitTableSwitchInsn(int min, int max, Label dflt,
+			Label[] labels) {
 		nodes++;
-		edges  += labels.length;
+		edges += labels.length;
 		complexity += labels.length;
 	}
 
-	public void visitTryCatchBlock(Label start, Label end, Label handler, String type) {
+	public void visitTryCatchBlock(Label start, Label end, Label handler,
+			String type) {
 	}
 
 	public void visitTypeInsn(int opcode, String desc) {
-		incBoth();	
+		incBoth();
 	}
 
 	public void visitVarInsn(int opcode, int var) {
 		incBoth();
 	}
-	
-}
 
+}
