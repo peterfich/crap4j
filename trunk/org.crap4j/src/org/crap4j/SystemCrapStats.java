@@ -143,6 +143,10 @@ public class SystemCrapStats {
 
 	private float computeMedian() {
 		float[] crapNumbers = crapScores(crapSubjects);
+		if (crapNumbers.length == 0)
+			return 0f;
+		else if (crapNumbers.length == 1)
+			return crapNumbers[0];
 		Arrays.sort(crapNumbers);
 		return crapNumbers[crapNumbers.length / 2];
 
