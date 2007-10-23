@@ -14,7 +14,7 @@ public class CyclomaticComplexityTestCase extends TestCase {
 
 	
 	public void testComplexity() throws Exception {
-		String file = getClass().getClassLoader().getResource("org/xagitarlabs/crap4j/complexity/ComplexitySubject1TestFixture.class").getFile();
+		String file = getClass().getClassLoader().getResource("org/crap4j/complexity/ComplexitySubject1TestFixture.class").getFile();
 		File classFile = new File(file);
 		CyclomaticComplexity cc = new CyclomaticComplexity();
 		List<MethodComplexity> complexities = cc.getMethodComplexitiesFor(classFile);
