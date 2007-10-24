@@ -302,39 +302,39 @@ class ComplexityMethodVisitor implements MethodVisitor {
 		nodes++;
 	}
 
+	public static class NullAnnotationVisitor implements AnnotationVisitor {
+
+		public void visit(String name, Object value) {
+			// TODO Auto-generated method stub
+	
+		}
+	
+		public AnnotationVisitor visitAnnotation(String name, String desc) {
+			return new NullAnnotationVisitor();
+		}
+	
+		public AnnotationVisitor visitArray(String name) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	
+		public void visitEnd() {
+			// TODO Auto-generated method stub
+	
+		}
+	
+		public void visitEnum(String name, String desc, String value) {
+			// TODO Auto-generated method stub
+	
+		}
+
+	}
 	public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-		return new AnnotationVisitor() {
-
-			public void visit(String name, Object value) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public AnnotationVisitor visitAnnotation(String name, String desc) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			public AnnotationVisitor visitArray(String name) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			public void visitEnd() {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void visitEnum(String name, String desc, String value) {
-				// TODO Auto-generated method stub
-
-			}
-
-		};
+		return new NullAnnotationVisitor();
 	}
 
 	public AnnotationVisitor visitAnnotationDefault() {
-		return null;
+		return new NullAnnotationVisitor();
 	}
 
 	public void visitAttribute(Attribute attr) {
@@ -415,7 +415,7 @@ class ComplexityMethodVisitor implements MethodVisitor {
 
 	public AnnotationVisitor visitParameterAnnotation(int parameter,
 			String desc, boolean visible) {
-		return null;
+		return new NullAnnotationVisitor();
 	}
 
 	public void visitTableSwitchInsn(int min, int max, Label dflt,
