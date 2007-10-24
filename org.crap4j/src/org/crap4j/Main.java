@@ -150,7 +150,7 @@ public class Main {
                                            AnalyzerException {
     Crap4jRunner runner = new Crap4jRunner(debug, 
                                            dontTest, 
-                                           new AntSuperrunnerCoverageStrategy(this), 15.0f, 10.0f, 5.0f);
+                                           new AntSuperrunnerCoverageStrategy(this), 30.0f, 10.0f, 5.0f);
     runner.doProject(project);      
   }
 
