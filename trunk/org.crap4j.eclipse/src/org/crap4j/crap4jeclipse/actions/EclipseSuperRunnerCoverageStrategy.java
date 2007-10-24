@@ -42,6 +42,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
         public void cancelled() {
         	Crap4jEclipseLog.logInfo("cancelled the test run on project: "+crapProject.getProjectName());
           TestRunListener.removeListener(this);
+          finishComputingCrap(runner, crapProject);
         }
         public void finished() {
           finishComputingCrap(runner, crapProject);
