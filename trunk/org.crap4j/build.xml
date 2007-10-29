@@ -77,8 +77,16 @@
     </path>
 
 
-	<target name="build" depends="jar_plugin" />
+	<target name="build" depends="jar_plugin, jar_cli_ant_dist" />
 	
+	<target name="jar_cli_ant_dist" depends="jar_classes">
+		<copy file="${build_dir}/org.crap4j.jar" todir="${project_dir}/dist/crap4j/lib"/> 	
+		<mkdir dir="${project_dir}/dist/crap4j/doc" />
+		<copy file="${project_dir}/doc/example_build.xml" todir="${project_dir}/dist/crap4j/doc" />
+		<copy file="${project_dir}/doc/projectConfig.sample" todir="${project_dir}/dist/crap4j/doc" />
+		<zip destfile="${build_dir}/crap4j_ant_cli.jar" basedir="${project_dir}/dist" />
+	</target>
+		
 	<target name="jar_plugin" depends="copy_and_update_manifest, copy_libs, copy_resources">
 		<zip destfile="${build_dir}/org.crap4j_${build_version}.jar" basedir="${build_dir}" />
 	</target>
