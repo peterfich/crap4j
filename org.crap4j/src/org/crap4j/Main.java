@@ -78,13 +78,13 @@ public class Main {
   public static String getAgitatorEclipseCoveragePluginDir(String crap4jHome) {
     return crap4jHome + File.separator
     		+ "lib" + File.separator
-    		+ "org.agitar.eclipse.coverage_4.2.0.401405";
+    		+ "com.agitar.eclipse.coverage_4.2.0.401405";
   }
 
   public static String getAgitatorEclipseApiPlugin(String crap4jHome) {
     return crap4jHome + File.separator
     		+ "lib" + File.separator
-    		+ "org.agitar.eclipse.api_4.2.0.401405";
+    		+ "com.agitar.eclipse.api_4.2.0.401405";
   }
 
   public static String getCrap4jHome() {

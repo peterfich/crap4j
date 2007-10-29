@@ -7,17 +7,17 @@
 	<!-- Do Not Edit these properties or the TaskDef unless you know what you are doing -->
 	<!-- These setup the classpath for using the Agitar test runner (to produce coverage) 
 	         and for the necessary crap4j libraries --> 
-	<!--
+
 	<property name="com.agitar.eclipse.coverage.plugin.dir" 
 			  value="${CRAP4J_HOME}/lib/com.agitar.eclipse.coverage_4.2.0.401405" />
 	
 	<property name="com.agitar.eclipse.api.plugin.dir" 
 			  value="${CRAP4J_HOME}/lib/com.agitar.eclipse.api_4.2.0.401405" />
-	-->
+
 	<!-- Define the Crap4j task -->
 	<taskdef name="crap4j" classname="org.crap4j.anttask.Crap4jAntTask" >
 		<classpath>
-		<!--
+
 			<pathelement location="${com.agitar.eclipse.coverage.plugin.dir}/com.agitar.common.jar" />
 		      <pathelement location="${com.agitar.eclipse.coverage.plugin.dir}/com.agitar.coverage.jar" />
 		      <pathelement location="${com.agitar.eclipse.api.plugin.dir}/com.agitar.mockingbird.jar" />
@@ -28,7 +28,7 @@
 		      <fileset dir="${com.agitar.eclipse.coverage.plugin.dir}/lib">
 		        <include name="**/*.jar" />
 		      </fileset>
-		-->      
+
 			  <fileset dir="${CRAP4J_HOME}/lib">
 			    <include name="**/*.jar" />
 			  </fileset>
@@ -48,7 +48,7 @@
 
 	<!-- #3 Use crap4j on the project -->
 	<target name="run-crap4j">
-		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="false" debug="false">
+		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="false" debug="true">
 			<!-- put the project's class directories here. These are the classes you want crap numbers for -->
 			<classDirs>
 				<pathElement location="${project.dir.crap4j}/bin" />
@@ -70,9 +70,10 @@
 				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib">
 					<include name="**/*.jar" />
 				</fileset>
-				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
+<!--				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
 					<include name="**/*.jar" />
 				</fileset>
+-->
 				<pathElement location="${project.dir.crap4j}/dist/crap4j/lib/asmlib" />
 			</libClasspath>
 		</crap4j>

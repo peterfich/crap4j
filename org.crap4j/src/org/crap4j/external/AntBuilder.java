@@ -87,12 +87,12 @@ public class AntBuilder {
         "\n" +
 				"\n" +
 
-				"<taskdef name=\"super-runner\" classname=\"org.agitar.junit.runner.SuperRunnerTask\">"
+				"<taskdef name=\"super-runner\" classname=\"com.agitar.junit.runner.SuperRunnerTask\">"
 				+ "\n" + "<classpath>"
-				+ "\n" + "		<pathelement location=\"#COVERAGE_PLUGIN_DIR#/org.agitar.common.jar\" />"
-				+ "\n" + "		<pathelement location=\"#COVERAGE_PLUGIN_DIR#/org.agitar.coverage.jar\" />"
-				+ "\n" + "		<pathelement location=\"#API_PLUGIN_DIR#/org.agitar.mockingbird.jar\" />"
-				+ "\n" + "	  <pathelement location=\"#API_PLUGIN_DIR#/org.agitar.testrunner.jar\" />"
+				+ "\n" + "		<pathelement location=\"#COVERAGE_PLUGIN_DIR#/com.agitar.common.jar\" />"
+				+ "\n" + "		<pathelement location=\"#COVERAGE_PLUGIN_DIR#/com.agitar.coverage.jar\" />"
+				+ "\n" + "		<pathelement location=\"#API_PLUGIN_DIR#/com.agitar.mockingbird.jar\" />"
+				+ "\n" + "	  <pathelement location=\"#API_PLUGIN_DIR#/com.agitar.testrunner.jar\" />"
 				+ "\n" + "		<fileset dir=\"#API_PLUGIN_DIR#/lib\">"
 				+ "\n" + "		  <include name=\"**/*.jar\" />"
 				+ "\n" + "    </fileset>"
