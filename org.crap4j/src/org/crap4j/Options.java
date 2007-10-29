@@ -193,8 +193,8 @@ public class Options {
 		return string.length() == 0;
 	}
 
-	private void setProperty(String property, String value) {
-		if (property == null || value == null)
+	protected void setProperty(String property, String value) {
+		if (isEmpty(property, value))
 			return;
 		if (property.equals("projectDir"))
 			setProjectDir(value);
@@ -210,6 +210,10 @@ public class Options {
 			throw new IllegalArgumentException(
 					"Unknown property in ConfigFile: " + property
 							+ ", with value:" + value);
+	}
+
+	private boolean isEmpty(String property, String value) {
+		return property == null || value == null;
 	}
 
 	private boolean isAssignment(String string) {

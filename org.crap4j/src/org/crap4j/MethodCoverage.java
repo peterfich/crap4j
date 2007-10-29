@@ -28,11 +28,15 @@ public class MethodCoverage extends MethodInfo {
 
   @Override
   public boolean equals(Object obj) {
-    if (obj == null || !(obj instanceof MethodCoverage))
+    if (isInvalidComparable(obj))
       return false;
     MethodCoverage m = (MethodCoverage)obj;
     return matchingMethodSignature.equals(m.matchingMethodSignature) && coverage == m.coverage;
   }
+
+private boolean isInvalidComparable(Object obj) {
+	return obj == null || !(obj instanceof MethodCoverage);
+}
 
   @Override
   public int hashCode() {
