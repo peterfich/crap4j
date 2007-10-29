@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Main-Class: com.agitarlabs.crap4j.Main
+Main-Class: org.crap4j.Main
 Class-Path: lib/args4j-2.0.1.jar lib/asm-3.0.jar lib/asm-analysis-3.0.jar lib/asm-commons-3.0.jar lib/asm-tree-3.0.jar lib/asm-util-3.0.jar lib/asm-xml-3.0.jar
  
 

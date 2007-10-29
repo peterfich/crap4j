@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?>
-<contexts>
-  <context id="view_testManager">
-    <description>The Agitar Test Manager view runs JUnit tests and displays detailed coverage information.</description>
-    <topic href="tm-using-1.html#wp1000336" label="The Agitar Test Manager"/>
-    <topic href="tm-using-2.html#wp1007485" label="Running JUnit Tests Using the Agitar Test Manager"/>
-    <topic href="tm-using-3.html#wp1007888" label="Viewing Coverage"/>
-  </context>
-</contexts>
