@@ -106,7 +106,7 @@ public class SuperRunnerCoverageReader {
   }
 
 
-  private List<MethodCoverage> createMethodCoverages(
+  protected List<MethodCoverage> createMethodCoverages(
       List<MethodCoverage> methodCoverages, List<String> methodNames,
       Map<Integer, List<MyCoveragePoint>> covPoints) {
     for (int i = 0; i < methodNames.size(); i++) {
@@ -127,8 +127,7 @@ public class SuperRunnerCoverageReader {
           }
         }
       }
-      float percentCovered = ((float) coveredPointsForMethod)
-          / (float) totalPointsForMethod;
+      float percentCovered = ((float) coveredPointsForMethod) / (float) totalPointsForMethod;
       methodCoverages.add(new MethodCoverage(methodName, percentCovered));
 
     }
