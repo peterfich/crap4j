@@ -6,8 +6,7 @@ Bundle-Version: 0.1.13
 Bundle-ClassPath: 
  org.crap4j.jar,
  dist/crap4j/lib/args4j-2.0.1.jar,
- dist/crap4j/lib/asmlib/,
- bin/
+ dist/crap4j/lib/asmlib/
 Bundle-Localization: plugin
 Provide-Package: org.crap4j.anttask,
  org.crap4j.complexity,
@@ -22,8 +21,8 @@ Provide-Package: org.crap4j.anttask,
  org.objectweb.asm.util,
  org.objectweb.asm.xml
 Bundle-Vendor: Bob Evans, Alberto Savoia
-Require-Bundle: com.agitar.eclipse.testrunner,
- com.agitar.eclipse.coverage
+Require-Bundle: com.agitar.eclipse.coverage,
+ com.agitar.eclipse.api
 Export-Package: org.crap4j,
  org.crap4j.anttask,
  org.crap4j.complexity,
