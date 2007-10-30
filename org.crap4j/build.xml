@@ -67,12 +67,12 @@
         <pathelement location="bin"/>
         <pathelement location="test_bin"/>
         <pathelement location="integration_tests_bin"/>
-        <pathelement location="dist/crap4j/lib/args4j-2.0.1.jar"/>
+        <pathelement location="lib/args4j-2.0.1.jar"/>
         <path refid="JUnit 3.libraryclasspath"/>
         <pathelement location="${AGITAR_MOCK_OBJECTS5}"/>
         <pathelement location="agitar/test_bin"/>
         <path refid="Plug-in Dependencies.libraryclasspath"/>
-        <pathelement location="dist/crap4j/lib/asmlib"/>
+        <pathelement location="lib/asmlib"/>
         <pathelement location="lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
     </path>
 
@@ -80,10 +80,36 @@
 	<target name="build" depends="jar_plugin, jar_cli_ant_dist" />
 	
 	<target name="jar_cli_ant_dist" depends="jar_classes">
-		<copy file="${build_dir}/org.crap4j.jar" todir="${project_dir}/dist/crap4j/lib"/> 	
+		<mkdir dir="${project_dir}/dist" />
+		<mkdir dir="${project_dir}/dist/crap4j" />
 		<mkdir dir="${project_dir}/dist/crap4j/doc" />
+		<mkdir dir="${project_dir}/dist/crap4j/lib" />
+		<mkdir dir="${project_dir}/dist/crap4j/lib/asmlib" />
+		
+		
+		<copy todir="${project_dir}/dist/crap4j">
+			<fileset dir="${project_dir}/cli_ant_resources"/>
+	    </copy>
 		<copy file="${project_dir}/doc/example_build.xml" todir="${project_dir}/dist/crap4j/doc" />
 		<copy file="${project_dir}/doc/projectConfig.sample" todir="${project_dir}/dist/crap4j/doc" />
+		
+		<copy file="${build_dir}/org.crap4j.jar" todir="${project_dir}/dist/crap4j/lib"/> 					
+		<copy todir="${project_dir}/dist/crap4j/lib/asmlib">
+			<fileset dir="${project_dir}/lib/asmlib"/>
+	    </copy>
+		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${project_dir}/dist/crap4j/lib"/>
+		
+		<mkdir dir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405" />
+		
+		<copy todir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405">
+			<fileset dir="${project_dir}/lib/com.agitar.eclipse.api_4.2.0.401405"/>
+	    </copy>
+		
+		<mkdir dir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405" />
+		<copy todir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
+			<fileset dir="${project_dir}/lib/com.agitar.eclipse.coverage_4.2.0.401405"/>
+	    </copy>
+				
 		<zip destfile="${build_dir}/crap4j_ant_cli.jar" basedir="${project_dir}/dist" />
 	</target>
 		
@@ -103,9 +129,9 @@
 	<target name="copy_libs" depends="make_build_dir">
 		<mkdir dir="${build_dir}/dist/crap4j/lib" />
 	    <copy todir="${build_dir}/dist/crap4j/lib/asmlib">
-	      <fileset dir="${project_dir}/dist/crap4j/lib/asmlib"/>
+	      <fileset dir="${project_dir}/lib/asmlib"/>
 	    </copy>
-		<copy file="${project_dir}/dist/crap4j/lib/args4j-2.0.1.jar" todir="${build_dir}/dist/crap4j/lib"/>
+		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${build_dir}/dist/crap4j/lib"/>
 	</target>
 	
 	<target name="copy_resources" depends="make_build_dir">
@@ -164,10 +190,12 @@
 
 	<target name="clean">
 		<delete dir="${build_dir}" />
+		<delete dir="${project_dir}/dist" />
 		<delete dir="${classes_dir}" />
         <delete dir="test_bin"/>
         <delete dir="integration_tests_bin"/>
         <delete dir="agitar/test_bin"/>
+		
 	</target>
 	
     <target name="init_test" depends="init" >
