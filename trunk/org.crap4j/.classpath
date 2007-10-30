@@ -3,7 +3,6 @@
 	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="src" output="test_bin" path="test"/>
 	<classpathentry kind="src" output="integration_tests_bin" path="integration_tests"/>
-	<classpathentry exported="true" kind="lib" path="dist/crap4j/lib/args4j-2.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" output="agitar/test_bin" path="agitar/test"/>
@@ -13,8 +12,9 @@
 			<accessrule kind="accessible" pattern="**/*"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="dist/crap4j/lib/asmlib" sourcepath="/Users/bobevans/Documents/projects/crap4j_agitar_svn/asm3.0/src"/>
 	<classpathentry kind="lib" path="lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
 	<classpathentry kind="var" path="AGITAR_MOCK_OBJECTS5"/>
+	<classpathentry kind="lib" path="lib/args4j-2.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/asmlib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
