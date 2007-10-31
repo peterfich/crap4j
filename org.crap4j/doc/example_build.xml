@@ -4,79 +4,57 @@
 	<!-- #1 redefine crap4j_home to point to the absolute directory where you unzipped crap4j -->
 	<property name="CRAP4J_HOME" value="/Users/bobevans/Documents/projects/crap4j/org.crap4j/dist/crap4j"/>
 	
-	<!-- Do Not Edit these properties or the TaskDef unless you know what you are doing -->
-	<!-- These setup the classpath for using the Agitar test runner (to produce coverage) 
-	         and for the necessary crap4j libraries --> 
-<!--
-	<property name="com.agitar.eclipse.coverage.plugin.dir" 
-			  value="${CRAP4J_HOME}/lib/com.agitar.eclipse.coverage_4.2.0.401405" />
-	
-	<property name="com.agitar.eclipse.api.plugin.dir" 
-			  value="${CRAP4J_HOME}/lib/com.agitar.eclipse.api_4.2.0.401405" />
-
--->
-	<!-- Define the Crap4j task -->
+	<!-- Define the Crap4j ant task -->
 	<taskdef name="crap4j" classname="org.crap4j.anttask.Crap4jAntTask" >
 		<classpath>
-<!--
-			<pathelement location="${com.agitar.eclipse.coverage.plugin.dir}/com.agitar.common.jar" />
-		      <pathelement location="${com.agitar.eclipse.coverage.plugin.dir}/com.agitar.coverage.jar" />
-		      <pathelement location="${com.agitar.eclipse.api.plugin.dir}/com.agitar.mockingbird.jar" />
-		      <pathelement location="${com.agitar.eclipse.api.plugin.dir}/com.agitar.testrunner.jar" />
-		      <fileset dir="${com.agitar.eclipse.api.plugin.dir}/lib">
-		        <include name="**/*.jar" />
-		      </fileset>
-		      <fileset dir="${com.agitar.eclipse.coverage.plugin.dir}/lib">
-		        <include name="**/*.jar" />
-		      </fileset>
--->
-			  <fileset dir="${CRAP4J_HOME}/lib">
-			    <include name="**/*.jar" />
-			  </fileset>
-			<pathElement location="${CRAP4J_HOME}/lib/asmlib" />
+			<fileset dir="${CRAP4J_HOME}/lib">
+				<include name="**/*.jar" />
+			</fileset>
 		</classpath>
 	</taskdef>
-
 
 	<!-- #2 Setup your project base directory. In most cases, it can just be basedir. 
 	       The following is a fancy version -->
 	<!-- Use of ${project.dir.crap4j} allows for the resolution of relative paths 
 	        even when this file is imported in another build file -->
 	<dirname file="${ant.file.crap4j}" property="import.dir.crap4j" />
-	<condition property="project.dir.crap4j" value="${import.dir.crap4j}/.." else="${basedir}">
+	<condition property="my.project.root.dir" value="${import.dir.crap4j}/.." else="${basedir}">
 		<isset property="import.dir.crap4j" />
 	</condition>
 
 	<!-- #3 Use crap4j on the project -->
 	<target name="run-crap4j">
-		<crap4j projectdir="${project.dir.crap4j}" outputDir="agitar/reports/crap4j" dontTest="false" debug="true">
-			<!-- put the project's class directories here. These are the classes you want crap numbers for -->
+		<crap4j projectdir="${my.project.root.dir}" 
+			    outputDir="agitar/reports/crap4j" 
+			    dontTest="false" debug="true">
+			
 			<classDirs>
-				<pathElement location="${project.dir.crap4j}/bin" />
+				<!-- put the project's class directories here. These are the classes you want crap numbers for -->
+				<pathElement location="${my.project.root.dir}/bin" />
 			</classDirs>
-			<!-- The project's src folders -->
+			
 			<srcDirs>
-				<pathElement location="${project.dir.crap4j}/src" />
+				<!-- The project's src folders -->
+				<pathElement location="${my.project.root.dir}/src" />
 			</srcDirs>
-			<!-- The project's test classes. Note, separating it from the project classes makes life so much easier
-			         but if you didn't, then repeat the classDir entry here -->
+			
 			<testClassDirs>
-				<pathElement location="${project.dir.crap4j}/test_bin" />
-				<pathElement location="${project.dir.crap4j}/integration_tests_bin" />
-				<pathElement location="${project.dir.crap4j}/agitar/test_bin" />
+				<!-- The project's test classes. 
+				         Note, separating it from the project classes makes life so much easier
+				         but if you didn't, then you probably just want to repeat the classDir entry here -->
+				<pathElement location="${my.project.root.dir}/test_bin" />
+				<pathElement location="${my.project.root.dir}/integration_tests_bin" />
+				<pathElement location="${my.project.root.dir}/agitar/test_bin" />
 			</testClassDirs>
-			<!-- Put the dependent paths and libraries here. 
-			         This is necessary stuff but not stuff you want analyzed -->
+			
 			<libClasspath>
-				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib">
+				<!-- Put the dependent paths and libraries here. 
+				         This is for stuff necessary to your project, but not stuff you want analyzed -->
+				<fileset dir="${my.project.root.dir}/lib">
 					<include name="**/*.jar" />
 				</fileset>
-<!--				<fileset dir="${project.dir.crap4j}/dist/crap4j/lib/com.agitar.eclipse.coverage_4.2.0.401405">
-					<include name="**/*.jar" />
-				</fileset>
--->
-				<pathElement location="${project.dir.crap4j}/dist/crap4j/lib/asmlib" />
 			</libClasspath>
+		
 		</crap4j>
 	</target>
 </project>
