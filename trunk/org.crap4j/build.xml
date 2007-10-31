@@ -72,7 +72,7 @@
         <pathelement location="${AGITAR_MOCK_OBJECTS5}"/>
         <pathelement location="agitar/test_bin"/>
         <path refid="Plug-in Dependencies.libraryclasspath"/>
-        <pathelement location="lib/asmlib"/>
+        <pathelement location="lib/asmlib.jar"/>
         <pathelement location="lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
     </path>
 
@@ -84,7 +84,6 @@
 		<mkdir dir="${project_dir}/dist/crap4j" />
 		<mkdir dir="${project_dir}/dist/crap4j/doc" />
 		<mkdir dir="${project_dir}/dist/crap4j/lib" />
-		<mkdir dir="${project_dir}/dist/crap4j/lib/asmlib" />
 		
 		
 		<copy todir="${project_dir}/dist/crap4j">
@@ -94,10 +93,8 @@
 		<copy file="${project_dir}/doc/projectConfig.sample" todir="${project_dir}/dist/crap4j/doc" />
 		
 		<copy file="${build_dir}/org.crap4j.jar" todir="${project_dir}/dist/crap4j/lib"/> 					
-		<copy todir="${project_dir}/dist/crap4j/lib/asmlib">
-			<fileset dir="${project_dir}/lib/asmlib"/>
-	    </copy>
 		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${project_dir}/dist/crap4j/lib"/>
+		<copy file="${project_dir}/lib/asmlib.jar" todir="${project_dir}/dist/crap4j/lib"/>
 		
 		<mkdir dir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405" />
 		
@@ -128,9 +125,7 @@
 	
 	<target name="copy_libs" depends="make_build_dir">
 		<mkdir dir="${build_dir}/dist/crap4j/lib" />
-	    <copy todir="${build_dir}/dist/crap4j/lib/asmlib">
-	      <fileset dir="${project_dir}/lib/asmlib"/>
-	    </copy>
+		<copy file="${project_dir}/lib/asmlib.jar" todir="${build_dir}/dist/crap4j/lib"/>
 		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${build_dir}/dist/crap4j/lib"/>
 	</target>
 	
