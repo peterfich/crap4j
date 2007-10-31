@@ -43,7 +43,7 @@
         <pathelement location="${eclipse_home}/plugins/org.eclipse.jdt.compiler.tool_1.0.1.v_780_R33x.jar"/>
     	<!-- link to org.crap4j plugin -->
     	<pathelement location="${project_dir}/../org.crap4j/build/org.crap4j.jar"/>
-    	<pathelement location="${project_dir}/../org.crap4j/build/dist/crap4j/lib/asmlib"/>
+    	<pathelement location="${project_dir}/../org.crap4j/build/dist/crap4j/lib/asmlib.jar"/>
     		
         <pathelement location="${eclipse_home}/plugins/com.agitar.eclipse.coverage_${juf_version}/com.agitar.check.jar"/>
         <pathelement location="${eclipse_home}/plugins/com.agitar.eclipse.coverage_${juf_version}/com.agitar.common.jar"/>

@@ -15,6 +15,6 @@
 	<classpathentry kind="lib" path="lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar"/>
 	<classpathentry kind="var" path="AGITAR_MOCK_OBJECTS5"/>
 	<classpathentry kind="lib" path="lib/args4j-2.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/asmlib.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/asmlib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
