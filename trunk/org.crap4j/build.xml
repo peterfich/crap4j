@@ -84,11 +84,16 @@
 		<mkdir dir="${project_dir}/dist/crap4j" />
 		<mkdir dir="${project_dir}/dist/crap4j/doc" />
 		<mkdir dir="${project_dir}/dist/crap4j/lib" />
+		<mkdir dir="${project_dir}/dist/crap4j/licenses" />
 		
-		
+		<copy todir="${project_dir}/dist/crap4j/licenses">
+			<fileset dir="${project_dir}/licenses"/>
+	    </copy>
+		<!-- comment until cli is ready
 		<copy todir="${project_dir}/dist/crap4j">
 			<fileset dir="${project_dir}/cli_ant_resources"/>
 	    </copy>
+	    -->
 		<copy file="${project_dir}/doc/example_build.xml" todir="${project_dir}/dist/crap4j/doc" />
 		<copy file="${project_dir}/doc/projectConfig.sample" todir="${project_dir}/dist/crap4j/doc" />
 		
@@ -131,6 +136,11 @@
 	
 	<target name="copy_resources" depends="make_build_dir">
 		<copy file="${project_dir}/plugin.xml" todir="${build_dir}"/>
+		<mkdir dir="${build_dir}/licenses" />
+				
+		<copy todir="${build_dir}/licenses">
+			<fileset dir="${project_dir}/licenses"/>
+	    </copy>
 	</target>
 
 	<target name="jar_classes" depends="compile">
