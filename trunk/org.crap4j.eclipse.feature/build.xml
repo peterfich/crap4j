@@ -18,7 +18,7 @@
 		<delete dir="${build_dir}" />
 	</target>
 
-	<target name="jar_feature" depends="copy_and_update_feature.xml">
+	<target name="jar_feature" depends="copy_and_update_feature.xml, copy_licenses">
 		<zip destfile="${build_dir}/org.crap4j.eclipse.feature_${build_version}.jar" basedir="${build_dir}" />
 	</target>
 
@@ -31,6 +31,14 @@
 		</exec>
 	</target>
 
+	<target name="copy_licenses" depends="make_build_dir">
+		<mkdir dir="${build_dir}/licenses" />
+						
+		<copy todir="${build_dir}/licenses">
+			<fileset dir="${project_dir}/licenses"/>
+	    </copy>
+	</target>
+		
 	<target name="make_build_dir" >
 		<mkdir dir="${build_dir}" />
 	</target>
