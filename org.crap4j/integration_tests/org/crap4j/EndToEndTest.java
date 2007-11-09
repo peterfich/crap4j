@@ -31,7 +31,7 @@ public class EndToEndTest extends TestCase {
 		CrapProject p = new CrapProject(projectDir, classpath, testDirs, classDirs,	sourceDirs, null);
 
 		try {
-			Main.createMain().run(p, false, false);
+			Main.createMain().run(p, false, false, false, "http://localhost:3000/");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

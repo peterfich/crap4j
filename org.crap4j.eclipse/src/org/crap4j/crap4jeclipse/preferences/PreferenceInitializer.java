@@ -21,6 +21,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.CRAP_THRESHOLD, 30);
 		store.setDefault(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD, 5);
 		store.setDefault(PreferenceConstants.CRAP_PERCENT_WARNING_THRESHOLD, 5);
+		store.setDefault(PreferenceConstants.DOWNLOAD_AVERAGES, true);
+		store.setDefault(PreferenceConstants.SERVER, "http://www.crap4j.org/benchmark/");
 	}
 
 }

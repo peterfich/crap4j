@@ -26,7 +26,7 @@
 	<target name="run-crap4j">
 		<crap4j projectdir="${my.project.root.dir}" 
 			    outputDir="agitar/reports/crap4j" 
-			    dontTest="false" debug="true">
+			    dontTest="false" debug="false">
 			
 			<classDirs>
 				<!-- put the project's class directories here. These are the classes you want crap numbers for -->

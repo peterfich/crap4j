@@ -37,15 +37,21 @@ public class Crap4jPreferencePage
 	 * restore itself.
 	 */
 	public void createFieldEditors() {
-    addField(new IntegerFieldEditor(PreferenceConstants.CRAP_THRESHOLD, 
-        "Method C.R.A.P. Threshold (1 or >):", 
-        getFieldEditorParent()));
+//    addField(new IntegerFieldEditor(PreferenceConstants.CRAP_THRESHOLD, 
+//        "Method C.R.A.P. Threshold (1 or >):", 
+//        getFieldEditorParent()));
 //    addField(new IntegerFieldEditor(PreferenceConstants.CRAP_PERCENT_WARNING_THRESHOLD, 
 //        "Project C.R.A.P. Percentage Warning Threshold (0-100%):", 
 //        getFieldEditorParent()));
-    addField(new IntegerFieldEditor(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD, 
-        "Project C.R.A.P. Percentage Critical Threshold  (0-100%):", 
-        getFieldEditorParent()));
+//    addField(new IntegerFieldEditor(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD, 
+//        "Project C.R.A.P. Percentage Critical Threshold  (0-100%):", 
+//        getFieldEditorParent()));
+    addField(new BooleanFieldEditor(PreferenceConstants.DOWNLOAD_AVERAGES,
+                                    "Download Average Data from Server:",
+                                    getFieldEditorParent()));
+    addField(new StringFieldEditor(PreferenceConstants.SERVER,
+                                    "Server address & path:",
+                                    getFieldEditorParent()));
 
 	}
 

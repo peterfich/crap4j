@@ -2,8 +2,12 @@ package org.crap4j;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import javax.swing.text.DateFormatter;
 
 import org.crap4j.util.FileUtil;
 import org.crap4j.util.MyStringBuilder;
@@ -116,6 +120,7 @@ public class CrapProject {
 
   public void toXml(MyStringBuilder s) {
     itemToXml(s, "project", projectDir);
+    itemToXml(s, "timestamp", SimpleDateFormat.getInstance().format(Calendar.getInstance().getTime()));
     collectionToXml(s, "classDirectories", "classDirectory", classDirs);
     collectionToXml(s, "testClassDirectories", "testClassDirectory", testClassDirs);
     collectionToXml(s, "sourceDirectories", "sourceDirectory", sourceDirs);

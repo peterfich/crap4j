@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URLEncoder;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,6 +22,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.crap4j.benchmark.GlobalStats;
 import org.crap4j.gauge.CrapImageGenerator;
 import org.crap4j.gauge.NewCrapImageGenerator;
 import org.crap4j.util.FileUtil;
@@ -46,13 +48,16 @@ public class SystemCrapStats {
   private int crapWorkLoad;
   private float crapPercentWarningThreshold;
   private float crapPercentCriticalThreshold;
+private GlobalStats globalStats;
+private String server;
 	
 	public SystemCrapStats(List<? extends Crap> crapValues, 
                          String name, 
                          CrapProject crapProject, 
                          float crapThreshold, 
                          float crapPercentWarningThreshold, 
-                         float crapPercentCriticalThreshold) {
+                         float crapPercentCriticalThreshold, 
+                         GlobalStats globalStats, String server) {
 		validateParams(crapValues);
 		this.name = name;
     this.crapProject = crapProject;
@@ -70,6 +75,8 @@ public class SystemCrapStats {
 		this.stdDev = computeStdDev();
     this.crapMethodCount = countCrapMethods(crapValues);
     this.crapWorkLoad = computeCrapWorkLoad(crapValues);
+    this.globalStats = globalStats;
+    this.server = server;
 	}
 
 	private int computeCrapWorkLoad(List<? extends Crap> crapValues) {
@@ -209,6 +216,22 @@ public class SystemCrapStats {
     CrapProject.itemToXml(s, "crapMethodPercent", nf.format(crapMethodPercent()));
     CrapProject.itemToXml(s, "crapLoad", Integer.toString(crapWorkLoad));
     CrapProject.itemToXml(s, "crapThreshold", Integer.toString((int) crapThreshold));
+    CrapProject.itemToXml(s, "globalAverage", nf.format(globalStats.getCrapAverage()));
+    CrapProject.itemToXml(s, "globalCraploadAverage", nf.format(globalStats.getCrapLoadAverage()));
+    CrapProject.itemToXml(s, "globalCrapMethodAverage", nf.format(globalStats.getCrapMethodAverage()));
+    CrapProject.itemToXml(s, "globalTotalMethodAverage", nf.format(globalStats.getTotalMethodAverage()));
+    CrapProject.itemToXml(s, "globalAverageDiff", nf.format(globalStats.getCrapAverageDiff(crapNumber)));
+    CrapProject.itemToXml(s, "globalCraploadAverageDiff", nf.format(globalStats.getCrapLoadAverageDiff(crapWorkLoad)));
+    CrapProject.itemToXml(s, "globalCrapMethodAverageDiff", nf.format(globalStats.getCrapMethodAverageDiff(crapMethodCount)));
+    CrapProject.itemToXml(s, "globalTotalMethodAverageDiff", nf.format(globalStats.getTotalMethodAverageDiff(methodCount)));
+    String projectName = URLEncoder.encode(crapProject.getProjectName());
+    String url = server+"stats/new?stat[project_hash]="+projectName+
+                  "&amp;stat[project_url]="+projectName +
+                  "&amp;stat[crap]="+URLEncoder.encode(nf.format(crapMethodPercent()))+
+                  "&amp;stat[crap_load]="+Integer.toString(crapWorkLoad)+
+                  "&amp;stat[crap_methods]="+Integer.toString(crapMethodCount)+
+                  "&amp;stat[total_methods]="+Integer.toString(methodCount);
+    CrapProject.itemToXml(s, "shareStatsUrl", url);
     s.start("<histogram>");
     int ones = crapLessThan(2.0f);
     int twos = (crapBetween(2.0f, 4.0f));
@@ -317,7 +340,8 @@ public class SystemCrapStats {
                                                   crapProject.outputDir(), 
                                                   "crapBar.png", false, /*
                                                   crapPercentWarningThreshold,*/
-                                                  crapPercentCriticalThreshold * 100.0f);
+                                                  crapPercentCriticalThreshold * 100.0f,
+                                                  globalStats.getCrapAverage());
     cig.makeGaugeAndWriteToFile();
   }
 
@@ -401,7 +425,7 @@ public class SystemCrapStats {
 
   public void writeReport() {
     writeXmlToFile(toXml());
-    generatePicture();
+//    generatePicture();
     generateBarPicture();
     generateHtml();
   }

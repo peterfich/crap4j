@@ -3,6 +3,8 @@ package org.crap4j;
 import java.io.IOException;
 import java.util.List;
 
+import org.crap4j.benchmark.GlobalStats;
+import org.crap4j.benchmark.StatsDownloader;
 import org.crap4j.external.MetricsComplexityReader;
 import org.crap4j.external.SuperRunnerCoverageReader;
 
@@ -27,24 +29,32 @@ public class Crap4jRunner {
   private float crapPercentWarningThreshold;
   private float crapPercentCriticalThreshold;
   private float crapThreshold;
+  private boolean downloadAverages;
+  private String server;
 
   public Crap4jRunner(boolean debug, boolean dontTest, 
+      boolean downloadAverages, 
       CoverageGeneratorStrategy strategy, 
       float crapThreshold, 
-      float crapPercentWarningThreshold, 
-      float crapPercentCriticalThreshold) {
+      float crapPercentWarningThreshold, float crapPercentCriticalThreshold, 
+      String server) {
     this.debug = debug;
     this.dontTest = dontTest;
     this.coverageStrategy = strategy;
     this.crapThreshold = crapThreshold;
     this.crapPercentWarningThreshold = crapPercentWarningThreshold;
     this.crapPercentCriticalThreshold = crapPercentCriticalThreshold;
+    this.downloadAverages = downloadAverages;
+    this.server = server;
   }
 
   
   public void doProject(CrapProject p) throws IOException, AnalyzerException {
-    if (!dontTest)
+    if (dontTest) {
+      readResults(p);
+    } else {
       generateCoverageDataStatsFor(p);
+    }
   }
 
 
@@ -55,9 +65,10 @@ public class Crap4jRunner {
                                             p,
                                             crapThreshold,
                                             crapPercentWarningThreshold,
-                                            crapPercentCriticalThreshold);
+                                            crapPercentCriticalThreshold,
+                                            new StatsDownloader(server).getAverage(downloadAverages), server);
     s.writeReport();
-//    System.out.println(s.toString());
+    System.out.println(s.toString());
   }
 
   private List<? extends Crap> buildMethodCrap(List<MethodCoverage> covs,

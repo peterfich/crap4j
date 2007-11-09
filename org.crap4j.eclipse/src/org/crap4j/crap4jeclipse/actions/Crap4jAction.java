@@ -79,10 +79,16 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
     int crapThreshold = (int) pluginPreferences.getFloat(PreferenceConstants.CRAP_THRESHOLD);
     float crapPercentWarningThreshold = pluginPreferences.getFloat(PreferenceConstants.CRAP_PERCENT_WARNING_THRESHOLD)/ 100.0f;
     float crapPercentCriticalThreshold = pluginPreferences.getFloat(PreferenceConstants.CRAP_PERCENT_CRITICAL_THRESHOLD)/ 100.0f;
+    boolean downloadAverages = pluginPreferences.getBoolean(PreferenceConstants.DOWNLOAD_AVERAGES);
+    String server = pluginPreferences.getString(PreferenceConstants.SERVER);
     Crap4jRunner runner = new Crap4jRunner(debug, 
-        dontTest, 
-        eclipseCovStrategy,          
-        crapThreshold, crapPercentWarningThreshold, crapPercentCriticalThreshold);
+                                          dontTest, 
+                                          downloadAverages,          
+                                          eclipseCovStrategy, 
+                                          crapThreshold, 
+                                          crapPercentWarningThreshold, 
+                                          crapPercentCriticalThreshold, 
+                                          server);
     try {
       runJob(runner, ecpb.getCrapProject());
     } catch (Throwable t) {

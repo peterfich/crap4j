@@ -74,7 +74,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
   }
 
   private void openURL(URL url) throws PartInitException {
-    if (false) {
+    if (true) {
       openURLInExternalBrowser(url);
     } else {
       openURLInInternalBrowser(url);
@@ -82,8 +82,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
   }
 
   private void openURLInInternalBrowser(URL url) throws PartInitException {
-    IWorkbenchBrowserSupport support = PlatformUI.getWorkbench()
-        .getBrowserSupport();
+    IWorkbenchBrowserSupport support = PlatformUI.getWorkbench().getBrowserSupport();
     int style = IWorkbenchBrowserSupport.AS_EDITOR
         | IWorkbenchBrowserSupport.STATUS;
     IWebBrowser browser = support.createBrowser(style, "org.eclipse.pde", //$NON-NLS-1$

@@ -35,6 +35,7 @@
 			<body>
 				<h2>CRAP Report</h2>
 				<h4>Project: <xsl:value-of select="project"/></h4>
+				<p style="text-align:center">Generated at <xsl:value-of select="timestamp"/></p>
  				<xsl:apply-templates select="stats"/>
 				<center>Method Detail: Sorted by: <a href="detail_crap_load.html">CRAP Load</a> |
 				<a href="detail_crap.html">CRAP</a> |
@@ -46,7 +47,7 @@
 
 	<xsl:template match="stats">
 	<center>
-		<table><tr colspan="2"><td class="stat"><center><p>Percentage of CRAPpy Methods</p><img src="crapBar.png" /></center></td></tr>
+		<table><tr colspan="2"><td class="stat"><center><h2>Percentage of CRAPpy Methods</h2><img src="crapBar.png" /></center></td></tr>
 		<tr>
 		<td>
 		<table>
@@ -130,6 +131,12 @@
     #vertgraph li.one28 { left: 552px; background-position: -196px bottom !important; }
     #vertgraph li.two56 { left: 627px; background-position: -224px bottom !important; }
 </style>
+<div>
+<center>
+<h2><a href="{shareStatsUrl}">Benchmark your results anonymously</a>.</h2><br/>
+
+</center>
+</div>
 <div style="position: relative;  margin: 0 auto; text-align: center;">
 <h3>Method CRAP Distribution</h3>
 <div id="vertgraph">
@@ -144,5 +151,6 @@
 		
 
 	</xsl:template>
+
 
 </xsl:stylesheet>
