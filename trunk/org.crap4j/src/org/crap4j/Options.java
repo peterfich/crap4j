@@ -13,7 +13,10 @@ import java.util.List;
 import org.kohsuke.args4j.Option;
 
 public class Options {
-	private String projectDir;
+  public static final String defaultServer = "http://www.crap4j.org/benchmark/";
+
+  
+  private String projectDir;
 
 	private String libClasspaths;
 
@@ -32,6 +35,10 @@ public class Options {
 
 	private boolean dontTest;
 
+	private boolean downloadAverages = true;
+
+  private String server;
+	
 	public List<String> getClassDirs() {
 		return returnAsList(classDirs);
 	}
@@ -98,11 +105,24 @@ public class Options {
 		this.outputDir = outputDir;
 	}
 
+  public String getServer() {
+    if (this.server == null || this.server.length() == 0)
+       this.server = defaultServer;
+    return server;
+  }
+
+  @Option(name = "-h", usage = "The server and path to retrieve benchmarking data. By default it is http://www.crap4j.org/benchmark/.")
+  public void setServer(String server) {
+    this.server = server;
+  }
+
+
+	
 	public boolean getDebug() {
 		return debug;
 	}
 
-	@Option(name = "-debug", usage = "Turn on debugging output to console.")
+	@Option(name = "-debug", usage = "Turn on debugging output to console (false).")
 	public void setDebug(boolean debug) {
 		this.debug = debug;
 	}
@@ -111,11 +131,21 @@ public class Options {
 		return dontTest;
 	}
 
-	@Option(name = "-dontTest", usage = "Turn off test running phase.")
+	@Option(name = "-dontTest", usage = "Turn off test running phase (false).")
 	public void setDontTest(boolean dontTest) {
 		this.dontTest = dontTest;
 	}
 
+  public boolean getDownloadAverages() {
+    return downloadAverages;
+  }
+
+  @Option(name = "-downloadAverages", usage = "Download average crap benchmark data (true).")
+  public void setDownloadAverages(boolean downloadAverages) {
+    this.downloadAverages = downloadAverages;
+  }
+
+	
 	private List<String> returnAsList(String prop) {
 		if (prop == null)
 			return Collections.emptyList();
@@ -254,5 +284,6 @@ public class Options {
 			throw new FileNotFoundException(
 					"Cannot find configFile for project: " + configFile);
 	}
+
 
 }

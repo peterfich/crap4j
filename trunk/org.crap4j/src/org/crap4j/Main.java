@@ -137,7 +137,7 @@ public class Main {
                                     options.getOutputDir());
 		try {
 			Main main = createMain();
-			main.run(p, options.getDebug(), options.getDontTest());
+			main.run(p, options.getDebug(), options.getDontTest(), options.getDownloadAverages(), options.getServer());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -146,11 +146,14 @@ public class Main {
 
   public void run(CrapProject project, 
                   boolean debug, 
-                  boolean dontTest) throws IOException, 
-                                           AnalyzerException {
+                  boolean dontTest, 
+                  boolean downloadAverages, 
+                  String server) throws IOException, AnalyzerException {
     Crap4jRunner runner = new Crap4jRunner(debug, 
                                            dontTest, 
-                                           new AntSuperrunnerCoverageStrategy(this), 30.0f, 10.0f, 5.0f);
+                                           downloadAverages, 
+                                           new AntSuperrunnerCoverageStrategy(this), 30.0f, 10.0f, 
+                                           5.0f, server);
     runner.doProject(project);      
   }
 

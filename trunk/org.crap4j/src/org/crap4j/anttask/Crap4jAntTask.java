@@ -17,6 +17,8 @@ public class Crap4jAntTask extends Task {
 	private String crap4jHome;
 	private boolean debug;
 	private boolean dontTest;
+	private boolean downloadAverages = true;
+	private String server;
 	
 	private File projectDir;
 	private File outputDir;
@@ -26,9 +28,7 @@ public class Crap4jAntTask extends Task {
 	private Path srcDirs;
 	private Path testClassDirs;
 	private Project antProject;
-	
-	
-	
+		
 	public void CrapjAntTask(Project p) {
 		this.antProject = p;
 	}
@@ -57,7 +57,17 @@ public class Crap4jAntTask extends Task {
         return libClasspath.createPath();
     }
 
-	@Override
+  public String getServer() {
+//    if (server == null || server.length() == 0)
+      this.server = "http://www.crap4j.org/benchmark/";
+    return server;
+  }
+  
+  public void setServer(String server) {
+    this.server = server;
+  }
+  
+  @Override
 	public void execute() throws BuildException {
     if (isDebug()) {
   		System.out.println("projectDir is "+getProjectDir());
@@ -66,16 +76,20 @@ public class Crap4jAntTask extends Task {
   		System.out.println("classDirs is "+stringOf(getClassDirs()));
   		System.out.println("testClassDirs is "+stringOf(getTestClassDirs()));
   		System.out.println("libClasspath is "+stringOf(getLibClasspath()));
+  		System.out.println("server is "+getServer());
+  		System.out.println("downloadAverages is "+isDownloadAverages());
+  		System.out.println("debug is "+isDebug());
+  		System.out.println("dontTest is "+isDontTest());
     }
 		CrapProject p = createCrapProject();
 		try {
-			Main.createMain().run(p, isDebug(), isDontTest());
+			Main.createMain().run(p, isDebug(), isDontTest(), isDownloadAverages(), getServer());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private String stringOf(Path classDirs2) {
+  private String stringOf(Path classDirs2) {
 		StringBuilder b = new StringBuilder();
 		for (String s : classDirs2.list()) {
 			b.append(s);
@@ -126,6 +140,7 @@ public class Crap4jAntTask extends Task {
 		this.dontTest = dontTest;
 	}
 
+	
 	public Path getLibClasspath() {
 		return libClasspath;
 	}
@@ -173,5 +188,13 @@ public class Crap4jAntTask extends Task {
 	public void setClassDirs(Path path) {
 		this.classDirs = path;
 	}
+
+  public boolean isDownloadAverages() {
+    return downloadAverages;
+  }
+
+  public void setDownloadAverages(boolean downloadAverages) {
+    this.downloadAverages = downloadAverages;
+  }
 
 }

@@ -4,6 +4,7 @@ Bundle-Name: crap4j
 Bundle-SymbolicName: org.crap4j
 Bundle-Version: 0.1.13
 Bundle-ClassPath: 
+ bin,
  org.crap4j.jar,
  dist/crap4j/lib/args4j-2.0.1.jar,
  dist/crap4j/lib/asmlib.jar
