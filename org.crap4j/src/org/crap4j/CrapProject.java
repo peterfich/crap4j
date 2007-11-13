@@ -1,10 +1,17 @@
 package org.crap4j;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.text.DateFormatter;
@@ -15,12 +22,14 @@ import org.crap4j.util.MyStringBuilder;
 
 public class CrapProject {
 	
-	private String projectDir;
+	private static final String PROJECT_ID_FILE = ".crap4j_project_id";
+  private String projectDir;
 	private List<String> libClasspaths;
 	private List<String> testClassDirs;
 	private List<String> classDirs;
 	private List<String> sourceDirs;
   private String outputDir;
+  private Long projectId;
 	
 	public List<String> classDirs() {
 		return classDirs;
@@ -59,8 +68,77 @@ public class CrapProject {
 				this.outputDir = makeFilePathAbsoluteWithProject(outputDir);
 			}
 		}
-    FileUtil.ensureDirectory(outputDir);
+    FileUtil.ensureDirectory(this.outputDir);
+    projectId = ensureProjectId();
 	}	
+
+  private Long ensureProjectId() {
+    Long projectId = loadProjectId();
+    if (projectId == null) {
+      projectId = makeProjectId();
+      writeProjectId(projectId);
+    }
+    return projectId;    
+  }
+
+  private void writeProjectId(Long projectId2) {
+    File f = getProjectIdFile();
+    DataOutputStream out = null;
+    try {
+      out = new DataOutputStream(new FileOutputStream(f));
+      try {
+        out.writeLong(projectId2);
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      } finally {
+        if (out != null) {
+          try {
+            out.close();
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    } catch (FileNotFoundException e2) {
+      e2.printStackTrace();
+    }
+  }
+
+  private Long loadProjectId() {
+    Long id = null;
+    File f = getProjectIdFile();
+    if (f.exists()) {
+      DataInputStream io = null;
+      try {
+        io = new DataInputStream(new FileInputStream(f));
+        try {
+          id = io.readLong();
+        } catch (IOException e) {
+          e.printStackTrace();
+        } finally {
+          if (io != null) {
+            try {
+              io.close();
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+          }
+        }
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
+    return id;
+  }
+
+  private File getProjectIdFile() {
+    File f = new File(outputDir(), PROJECT_ID_FILE);
+    return f;
+  }
+
+  private Long makeProjectId() {
+    return System.currentTimeMillis();
+  }
 
   private List<String> makeAbsolute(List<String> sourceDirs2) {
     List<String> absolutePaths = new ArrayList<String>();
@@ -120,6 +198,7 @@ public class CrapProject {
 
   public void toXml(MyStringBuilder s) {
     itemToXml(s, "project", projectDir);
+    itemToXml(s, "project_id", projectId.toString());
     itemToXml(s, "timestamp", SimpleDateFormat.getInstance().format(Calendar.getInstance().getTime()));
     collectionToXml(s, "classDirectories", "classDirectory", classDirs);
     collectionToXml(s, "testClassDirectories", "testClassDirectory", testClassDirs);
@@ -147,4 +226,32 @@ public class CrapProject {
     return new File(outputDir(), "index.html");  
   }
 
+  public Long getProjectId() {
+    return projectId;
+  }
+
+//  @Override
+//  public boolean equals(Object obj) {
+//    if (!(obj instanceof CrapProject))
+//      return false;
+//    CrapProject other = (CrapProject)obj;
+//    return (projectId == other.projectId);
+//  }
+//
+//  @Override
+//  public int hashCode() {
+//    return projectDir.hashCode() + pathHashCode(classDirs()) + pathHashCode(libClasspaths()) + pathHashCode(testClassDirs());
+//  }
+//
+//  private int pathHashCode(List<String> classDirs2) {
+//    int hashcode = 0;
+//    for (String string : classDirs2) {
+//      hashcode += string.hashCode();
+//    }
+//    return hashcode;
+//  }
+  
+  
+
 }
+

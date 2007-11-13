@@ -133,7 +133,7 @@
 </style>
 <div>
 <center>
-<h2><a href="{shareStatsUrl}">Benchmark your results anonymously</a>.</h2><br/>
+<p style="font: 20pt"><a href="{shareStatsUrl}">Share your results</a> anonymously (or publicly) to get comparative benchmarks and an, "I Know My Crap!", badge.</p>
 
 </center>
 </div>
