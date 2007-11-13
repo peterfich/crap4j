@@ -225,14 +225,6 @@ private String server;
     CrapProject.itemToXml(s, "globalCrapMethodAverageDiff", nf.format(globalStats.getCrapMethodAverageDiff(crapMethodCount)));
     CrapProject.itemToXml(s, "globalTotalMethodAverageDiff", nf.format(globalStats.getTotalMethodAverageDiff(methodCount)));
     String projectName = URLEncoder.encode(crapProject.getProjectName());
-    String url = server+"stats/new?stat[project_hash]="+projectName+
-                  "&amp;stat[project_url]="+projectName +
-                  "&amp;stat[crap]="+URLEncoder.encode(nf.format(crapMethodPercent()))+
-                  "&amp;stat[crap_load]="+Integer.toString(crapWorkLoad)+
-                  "&amp;stat[crap_methods]="+Integer.toString(crapMethodCount)+
-                  "&amp;stat[total_methods]="+Integer.toString(methodCount);
-    CrapProject.itemToXml(s, "shareStatsUrl", url);
-    s.start("<histogram>");
     int ones = crapLessThan(2.0f);
     int twos = (crapBetween(2.0f, 4.0f));
     int fours = (crapBetween(4.0f, 8.0f));
@@ -242,6 +234,26 @@ private String server;
     int sixtyfours = (crapBetween(64.0f, 128.0f));
     int one28s = (crapBetween(128.0f, 256.0f));
     int two56s = (crapGE(256.0f));
+    
+    String url = server+"stats/new?stat[project_hash]="+crapProject.getProjectId().toString()+
+                  "&amp;stat[project_url]="+projectName +
+                  "&amp;stat[crap]="+URLEncoder.encode(nf.format(crapMethodPercent()))+
+                  "&amp;stat[crap_load]="+Integer.toString(crapWorkLoad)+
+                  "&amp;stat[crap_methods]="+Integer.toString(crapMethodCount)+
+                  "&amp;stat[total_methods]="+Integer.toString(methodCount)+
+                  "&amp;stat[ones]="+Integer.toString(ones)+
+                  "&amp;stat[twos]="+Integer.toString(twos)+
+                  "&amp;stat[fours]="+Integer.toString(fours)+
+                  "&amp;stat[eights]="+Integer.toString(eights)+
+                  "&amp;stat[sixteens]="+Integer.toString(sixteens)+
+                  "&amp;stat[thirtytwos]="+Integer.toString(thirtytwos)+
+                  "&amp;stat[sixtyfours]="+Integer.toString(sixtyfours)+
+                  "&amp;stat[one28s]="+Integer.toString(one28s)+
+                  "&amp;stat[two56s]="+Integer.toString(two56s)
+                  ;
+    CrapProject.itemToXml(s, "shareStatsUrl", url);
+    s.start("<histogram>");
+    
     int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
     Arrays.sort(places);
     int largest = places[places.length-1];
