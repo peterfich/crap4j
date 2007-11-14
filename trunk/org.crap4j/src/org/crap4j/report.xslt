@@ -133,7 +133,8 @@
 </style>
 <div>
 <center>
-<p style="font: 20pt"><a href="{shareStatsUrl}">Share your results</a> anonymously (or publicly) to get comparative benchmarks and an, "I Know My Crap!", badge.</p>
+<p style="font-size: 20pt"><a href="{shareStatsUrl}">Share and Compare</a><br/>
+Share your results, (anonymously or publicly) & compare your project to others.</p>
 
 </center>
 </div>
