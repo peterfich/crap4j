@@ -133,8 +133,8 @@
 </style>
 <div>
 <center>
-<p style="font-size: 20pt"><a href="{shareStatsUrl}">Share and Compare</a><br/>
-Share your results, (anonymously or publicly) & compare your project to others.</p>
+<p style="font-size: 20pt;margin-bottom: 2px"><a href="{shareStatsUrl}">Share and Compare</a></p>
+<p style="font-size: 10pt">Share your results, (anonymously or publicly) &amp; compare your project to others.</p>
 
 </center>
 </div>
