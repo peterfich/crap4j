@@ -207,15 +207,15 @@ public class Crap4jEclipseLogAgitarTest extends AgitarTestCase {
         }
     }
     
-    public void testLogThrowsNullPointerException1() throws Throwable {
-        IStatus status = new Status(0, "testCrap4jEclipseLogPluginId", "testCrap4jEclipseLogMessage", new NumberFormatException());
-        try {
-            Crap4jEclipseLog.log(status);
-            fail("Expected NullPointerException to be thrown");
-        } catch (NullPointerException ex) {
-            assertNull("ex.getMessage()", ex.getMessage());
-            assertThrownBy(Crap4jEclipseLog.class, ex);
-        }
-    }
+//    public void testLogThrowsNullPointerException1() throws Throwable {
+//        IStatus status = new Status(0, "testCrap4jEclipseLogPluginId", "testCrap4jEclipseLogMessage", new NumberFormatException());
+//        try {
+//            Crap4jEclipseLog.log(status);
+//            fail("Expected NullPointerException to be thrown");
+//        } catch (NullPointerException ex) {
+//            assertNull("ex.getMessage()", ex.getMessage());
+//            assertThrownBy(Crap4jEclipseLog.class, ex);
+//        }
+//    }
 }
 
