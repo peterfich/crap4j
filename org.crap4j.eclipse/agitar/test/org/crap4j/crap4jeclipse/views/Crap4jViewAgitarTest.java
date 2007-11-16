@@ -33,18 +33,6 @@ public class Crap4jViewAgitarTest extends AgitarTestCase {
         return Crap4jView.class;
     }
     
-    public void testConstructor() throws Throwable {
-        Crap4jView crap4jView = new Crap4jView();
-        assertEquals("crap4jView.getPartProperties().size()", 0, crap4jView.getPartProperties().size());
-        assertEquals("crap4jView.getTitleToolTip()", "", crap4jView.getTitleToolTip());
-        assertEquals("crap4jView.getTitle()", "", crap4jView.getTitle());
-        assertEquals("crap4jView.getContentDescription()", "", crap4jView.getContentDescription());
-        assertEquals("crap4jView.partChangeListeners.size()", 0, ((ListenerList) getPrivateField(crap4jView, "partChangeListeners")).size());
-        assertNotNull("crap4jView.compatibilityTitleListener", getPrivateField(crap4jView, "compatibilityTitleListener"));
-        assertNotNull("crap4jView.listenerList", getPrivateField(crap4jView, "listenerList"));
-        assertEquals("crap4jView.getPartName()", "", crap4jView.getPartName());
-    }
-    
     public void testNameSorterConstructor() throws Throwable {
         Crap4jView.NameSorter nameSorter = new Crap4jView().new NameSorter();
         assertNotNull("nameSorter.comparator", getPrivateField(nameSorter, "comparator"));

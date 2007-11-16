@@ -25,12 +25,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Preferences;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubMonitor;
+
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.internal.core.JavaModelManager;
 import org.eclipse.jdt.internal.core.JavaProject;
-import org.eclipse.jface.text.Document;
-import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -63,25 +61,6 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
         assertSame("crap4jJob.runner", runner, getPrivateField(crap4jJob, "runner"));
         assertEquals("crap4jJob.priority", new Integer(30), getPrivateField(crap4jJob, "priority"));
         assertEquals("crap4jJob.name", "Crap4j Job", getPrivateField(crap4jJob, "name"));
-    }
-    
-    public void testCrap4jJobRun() throws Throwable {
-        Main main = (Main) callPrivateMethod("org.crap4j.Main", "<init>", new Class[] {String.class, String.class, String.class, String.class, String.class}, null, new Object[] {"testCrap4jJobCrap4jHome", "testCrap4jJobAgitatorEclipseApiPlugin", "testCrap4jJobAgitatorEclipseCoveragePluginDir", "testCrap4jJobJunitLib", "testCrap4jJobAntHome"});
-        Crap4jRunner runner = new Crap4jRunner(true, false, true, new AntSuperrunnerCoverageStrategy(main), 100.0F, 1000.0F, 0.0F, "testCrap4jJobServer");
-        Crap4jAction.Crap4jJob crap4jJob = new Crap4jAction().new Crap4jJob(runner, null);
-        IProgressMonitor monitor = SubMonitor.convert(new NullProgressMonitor());
-        Status result = (Status) crap4jJob.run(monitor);
-        assertEquals("(SubMonitor) monitor.totalForChildren", 1, ((Number) getPrivateField(monitor, "totalForChildren")).intValue());
-        assertEquals("result.getMessage()", "OK", result.getMessage());
-    }
-    
-    public void testCrap4jJobRun1() throws Throwable {
-        Crap4jRunner runner = new Crap4jRunner(true, true, false, new AntSuperrunnerCoverageStrategy(null), 100.0F, 1000.0F, 0.0F, "testCrap4jJobServer");
-        Crap4jAction.Crap4jJob crap4jJob = new Crap4jAction().new Crap4jJob(runner, null);
-        IProgressMonitor monitor = SubMonitor.convert(new NullProgressMonitor());
-        Status result = (Status) crap4jJob.run(monitor);
-        assertEquals("(SubMonitor) monitor.totalParent", 0, ((Number) getPrivateField(monitor, "totalParent")).intValue());
-        assertEquals("result.getMessage()", "OK", result.getMessage());
     }
     
     public void testDispose() throws Throwable {
@@ -375,17 +354,6 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
         }
     }
     
-    public void testGetOpenSelectedProjectsThrowsClassCastException() throws Throwable {
-        Crap4jAction crap4jAction = new Crap4jAction();
-        try {
-            callPrivateMethod("org.crap4j.crap4jeclipse.actions.Crap4jAction", "getOpenSelectedProjects", new Class[] {ISelection.class}, crap4jAction, new Object[] {new TextSelection(100, 1000)});
-            fail("Expected ClassCastException to be thrown");
-        } catch (ClassCastException ex) {
-            assertEquals("ex.getClass()", ClassCastException.class, ex.getClass());
-            assertThrownBy(Crap4jAction.class, ex);
-        }
-    }
-    
     public void testGetOpenSelectedProjectsThrowsNullPointerException() throws Throwable {
         Crap4jAction crap4jAction = new Crap4jAction();
         StructuredSelection structuredSelection = (StructuredSelection) Mockingbird.getProxyObject(StructuredSelection.class);
@@ -442,17 +410,6 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
         }
     }
     
-    public void testRunCrap4jOnProjectThrowsNullPointerException1() throws Throwable {
-        Crap4jAction crap4jAction = new Crap4jAction();
-        try {
-            callPrivateMethod("org.crap4j.crap4jeclipse.actions.Crap4jAction", "runCrap4jOnProject", new Class[] {ArrayList.class, ISelection.class}, crap4jAction, new Object[] {null, new TextSelection(100, 1000)});
-            fail("Expected NullPointerException to be thrown");
-        } catch (NullPointerException ex) {
-            assertNull("ex.getMessage()", ex.getMessage());
-            assertThrownBy(Crap4jAction.class, ex);
-        }
-    }
-    
     public void testRunJobThrowsNullPointerException() throws Throwable {
         Main main = (Main) callPrivateMethod("org.crap4j.Main", "<init>", new Class[] {String.class, String.class, String.class, String.class, String.class}, null, new Object[] {"testCrap4jActionCrap4jHome", "testCrap4jActionAgitatorEclipseApiPlugin", "testCrap4jActionAgitatorEclipseCoveragePluginDir", "testCrap4jActionJunitLib", "testCrap4jActionAntHome"});
         Crap4jAction crap4jAction = new Crap4jAction();
@@ -466,16 +423,5 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
         }
     }
     
-    public void testRunThrowsClassCastException() throws Throwable {
-        Crap4jAction crap4jAction = new Crap4jAction();
-        crap4jAction.selectionChanged(null, new TextSelection(new Document(), 100, 1000));
-        try {
-            crap4jAction.run(null);
-            fail("Expected ClassCastException to be thrown");
-        } catch (ClassCastException ex) {
-            assertEquals("ex.getClass()", ClassCastException.class, ex.getClass());
-            assertThrownBy(Crap4jAction.class, ex);
-        }
-    }
 }
 
