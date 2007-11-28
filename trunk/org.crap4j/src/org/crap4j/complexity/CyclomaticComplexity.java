@@ -121,6 +121,7 @@ public class CyclomaticComplexity {
 			ClassReader cr = new ClassReader(bufferedInputStream);
 			ClassNode cn = new ClassNode();
 			cr.accept(cn, ClassReader.SKIP_DEBUG);
+			
 			List methods = cn.methods;
 			for (int i = 0; i < methods.size(); ++i) {
 				MethodNode method = (MethodNode) methods.get(i);
@@ -160,7 +161,12 @@ public class CyclomaticComplexity {
 	}
 
   private boolean shouldIgnore(MethodNode method) {
-    return isAbstract(method.access) || isNative(method.access);
+    return isAbstract(method.access) || isNative(method.access) || isEmptyMethod(method);
+  }
+
+  // the idea here is to deal with interface classes and empty methods.
+  private boolean isEmptyMethod(MethodNode method) {
+    return method.instructions.size() == 0;
   }
 
 	private String buildAccess(int access) {
