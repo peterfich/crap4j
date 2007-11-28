@@ -29,6 +29,7 @@ import org.crap4j.util.FileUtil;
 import org.crap4j.util.FormatUtil;
 import org.crap4j.util.MyStringBuilder;
 import org.crap4j.util.StreamCopier;
+import org.crap4j.util.XmlUtil;
 
 
 public class SystemCrapStats {
@@ -204,26 +205,26 @@ private String server;
     s.start("<crap_result>");
     crapProject.toXml(s);
     s.start("<stats>");
-    CrapProject.itemToXml(s, "name", name);
+    XmlUtil.itemToXml(s, "name", name);
     NumberFormat nf = FormatUtil.getNumberFormatter();
-    CrapProject.itemToXml(s, "totalCrap", nf.format(total));
-    CrapProject.itemToXml(s, "crap", nf.format(crapNumber));
-    CrapProject.itemToXml(s, "median", nf.format(median));
-    CrapProject.itemToXml(s, "average", nf.format(average));
-    CrapProject.itemToXml(s, "stdDev", nf.format(stdDev));
-    CrapProject.itemToXml(s, "methodCount", Integer.toString(methodCount));
-    CrapProject.itemToXml(s, "crapMethodCount", Integer.toString(crapMethodCount));
-    CrapProject.itemToXml(s, "crapMethodPercent", nf.format(crapMethodPercent()));
-    CrapProject.itemToXml(s, "crapLoad", Integer.toString(crapWorkLoad));
-    CrapProject.itemToXml(s, "crapThreshold", Integer.toString((int) crapThreshold));
-    CrapProject.itemToXml(s, "globalAverage", nf.format(globalStats.getCrapAverage()));
-    CrapProject.itemToXml(s, "globalCraploadAverage", nf.format(globalStats.getCrapLoadAverage()));
-    CrapProject.itemToXml(s, "globalCrapMethodAverage", nf.format(globalStats.getCrapMethodAverage()));
-    CrapProject.itemToXml(s, "globalTotalMethodAverage", nf.format(globalStats.getTotalMethodAverage()));
-    CrapProject.itemToXml(s, "globalAverageDiff", nf.format(globalStats.getCrapAverageDiff(crapNumber)));
-    CrapProject.itemToXml(s, "globalCraploadAverageDiff", nf.format(globalStats.getCrapLoadAverageDiff(crapWorkLoad)));
-    CrapProject.itemToXml(s, "globalCrapMethodAverageDiff", nf.format(globalStats.getCrapMethodAverageDiff(crapMethodCount)));
-    CrapProject.itemToXml(s, "globalTotalMethodAverageDiff", nf.format(globalStats.getTotalMethodAverageDiff(methodCount)));
+    XmlUtil.itemToXml(s, "totalCrap", nf.format(total));
+    XmlUtil.itemToXml(s, "crap", nf.format(crapNumber));
+    XmlUtil.itemToXml(s, "median", nf.format(median));
+    XmlUtil.itemToXml(s, "average", nf.format(average));
+    XmlUtil.itemToXml(s, "stdDev", nf.format(stdDev));
+    XmlUtil.itemToXml(s, "methodCount", Integer.toString(methodCount));
+    XmlUtil.itemToXml(s, "crapMethodCount", Integer.toString(crapMethodCount));
+    XmlUtil.itemToXml(s, "crapMethodPercent", nf.format(crapMethodPercent()));
+    XmlUtil.itemToXml(s, "crapLoad", Integer.toString(crapWorkLoad));
+    XmlUtil.itemToXml(s, "crapThreshold", Integer.toString((int) crapThreshold));
+    XmlUtil.itemToXml(s, "globalAverage", nf.format(globalStats.getCrapAverage()));
+    XmlUtil.itemToXml(s, "globalCraploadAverage", nf.format(globalStats.getCrapLoadAverage()));
+    XmlUtil.itemToXml(s, "globalCrapMethodAverage", nf.format(globalStats.getCrapMethodAverage()));
+    XmlUtil.itemToXml(s, "globalTotalMethodAverage", nf.format(globalStats.getTotalMethodAverage()));
+    XmlUtil.itemToXml(s, "globalAverageDiff", nf.format(globalStats.getCrapAverageDiff(crapNumber)));
+    XmlUtil.itemToXml(s, "globalCraploadAverageDiff", nf.format(globalStats.getCrapLoadAverageDiff(crapWorkLoad)));
+    XmlUtil.itemToXml(s, "globalCrapMethodAverageDiff", nf.format(globalStats.getCrapMethodAverageDiff(crapMethodCount)));
+    XmlUtil.itemToXml(s, "globalTotalMethodAverageDiff", nf.format(globalStats.getTotalMethodAverageDiff(methodCount)));
     String projectName = URLEncoder.encode(crapProject.getProjectName());
     int ones = crapLessThan(2.0f);
     int twos = (crapBetween(2.0f, 4.0f));
@@ -251,7 +252,7 @@ private String server;
                   "&amp;stat[one28s]="+Integer.toString(one28s)+
                   "&amp;stat[two56s]="+Integer.toString(two56s)
                   ;
-    CrapProject.itemToXml(s, "shareStatsUrl", url);
+    XmlUtil.itemToXml(s, "shareStatsUrl", url);
     s.start("<histogram>");
     
     int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
@@ -292,9 +293,9 @@ private String server;
 
   private void makeHist(MyStringBuilder s, String place, String value, String height) {
     s.start("<hist>");
-    CrapProject.itemToXml(s, "place", place);
-    CrapProject.itemToXml(s, "value", value);
-    CrapProject.itemToXml(s, "height", height+"px");
+    XmlUtil.itemToXml(s, "place", place);
+    XmlUtil.itemToXml(s, "value", value);
+    XmlUtil.itemToXml(s, "height", height+"px");
     s.end("</hist>");
   }
 

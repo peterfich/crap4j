@@ -53,6 +53,12 @@
 				<fileset dir="${my.project.root.dir}/lib">
 					<include name="**/*.jar" />
 				</fileset>
+				<!-- if you get erros loading any agitar classes, like the mock classes, add this entry -->
+				<!--
+				<fileset dir="${CRAP4J_HOME}/lib/com.agitar.eclipse.api_4.2.0.401405/lib/ext">
+				                    <include name="**/*.jar" />
+				                </fileset>
+				 -->               
 			</libClasspath>
 		
 		</crap4j>

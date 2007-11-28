@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.crap4j.util.FormatUtil;
 import org.crap4j.util.MyStringBuilder;
+import org.crap4j.util.XmlUtil;
 
 
 public class MethodCrap extends MethodInfo implements Crap {
@@ -111,16 +112,16 @@ public class MethodCrap extends MethodInfo implements Crap {
 	public void toXml(MyStringBuilder s) {
     NumberFormat nf = FormatUtil.getNumberFormatter();
     s.start("<method>");
-    CrapProject.itemToXml(s, "package", complexity.getPackageName());
-    CrapProject.itemToXml(s, "className", complexity.getClassName());
-    CrapProject.itemToXml(s, "methodName", escapeXml(complexity.getMethodName()));
-    CrapProject.itemToXml(s, "methodSignature", escapeXml(complexity.getSigOrDescriptor()));
+    XmlUtil.itemToXml(s, "package", complexity.getPackageName());
+    XmlUtil.itemToXml(s, "className", complexity.getClassName());
+    XmlUtil.itemToXml(s, "methodName", escapeXml(complexity.getMethodName()));
+    XmlUtil.itemToXml(s, "methodSignature", escapeXml(complexity.getSigOrDescriptor()));
 
-    CrapProject.itemToXml(s, "fullMethod", escapeXml(complexity.prettyMethodSignature()));
-    CrapProject.itemToXml(s, "crap", nf.format(crap));
-    CrapProject.itemToXml(s, "complexity", Integer.toString(complexity.getComplexity()));
-    CrapProject.itemToXml(s, "coverage", nf.format(coverage * 100.0f));
-    CrapProject.itemToXml(s, "crapLoad", Integer.toString(getCrapLoad(crapThreshold)));
+    XmlUtil.itemToXml(s, "fullMethod", escapeXml(complexity.prettyMethodSignature()));
+    XmlUtil.itemToXml(s, "crap", nf.format(crap));
+    XmlUtil.itemToXml(s, "complexity", Integer.toString(complexity.getComplexity()));
+    XmlUtil.itemToXml(s, "coverage", nf.format(coverage * 100.0f));
+    XmlUtil.itemToXml(s, "crapLoad", Integer.toString(getCrapLoad(crapThreshold)));
     s.end("</method>");
   }
   
