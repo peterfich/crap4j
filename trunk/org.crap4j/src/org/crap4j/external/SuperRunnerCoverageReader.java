@@ -34,21 +34,21 @@ public class SuperRunnerCoverageReader {
 
   public List<MethodCoverage> read() throws IOException {
     List<MethodCoverage> list = new ArrayList<MethodCoverage>();
-    List<File> withoutTestFiles;
+    List<File> covFiles = null;
     try {
-      List<File> covFiles = FileUtil.getAllFilesInDirMatchingPattern(project.getCoverageDir(), ".*.acov", false);
-      withoutTestFiles = FileUtil.removeTestClassFiles(covFiles);
+      covFiles = FileUtil.getAllFilesInDirMatchingPattern(project.getCoverageDir(), ".*.acov", false);
+      
     } catch (Exception e1) {
       e1.printStackTrace(System.err);
       return list;
     }
-    if (withoutTestFiles == null || withoutTestFiles.size() < 1) {
+    if (covFiles == null || covFiles.size() < 1) {
       System.err.println("Cannot find coverage results files in "
           + project.getCoverageDir());
       return list;
     } else {
       // withoutTestFiles.remove(0);
-      for (File covFile : withoutTestFiles) {
+      for (File covFile : covFiles) {
         try {
           list.addAll(readFile(covFile));
         } catch (IOException e) {

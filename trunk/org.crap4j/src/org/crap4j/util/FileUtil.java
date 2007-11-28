@@ -173,7 +173,7 @@ public class FileUtil {
     outputDirFile.mkdirs();
   }
 
-  private static void deleteDirectory(File outputDirFile) {
+  public static void deleteDirectory(File outputDirFile) {
     for (String file : outputDirFile.list()) {
       File f = new File(outputDirFile, file);
       if (f.isDirectory()) {
@@ -200,18 +200,20 @@ public class FileUtil {
   public static List<File> removeTestClassFiles(List<File> files) {
     List<File> withoutTestFiles = new ArrayList<File>();
   	for (File file : files) {
-      String fileName = getFileNameWithoutExtension(file);
-      if (!isTestFile(fileName)) {
+      if (!isTestClass(file)) {
   			withoutTestFiles.add(file);
       }
   	}
     return withoutTestFiles;
   }
   
+  private static boolean isTestClass(File file) {
+    return new TestClassChecker().isTestClass(file);
+  }
+
   public static boolean hasTestClassFiles(List<File> files) {
     for (File file : files) {
-      String fileName = getFileNameWithoutExtension(file);
-      if (isTestFile(fileName)) {
+      if (isTestClass(file)) {
         return true;
       }
     }
@@ -232,5 +234,16 @@ public class FileUtil {
         (fileName.endsWith("Test")) ||
         (fileName.startsWith("Test"));
   }
+
+  public static List<File> removeNonTestClassFiles(List<File> classesInDirList) {
+      List<File> withoutNonTestFiles = new ArrayList<File>();
+      for (File file : classesInDirList) {
+        if (isTestClass(file)) {
+          withoutNonTestFiles.add(file);
+        }
+      }
+      return withoutNonTestFiles;
+    }
+  
 
 }

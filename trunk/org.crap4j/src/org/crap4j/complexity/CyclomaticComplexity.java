@@ -117,21 +117,20 @@ public class CyclomaticComplexity {
 
 		BufferedInputStream bufferedInputStream = null;
 		try {
-			bufferedInputStream = new BufferedInputStream(new FileInputStream(
-					classFile));
+			bufferedInputStream = new BufferedInputStream(new FileInputStream(classFile));
 			ClassReader cr = new ClassReader(bufferedInputStream);
 			ClassNode cn = new ClassNode();
 			cr.accept(cn, ClassReader.SKIP_DEBUG);
 			List methods = cn.methods;
 			for (int i = 0; i < methods.size(); ++i) {
 				MethodNode method = (MethodNode) methods.get(i);
+				if (shouldIgnore(method))
+				  continue;
 				String signature = method.signature;
 				signature = method.desc;
-				MyTraceSignatureVisitor v = new MyTraceSignatureVisitor(
-						method.access);
-				SignatureReader r = new SignatureReader(
-						method.signature != null ? method.signature
-								: method.desc);
+				MyTraceSignatureVisitor v = new MyTraceSignatureVisitor(method.access);
+				SignatureReader r = new SignatureReader(method.signature != null ? method.signature
+				                                                                 : method.desc);
 				r.accept(v);
 				String access = buildAccess(method.access);
 				String genericDecl = v.getDeclaration();
@@ -140,12 +139,8 @@ public class CyclomaticComplexity {
 					genericReturn = "java.lang.Object"; //prettifies the display only. Works around asm bug.
 				String genericExceptions = v.getExceptions();
 
-				String methodDecl = access + " " + genericReturn + " "
-						+ method.name + genericDecl;
-				// if(genericExceptions!=null) {
-				// methodDecl += " throws " + genericExceptions;
-				// }
-				// System.out.println("Pretty sig? "+methodDecl);
+				String methodDecl = access + " " + genericReturn + " " + method.name + genericDecl;
+
 				MethodComplexity methodComplexity = new MethodComplexity(cn.name.replace('/', '.') + "." + method.name + signature, 
 						cn.name.replace('/', '.'),
 						method.name, 
@@ -154,15 +149,19 @@ public class CyclomaticComplexity {
 						newGetCyclomaticComplexity(cn.name, method), 
 						methodDecl);
 				complexities.add(methodComplexity);
-				if (methodComplexity.getComplexity() == 0) {
-					//System.out.println("Zero complexity! " + methodComplexity);
-				}
+//				if (methodComplexity.getComplexity() == 0) {
+//					//System.out.println("Zero complexity! " + methodComplexity);
+//				}
 			}
 		} finally {
 			bufferedInputStream.close();
 		}
 		return complexities;
 	}
+
+  private boolean shouldIgnore(MethodNode method) {
+    return isAbstract(method.access) || isNative(method.access);
+  }
 
 	private String buildAccess(int access) {
 		StringBuilder b = new StringBuilder();
@@ -176,14 +175,22 @@ public class CyclomaticComplexity {
 	}
 
 	private void buildAbstract(int access, StringBuilder b) {
-		if ((access & Opcodes.ACC_ABSTRACT) != 0)
+		if (isAbstract(access))
 			b.append("abstract ");
 	}
 
+  private boolean isAbstract(int access) {
+    return (access & Opcodes.ACC_ABSTRACT) != 0;
+  }
+
 	private void buildNative(int access, StringBuilder b) {
-		if ((access & Opcodes.ACC_NATIVE) != 0)
+		if (isNative(access))
 			b.append("native ");
 	}
+
+  private boolean isNative(int access) {
+    return (access & Opcodes.ACC_NATIVE) != 0;
+  }
 
 	private void buildSynchronized(int access, StringBuilder b) {
 		if ((access & Opcodes.ACC_SYNCHRONIZED) != 0)

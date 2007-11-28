@@ -31,7 +31,7 @@ public class MetricsComplexityReader implements ComplexityReader {
 
 	public List<MethodComplexity> readMethodComplexities() throws IOException, AnalyzerException{
 		List<MethodComplexity> list = new ArrayList<MethodComplexity>();
-		List<File> allClassesToMeasure = FileUtil.removeTestClassFiles(project.getAllProjectClasses());
+		List<File> allClassesToMeasure = project.allProjectClasses();
 		CyclomaticComplexity cc = new CyclomaticComplexity();
 		for (File className : allClassesToMeasure) {
 			list.addAll(cc.getMethodComplexitiesFor(className));
