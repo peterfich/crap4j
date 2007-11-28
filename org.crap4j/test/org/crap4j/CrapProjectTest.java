@@ -305,5 +305,21 @@ public class CrapProjectTest extends TestCase {
 
   }
 
+  public void testClassDirIsClassFileNotPath() throws Exception {   
+    List<String> classDirs = new ArrayList<String>();
+    classDirs.add(new File(classDir, "DefaultClass.class").getPath());
+    addDefaultClassToDefaultPackage(classDir);
+    
+    CrapProject p = new CrapProject(projectDir, emptyClasspath, emptyTestDirs, classDirs, emptySourceDirs, null);
+    assertProjectDirectory(p);
+    
+    assertEquals(1, p.classDirs().size());
+    assertEquals(projectDir+File.separator+"bin"+File.separator+"DefaultClass.class", p.classDirs().get(0));
+    
+    assertEquals(1, p.allProjectClasses().size());
+    assertEquals(projectDir+File.separator+"bin"+File.separator+"DefaultClass.class", p.allProjectClasses().get(0).getPath());
+  }
+  
+  
 
 }
