@@ -115,9 +115,9 @@ public class Crap4jAntTaskTest extends BuildFileTest{
         if (!f.exists())
           f.mkdir();
         task.setProjectDir(f);
-        Path classDirsPath = task.createClassDirs();
+        Path classDirsPath = task.createClasses();
         classDirsPath.setPath("/tmp/Crap4jAntTaskTest/bin");
-        task.setClassDirs(classDirsPath);
+        task.setClasses(classDirsPath);
         task.execute();
     } finally {
       if (f != null)
@@ -145,7 +145,7 @@ public class Crap4jAntTaskTest extends BuildFileTest{
     assertEquals(projectDir+ File.separator +defaultClassDir1+ File.separator + "DefaultClass.class" + 
                  File.pathSeparator + 
                  projectDir+ File.separator + defaultClassDir1 + File.separator + "DefaultTestCaseClass.class", 
-                 Crap4jAntTaskTest.stringPath(t.getClassDirs()));
+                 Crap4jAntTaskTest.stringPath(t.getClasses()));
   }
   
   public void testClassDirSetWithClasses() throws Exception {
@@ -157,7 +157,7 @@ public class Crap4jAntTaskTest extends BuildFileTest{
     assertEquals(projectDir+ File.separator + defaultClassDir1 + File.separator + "DefaultClass.class"+ 
                  File.pathSeparator + 
                  projectDir+ File.separator + defaultClassDir1 + File.separator + "DefaultTestCaseClass.class", 
-                 Crap4jAntTaskTest.stringPath(t.getClassDirs()));
+                 Crap4jAntTaskTest.stringPath(t.getClasses()));
   }
 
   public void testClassDirSetWithClassesAndWithExclude() throws Exception {
@@ -169,7 +169,7 @@ public class Crap4jAntTaskTest extends BuildFileTest{
     assertEquals(projectDir+ File.separator + defaultClassDir1 + File.separator + "DefaultClass.class" + 
                  File.pathSeparator + 
                  projectDir+ File.separator +defaultClassDir2, 
-                 Crap4jAntTaskTest.stringPath(t.getClassDirs()));
+                 Crap4jAntTaskTest.stringPath(t.getClasses()));
   }
 
   public static String stringPath(Path classDirs2) throws IOException {

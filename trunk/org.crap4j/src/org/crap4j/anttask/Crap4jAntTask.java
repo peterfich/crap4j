@@ -24,31 +24,31 @@ public class Crap4jAntTask extends Task {
 	private File outputDir;
 	
 	private Path libClasspath;
-	private Path classDirs;
-	private Path srcDirs;
-	private Path testClassDirs;
+	private Path classes;
+	private Path srces;
+	private Path testClasses;
 	private Project antProject;
 		
 	public Crap4jAntTask(Project p) {
 		this.antProject = p;
 	}	
 	
-	public Path createClassDirs() {    
-		if (classDirs == null)
-			classDirs = new Path(antProject);
-        return classDirs.createPath();
+	public Path createClasses() {    
+		if (classes == null)
+			classes = new Path(antProject);
+        return classes.createPath();
     }
 
-	public Path createSrcDirs() {    
-		if (srcDirs == null)
-			srcDirs = new Path(antProject);
-        return srcDirs.createPath();
+	public Path createSrces() {    
+		if (srces == null)
+			srces = new Path(antProject);
+        return srces.createPath();
     }
 
-	public Path createTestClassDirs() {    
-		if (testClassDirs == null)
-			testClassDirs = new Path(antProject);
-        return testClassDirs.createPath();
+	public Path createTestClasses() {    
+		if (testClasses == null)
+			testClasses = new Path(antProject);
+        return testClasses.createPath();
     }
 	
 	public Path createLibClasspath() {    
@@ -70,7 +70,7 @@ public class Crap4jAntTask extends Task {
   @Override
 	public void execute() throws BuildException {
     validate(getProjectDir());
-    validate("classes", getClassDirs());
+    validate("classes", getClasses());
     if (isDebug()) {
   		dumpAttributes();
     }
@@ -85,9 +85,9 @@ public class Crap4jAntTask extends Task {
   private void dumpAttributes() {
     System.out.println("projectDir is "+getProjectDir());
     System.out.println("outputDir is "+getOutputDir());
-    System.out.println("srcDir is "+getSrcDirs());
-    System.out.println("classDirs is "+stringOf(getClassDirs()));
-    System.out.println("testClassDirs is "+stringOf(getTestClassDirs()));
+    System.out.println("srcDir is "+getSrces());
+    System.out.println("classDirs is "+stringOf(getClasses()));
+    System.out.println("testClassDirs is "+stringOf(getTestClasses()));
     System.out.println("libClasspath is "+stringOf(getLibClasspath()));
     System.out.println("server is "+getServer());
     System.out.println("downloadAverages is "+isDownloadAverages());
@@ -121,9 +121,9 @@ public class Crap4jAntTask extends Task {
   private CrapProject createCrapProject() {
 		CrapProject p = new CrapProject(getProjectDir().getAbsolutePath(), 
 				makeListFrom(getLibClasspath()), 
-				makeListFrom(getTestClassDirs()), 
-				makeListFrom(getClassDirs()), 
-				makeListFrom(getSrcDirs()), 
+				makeListFrom(getTestClasses()), 
+				makeListFrom(getClasses()), 
+				makeListFrom(getSrces()), 
 				(getOutputDir() != null) ? getOutputDir().getAbsolutePath() : null);
 		return p;
 	}
@@ -188,28 +188,28 @@ public class Crap4jAntTask extends Task {
 		this.projectDir = projectDir;
 	}
 
-	public Path getSrcDirs() {
-		return srcDirs;
+	public Path getSrces() {
+		return srces;
 	}
 
-	public void setSrcDirs(Path path) {
-		this.srcDirs = path;
+	public void setSrces(Path path) {
+		this.srces = path;
 	}
 
-	public Path getTestClassDirs() {
-		return testClassDirs;
+	public Path getTestClasses() {
+		return testClasses;
 	}
 
-	public void setTestClassDirs(Path path) {
-		this.testClassDirs = path;
+	public void setTestClasses(Path path) {
+		this.testClasses = path;
 	}
 
-	public Path getClassDirs() {
-		return classDirs;
+	public Path getClasses() {
+		return classes;
 	}
 
-	public void setClassDirs(Path path) {
-		this.classDirs = path;
+	public void setClasses(Path path) {
+		this.classes = path;
 	}
 
   public boolean isDownloadAverages() {
