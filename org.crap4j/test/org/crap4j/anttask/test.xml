@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="MyTask" basedir="." default="run_crap4j" >
-	<taskdef name="crap4j" classname="com.xagitarlabs.crap4j.anttask.Crap4jAntTask" classpath="/Users/bobevans/Documents/projects/svnworkspace/crap4j/bin" />
+	<taskdef name="crap4j" classname="org.crap4j.anttask.Crap4jAntTask" classpath="/Users/bobevans/Documents/projects/crap4j/org.crap4j/bin" />
 		
 	
 	
 	<target name="run_crap4j">
-		<crap4j projectdir = "/tmp" outputDir="/tmp/output" >
+		<crap4j projectdir = "/tmp/crap4jant" outputDir="/tmp/crap4jant/output" >
 			<classDirs>
-				<pathElement location="/tmp/path1" />
-				<pathElement location="/tmp/path2" />
+				<pathElement location="/tmp/crap4jant/path1" />
+				<pathElement location="/tmp/crap4jant/path2" />
 			</classDirs>
 			<srcDirs>
-				<pathElement location="/tmp/src" />
+				<pathElement location="/tmp/crap4jant/src" />
 			</srcDirs>
 			<testClassDirs>
-				<pathElement location="/tmp/testpath1" />
-				<pathElement location="/tmp/testpath2" />
+				<pathElement location="/tmp/crap4jant/testpath1" />
+				<pathElement location="/tmp/crap4jant/testpath2" />
 			</testClassDirs>
 			<libClasspath>
-				<pathElement location="/tmp/libpath1" />
-				<fileset dir="/tmp/testlibs">
+				<pathElement location="/tmp/crap4jant/libpath1" />
+				<fileset dir="/tmp/crap4jant/testlibs">
 					<include name="**/*.jar" />
 				</fileset>
 			</libClasspath>

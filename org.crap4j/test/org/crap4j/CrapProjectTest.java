@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,7 +23,7 @@ import org.crap4j.util.MyStringBuilder;
 public class CrapProjectTest extends TestCase {
 
 	private String projectFolder;
-	private ArrayList<String> dirsCreated;
+
 	private String projectDir;
 	private String srcDir;
 	private String classDir;
@@ -36,12 +35,8 @@ public class CrapProjectTest extends TestCase {
 	private String defaultTestDir1;
 	private String projectName;
 	private String classpathLib;
-	private static final List<String> emptyClasspath = Collections.EMPTY_LIST;
-	private static final List<String> emptyClassDirs = Collections.EMPTY_LIST;
-	private static final List<String> emptyTestDirs = Collections.EMPTY_LIST;
-	private static final List<String> emptySourceDirs = Collections.EMPTY_LIST;
 
-
+  private Crap4jTestFileSystemUtility fileSystemUtil;
 	public CrapProjectTest(String name) {
 		super(name);
 	}
@@ -49,95 +44,35 @@ public class CrapProjectTest extends TestCase {
 	
 	@Override
 	protected void setUp() throws Exception {
-		dirsCreated = new ArrayList<String>();
+	  fileSystemUtil = new Crap4jTestFileSystemUtility();
 		createDefaultProject();
 	}
 
 
 	private void createDefaultProject() throws IOException {
 		testDirRoot = "CrapProjectTestDir";
-		projectFolder = createTestFileSystem(testDirRoot+Long.toString(System.currentTimeMillis()));
+		projectFolder = fileSystemUtil.createTestFileSystem(testDirRoot+Long.toString(System.currentTimeMillis()));
 		projectName = "testCrapProjectCtorDir";
-		projectDir = makeDir(projectFolder, projectName);
-		srcDir = makeDir(projectDir, "src");
+		projectDir = fileSystemUtil.makeDir(projectFolder, projectName);
+		srcDir = fileSystemUtil.makeDir(projectDir, "src");
 		defaultClassDir = "bin";
 		defaultTestDir2 = "agitar"+File.separator+"test_bin";
 		defaultTestDir1 = "test_bin";
 		classpathLib = "lib"+File.separator+"junit.jar";
 		
-		classDir = makeDir(projectDir, defaultClassDir);
-		testDir1 = makeDir(projectDir, defaultTestDir1);
-		testDir2 = makeDir(projectDir, defaultTestDir2);
+		classDir = fileSystemUtil.makeDir(projectDir, defaultClassDir);
+		testDir1 = fileSystemUtil.makeDir(projectDir, defaultTestDir1);
+		testDir2 = fileSystemUtil.makeDir(projectDir, defaultTestDir2);
 	}
 
 	@Override
 	protected void tearDown() throws Exception {		
-		removeDirsCreated();
+	  fileSystemUtil.removeDirsCreated();
 		testDirRoot = null;
 		defaultClassDir = null;
 		defaultTestDir2 = null;
 		defaultTestDir1 = null;
 	}
-
-	private void removeDirsCreated() {
-		for (String dir : dirsCreated) {
-			File file = new File(dir);
-			if (file.exists())
-			  FileUtil.deleteDirectory(file);
-		}		
-	}
-
-	private String createTestFileSystem(String folderName) throws IOException {		
-		return makeDir(getTempDir(), folderName);
-	}
-
-	private String makeDir(File rootDir, String projectName) throws IOException {
-		File dir = new File(rootDir, projectName);
-		if (dir.exists())
-			throw new IllegalArgumentException("The directory"+dir+" already exists!");
-		
-		dir.mkdirs();
-		String dirStr = dir.getCanonicalPath();
-		dirsCreated.add(dirStr);
-		return dirStr;
-	}
-	
-	private String makeDir(String rootDir, String name) throws IOException {
-		return makeDir(new File(rootDir), name);
-	}
-
-  private void addDefaultClassToDefaultPackage(String classDir2) throws Exception {
-    copyClassToDir(classDir2, "DefaultClass.class");
-  }
-
-  private void addDefaultTestClassToDefaultPackage(String classDir2) throws Exception {
-    copyClassToDir(classDir2, "DefaultTestCaseClass.class");
-  }
-
-  
-  private void copyClassToDir(String classDir2, String className) throws FileNotFoundException, IOException {
-    BufferedOutputStream out = null;
-    try {
-      out = new BufferedOutputStream(new DataOutputStream(new FileOutputStream(new File(classDir2, className))));
-      BufferedInputStream s = new BufferedInputStream(getClass().getResourceAsStream(className));
-      byte[] b = new byte[1024];
-      while (s.read(b) != -1) {
-        out.write(b);
-      }
-    } finally {
-      if (out != null)
-        out.close();
-    }
-  }
-
-	private String getTempDir() {
-		String javaTmpDir = System.getProperty("java.io.tmpdir");
-		if (javaTmpDir == null) {
-			throw new IllegalArgumentException("Cannot get the tmp dir!!!");
-		}
-		return javaTmpDir;
-	}
-
 
 
   private void assertXmlMatches(String actual, String expected) {
@@ -224,7 +159,7 @@ public class CrapProjectTest extends TestCase {
 	}
 
 	public void testCtorNoPaths() throws Exception {
-			CrapProject p = new CrapProject(projectDir, emptyClasspath, emptyTestDirs, emptyClassDirs,  emptySourceDirs, null);
+			CrapProject p = new CrapProject(projectDir, Crap4jTestFileSystemUtility.emptyClasspath, Crap4jTestFileSystemUtility.emptyTestDirs, Crap4jTestFileSystemUtility.emptyClassDirs,  Crap4jTestFileSystemUtility.emptySourceDirs, null);
 			assertEquals(0, p.libClasspaths().size());
 			assertEquals(0, p.classDirs().size());
 			assertEquals(0, p.sourceDirs().size());
@@ -236,7 +171,7 @@ public class CrapProjectTest extends TestCase {
 	
 	public void testCtorNullProjectDir() throws Exception {
 		try {
-			CrapProject p = new CrapProject(null, emptyClasspath, emptyTestDirs, emptyClassDirs,	emptySourceDirs, null);
+			CrapProject p = new CrapProject(null, Crap4jTestFileSystemUtility.emptyClasspath, Crap4jTestFileSystemUtility.emptyTestDirs, Crap4jTestFileSystemUtility.emptyClassDirs,	Crap4jTestFileSystemUtility.emptySourceDirs, null);
 			fail("Should have thrown illegal arg on null projectDir");
 		} catch (IllegalArgumentException e) {			
 		}
@@ -244,7 +179,7 @@ public class CrapProjectTest extends TestCase {
 	
 	public void testCtorNonExistentProjectDir() throws Exception {
 		try {
-			CrapProject p = new CrapProject("garblegarbledoesnotexist", emptyClasspath, emptyTestDirs, emptyClassDirs,	emptySourceDirs, null);
+			CrapProject p = new CrapProject("garblegarbledoesnotexist", Crap4jTestFileSystemUtility.emptyClasspath, Crap4jTestFileSystemUtility.emptyTestDirs, Crap4jTestFileSystemUtility.emptyClassDirs,	Crap4jTestFileSystemUtility.emptySourceDirs, null);
 			fail("Should have thrown illegal arg on non-existent projectDir");
 		} catch (IllegalArgumentException e) {			
 		}
@@ -253,13 +188,13 @@ public class CrapProjectTest extends TestCase {
   public void testAllProjectClassesAllTestClasses() throws Exception {   
     List<String> classDirs = new ArrayList<String>();
     classDirs.add(classDir);
-    addDefaultClassToDefaultPackage(classDir);
+    fileSystemUtil.addDefaultClassToDefaultPackage(classDir);
     
     List<String> testClassDirs = new ArrayList<String>();
     testClassDirs.add(testDir1);
-    addDefaultTestClassToDefaultPackage(testDir1);
+    fileSystemUtil.addDefaultTestClassToDefaultPackage(testDir1);
  
-    CrapProject p = new CrapProject(projectDir, emptyClasspath, testClassDirs, classDirs, emptySourceDirs, null);
+    CrapProject p = new CrapProject(projectDir, Crap4jTestFileSystemUtility.emptyClasspath, testClassDirs, classDirs, Crap4jTestFileSystemUtility.emptySourceDirs, null);
     assertProjectDirectory(p);
     
     assertEquals(1, p.classDirs().size());
@@ -276,10 +211,10 @@ public class CrapProjectTest extends TestCase {
   public void testAllProjectClassesFilterTests() throws Exception {   
     List<String> classDirs = new ArrayList<String>();
     classDirs.add(classDir);
-    addDefaultClassToDefaultPackage(classDir);
-    addDefaultTestClassToDefaultPackage(classDir);
+    fileSystemUtil.addDefaultClassToDefaultPackage(classDir);
+    fileSystemUtil.addDefaultTestClassToDefaultPackage(classDir);
  
-    CrapProject p = new CrapProject(projectDir, emptyClasspath, emptyTestDirs, classDirs, emptySourceDirs, null);
+    CrapProject p = new CrapProject(projectDir, Crap4jTestFileSystemUtility.emptyClasspath, Crap4jTestFileSystemUtility.emptyTestDirs, classDirs, Crap4jTestFileSystemUtility.emptySourceDirs, null);
     assertProjectDirectory(p);
     
     assertEquals(1, p.classDirs().size());
@@ -292,10 +227,10 @@ public class CrapProjectTest extends TestCase {
   public void testAllTestClasses() throws Exception {   
     List<String> testClassDirs = new ArrayList<String>();
     testClassDirs.add(testDir1);
-    addDefaultClassToDefaultPackage(testDir1);
-    addDefaultTestClassToDefaultPackage(testDir1);
+    fileSystemUtil.addDefaultClassToDefaultPackage(testDir1);
+    fileSystemUtil.addDefaultTestClassToDefaultPackage(testDir1);
  
-    CrapProject p = new CrapProject(projectDir, emptyClasspath, testClassDirs, emptyClassDirs, emptySourceDirs, null);
+    CrapProject p = new CrapProject(projectDir, Crap4jTestFileSystemUtility.emptyClasspath, testClassDirs, Crap4jTestFileSystemUtility.emptyClassDirs, Crap4jTestFileSystemUtility.emptySourceDirs, null);
     assertProjectDirectory(p);
     
     assertEquals(0, p.allProjectClasses().size());
@@ -308,9 +243,9 @@ public class CrapProjectTest extends TestCase {
   public void testClassDirIsClassFileNotPath() throws Exception {   
     List<String> classDirs = new ArrayList<String>();
     classDirs.add(new File(classDir, "DefaultClass.class").getPath());
-    addDefaultClassToDefaultPackage(classDir);
+    fileSystemUtil.addDefaultClassToDefaultPackage(classDir);
     
-    CrapProject p = new CrapProject(projectDir, emptyClasspath, emptyTestDirs, classDirs, emptySourceDirs, null);
+    CrapProject p = new CrapProject(projectDir, Crap4jTestFileSystemUtility.emptyClasspath, Crap4jTestFileSystemUtility.emptyTestDirs, classDirs, Crap4jTestFileSystemUtility.emptySourceDirs, null);
     assertProjectDirectory(p);
     
     assertEquals(1, p.classDirs().size());

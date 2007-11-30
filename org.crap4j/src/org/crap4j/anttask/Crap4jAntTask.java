@@ -29,9 +29,9 @@ public class Crap4jAntTask extends Task {
 	private Path testClassDirs;
 	private Project antProject;
 		
-	public void CrapjAntTask(Project p) {
+	public Crap4jAntTask(Project p) {
 		this.antProject = p;
-	}
+	}	
 	
 	public Path createClassDirs() {    
 		if (classDirs == null)
@@ -69,17 +69,10 @@ public class Crap4jAntTask extends Task {
   
   @Override
 	public void execute() throws BuildException {
+    validate(getProjectDir());
+    validate("classes", getClassDirs());
     if (isDebug()) {
-  		System.out.println("projectDir is "+getProjectDir());
-  		System.out.println("outputDir is "+getOutputDir());
-  		System.out.println("srcDir is "+getSrcDirs());
-  		System.out.println("classDirs is "+stringOf(getClassDirs()));
-  		System.out.println("testClassDirs is "+stringOf(getTestClassDirs()));
-  		System.out.println("libClasspath is "+stringOf(getLibClasspath()));
-  		System.out.println("server is "+getServer());
-  		System.out.println("downloadAverages is "+isDownloadAverages());
-  		System.out.println("debug is "+isDebug());
-  		System.out.println("dontTest is "+isDontTest());
+  		dumpAttributes();
     }
 		CrapProject p = createCrapProject();
 		try {
@@ -89,7 +82,34 @@ public class Crap4jAntTask extends Task {
 		}
 	}
 
-  private String stringOf(Path classDirs2) {
+  private void dumpAttributes() {
+    System.out.println("projectDir is "+getProjectDir());
+    System.out.println("outputDir is "+getOutputDir());
+    System.out.println("srcDir is "+getSrcDirs());
+    System.out.println("classDirs is "+stringOf(getClassDirs()));
+    System.out.println("testClassDirs is "+stringOf(getTestClassDirs()));
+    System.out.println("libClasspath is "+stringOf(getLibClasspath()));
+    System.out.println("server is "+getServer());
+    System.out.println("downloadAverages is "+isDownloadAverages());
+    System.out.println("debug is "+isDebug());
+    System.out.println("dontTest is "+isDontTest());
+  }
+
+  private void validate(File projectDir2) {
+    if (projectDir2 == null)
+      throw new BuildException("Project Dir, "+projectDir2+" is null");
+    if (!projectDir2.exists())
+      throw new BuildException("Project Dir, "+projectDir2+" does not exist");
+    if (!projectDir2.isDirectory())
+      throw new BuildException("Project Dir, "+projectDir2+" is not a directory");
+  }
+
+  private void validate(String attributeName, Path path) {
+     if (path == null || path.list().length == 0)
+       throw new BuildException(attributeName+" cannot be empty.");
+  }
+
+  public static String stringOf(Path classDirs2) {
 		StringBuilder b = new StringBuilder();
 		for (String s : classDirs2.list()) {
 			b.append(s);
@@ -98,7 +118,7 @@ public class Crap4jAntTask extends Task {
 		return b.toString();
 	}
 
-	private CrapProject createCrapProject() {
+  private CrapProject createCrapProject() {
 		CrapProject p = new CrapProject(getProjectDir().getAbsolutePath(), 
 				makeListFrom(getLibClasspath()), 
 				makeListFrom(getTestClassDirs()), 
@@ -110,6 +130,9 @@ public class Crap4jAntTask extends Task {
 
 	private List<String> makeListFrom(Path path) {
 		List<String> list = new ArrayList<String>();
+		if (path == null)
+		  return list;
+		
 		for (String string : path.list()) {
 			list.add(string);			
 		}
