@@ -2,17 +2,17 @@
 <project name="MyTask" basedir="/tmp" default="run_crap4j" >
 	<taskdef name="crap4j" classname="org.crap4j.anttask.Crap4jAntTask" classpath="/Users/bobevans/Documents/projects/crap4j/org.crap4j/bin" />
 	
-
-	
 	<target name="run_crap4j">
 		<crap4j projectdir = "/tmp/crap4jant/testProjectDir" outputDir="/tmp//crap4jant/testProjectDir/output" >
 			<classDirs>
 				<fileset dir="/tmp/crap4jant/testProjectDir/path1">
 					<include name="**/*.class" />
+					<exclude name="**/Test*.class" />
 				</fileset>
+				<pathElement location="/tmp/crap4jant/testProjectDir/path2" />
 			</classDirs>
 			<srcDirs>
-				<pathElement location="/tmp//crap4jant/testProjectDir/src" />
+				<pathElement location="/tmp/crap4jant/testProjectDir/src" />
 			</srcDirs>
 			<testClassDirs>
 				<pathElement location="/tmp/crap4jant/testProjectDir/testpath1" />
