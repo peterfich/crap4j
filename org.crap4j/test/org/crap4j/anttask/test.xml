@@ -6,17 +6,17 @@
 	
 	<target name="run_crap4j">
 		<crap4j projectdir = "/tmp/crap4jant" outputDir="/tmp/crap4jant/output" >
-			<classDirs>
+			<classes>
 				<pathElement location="/tmp/crap4jant/path1" />
 				<pathElement location="/tmp/crap4jant/path2" />
-			</classDirs>
-			<srcDirs>
+			</classes>
+			<srces>
 				<pathElement location="/tmp/crap4jant/src" />
-			</srcDirs>
-			<testClassDirs>
+			</srces>
+			<testClasses>
 				<pathElement location="/tmp/crap4jant/testpath1" />
 				<pathElement location="/tmp/crap4jant/testpath2" />
-			</testClassDirs>
+			</testClasses>
 			<libClasspath>
 				<pathElement location="/tmp/crap4jant/libpath1" />
 				<fileset dir="/tmp/crap4jant/testlibs">

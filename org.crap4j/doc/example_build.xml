@@ -28,24 +28,24 @@
 			    outputDir="agitar/reports/crap4j" 
 			    dontTest="false" debug="false">
 			
-			<classDirs>
+			<classes>
 				<!-- put the project's class directories here. These are the classes you want crap numbers for -->
 				<pathElement location="${my.project.root.dir}/bin" />
-			</classDirs>
+			</classes>
 			
-			<srcDirs>
+			<srces>
 				<!-- The project's src folders -->
 				<pathElement location="${my.project.root.dir}/src" />
-			</srcDirs>
+			</srces>
 			
-			<testClassDirs>
+			<testClasses>
 				<!-- The project's test classes. 
 				         Note, separating it from the project classes makes life so much easier
 				         but if you didn't, then you probably just want to repeat the classDir entry here -->
 				<pathElement location="${my.project.root.dir}/test_bin" />
 				<pathElement location="${my.project.root.dir}/integration_tests_bin" />
 				<pathElement location="${my.project.root.dir}/agitar/test_bin" />
-			</testClassDirs>
+			</testClasses>
 			
 			<libClasspath>
 				<!-- Put the dependent paths and libraries here. 
