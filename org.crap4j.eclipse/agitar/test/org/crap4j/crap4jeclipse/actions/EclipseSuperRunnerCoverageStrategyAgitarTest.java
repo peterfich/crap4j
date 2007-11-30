@@ -54,7 +54,7 @@ public class EclipseSuperRunnerCoverageStrategyAgitarTest extends AgitarTestCase
         Mockingbird.enterRecordingMode();
         Mockingbird.setReturnValue(crapProject.getCoverageDir(), "");
         Mockingbird.setReturnValue(true, FileUtil.class, "ensureCleanDirectory", "(java.lang.String)void", null, 1);
-        Mockingbird.setReturnValue(crapProject.getAllProjectClasses(), null);
+        Mockingbird.setReturnValue(crapProject.allProjectClasses(), null);
         Mockingbird.setReturnValue(FileUtil.hasTestClassFiles(null), false);
         Runnable runnable = (Runnable) Mockingbird.getProxyObject(Class.forName("org.crap4j.crap4jeclipse.actions.EclipseSuperRunnerCoverageStrategy$2"));
         Mockingbird.replaceObjectForRecording(Class.forName("org.crap4j.crap4jeclipse.actions.EclipseSuperRunnerCoverageStrategy$2"), "<init>(org.crap4j.crap4jeclipse.actions.EclipseSuperRunnerCoverageStrategy,org.crap4j.Crap4jRunner,org.crap4j.CrapProject)", runnable);

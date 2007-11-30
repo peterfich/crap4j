@@ -36,7 +36,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
       return;
     }
 
-    if (FileUtil.hasTestClassFiles(crapProject.getAllProjectClasses())) { 
+    if (FileUtil.hasTestClassFiles(crapProject.allTestClasses())) { 
       RunJUnitTestsShortcut testrunner = new RunJUnitTestsShortcut();
       TestRunListener.addListener(new Crap4jTestListenerListener() {
         public void cancelled() {
@@ -50,7 +50,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
         }
       });
       try {
-      testrunner.launch(selection, "run");
+        testrunner.launch(selection, "run");
       } catch (Throwable t) {
     	  Crap4jEclipseLog.logError("Could not run tests on project: "+crapProject.getProjectName(), t);
       }
