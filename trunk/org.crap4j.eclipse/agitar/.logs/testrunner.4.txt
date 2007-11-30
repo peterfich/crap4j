@@ -1,0 +1,237 @@
+[INFO]    [16:29:54:049] <2> diagnostic.RemoteTestRunner  Running RemoteTestRunner with args -classnames,org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest,org.crap4j.crap4jeclipse.preferences.Crap4jPreferencePageAgitarTest,org.crap4j.crap4jeclipse.actions.EclipseCrapProjectBuilderAgitarTest,org.crap4j.crap4jeclipse.actions.EclipseSuperRunnerCoverageStrategyAgitarTest,org.crap4j.crap4jeclipse.popup.actions.Crap4jActionAgitarTest,org.crap4j.crap4jeclipse.ActivatorAgitarTest,org.crap4j.crap4jeclipse.actions.TestRunListenerAgitarTest,org.crap4j.crap4jeclipse.preferences.PreferenceConstantsAgitarTest,org.crap4j.crap4jeclipse.actions.Crap4jActionAgitarTest,org.crap4j.crap4jeclipse.preferences.PreferenceInitializerAgitarTest,org.crap4j.crap4jeclipse.views.Crap4jViewAgitarTest,-cp,/Users/bobevans/Documents/projects/crap4j/org.crap4j.eclipse/bin;/Users/bobevans/Documents/projects/crap4j/org.crap4j.eclipse/bin;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.ui_3.3.1.M20070910-0800b.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.swt_3.3.1.v3346j.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.swt.carbon.macosx_3.3.1.v3346i.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jface_3.3.1.M20070910-0800b.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.commands_3.3.0.I20070605-0010.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.ui.workbench_3.3.1.M20070921-1200.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.runtime_3.3.100.v20070530.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.osgi_3.3.1.R33x_v20070828.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.equinox.common_3.3.0.v20070426.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.jobs_3.3.1.R33x_v20070709.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.runtime.compatibility.registry_3.2.100.v20070316/runtime_registry_compatibility.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.equinox.registry_3.3.1.R33x_v20070802.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.equinox.preferences_3.2.100.v20070522.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.contenttype_3.2.100.v20070319.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.equinox.app_1.0.1.R33x_v20070828.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.resources_3.3.0.v20070604.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.ui_3.3.1.r331_v20070906.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.core_3.3.1.v_780_R33x.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.compiler.apt_1.0.1.R33x_v20070831-0435.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.compiler.tool_1.0.1.v_780_R33x.jar;/Users/bobevans/Documents/projects/crap4j/org.crap4j/bin;/Users/bobevans/Documents/projects/crap4j/org.crap4j/test_bin;/Users/bobevans/Documents/projects/crap4j/org.crap4j/integration_tests_bin;/Users/bobevans/Documents/projects/crap4j/org.crap4j/agitar/test_bin;/Users/bobevans/Documents/projects/crap4j/org.crap4j/dist/crap4j/lib/args4j-2.0.1.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.junit_3.8.2.v200706111738/junit.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/ext/org.agitar.mock5.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.testrunner_2.0.3.000562/com.agitar.eclipse.testrunner.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.testrunner_2.0.3.000562/com.agitar.eclipse.testrunner.main.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.check.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.common.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.coverage.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.eclipse.core.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.eclipse.coverage.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/com.agitar.eclipse.project.mock.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/asm-tree.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/asm.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/commons-cli-1.0.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ezlicgen30.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ezlicrun30.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/hsqldb.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ils10.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ilsadmin10.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ilsclient10.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ilscrypt10.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/ilsdb10.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/jvmdetector.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.coverage_2.0.3.000562/lib/wdortl20.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/com.agitar.eclipse.api.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/com.agitar.mockingbird.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/com.agitar.testrunner.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/ant-junit.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/ant-launcher.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/ant.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/commons-codec-1.3.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/commons-httpclient-3.0.1.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/commons-logging.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/junit.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.api_2.0.3.000562/lib/xalan.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.help_3.3.1.v20070726_33x.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.junit_3.3.1.r331_v20070829.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jface.text_3.3.1.r331_v20070629.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.text_3.3.0.v20070606-0010.jar;/Users/bobevans/Documents/projects/crap4j/org.crap4j/dist/crap4j/lib/asmlib;/Users/bobevans/Documents/projects/crap4j/org.crap4j/lib/com.agitar.eclipse.api_4.2.0.401405/lib/ant.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/com.agitar.eclipse.junit.runner_2.0.3.000562/com.agitar.eclipse.junit.runner.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.jdt.launching_3.3.1.v20070808_r331.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.core.filebuffers_3.3.1.r331_v20070829.jar;/Users/bobevans/Applications/eclipse-3.3.1/plugins/org.eclipse.debug.core_3.3.1.v20070731_r331.jar,-port,64505,-root,/Users/bobevans/Documents/projects/crap4j/org.crap4j.eclipse,-projectName,org.crap4j.eclipse,-agitardir,/Users/bobevans/Documents/projects/crap4j/org.crap4j.eclipse/agitar,-testloaderclass,com.agitar.eclipse.junit.runner.AgitarJUnitTestLoader
+[INFO]    [16:29:56:133] <3> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:29:56:133] <4> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@32bc9
+[INFO]    [16:29:56:139] <5> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@eebf17
+[INFO]    [16:29:56:139] <6> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:29:56:811] <7> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogErrorThrowsNullPointerException() line 28, using security settings associated with "<unknown>".
+[INFO]    [16:29:57:055] <8> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogErrorThrowsNullPointerException1() line 45, using security settings associated with "<unknown>".
+[INFO]    [16:29:57:109] <9> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogErrorThrowsNullPointerException2() line 59, using security settings associated with "<unknown>".
+[INFO]    [16:29:57:114] <10> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogErrorThrowsNullPointerException3() line 70, using security settings associated with "<unknown>".
+[INFO]    [16:29:57:120] <11> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogInfoThrowsNullPointerException() line 86, using security settings associated with "<unknown>".
+[INFO]    [16:29:57:126] <12> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.Crap4jEclipseLogAgitarTest.testLogInfoThrowsNullPointerException1() line 99, using security settings associated with "<unknown>".
+[INFO]    [16:29:59:205] <15> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:29:59:206] <16> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:29:59:206] <17> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:29:59:206] <18> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:29:59:206] <19> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:29:59:206] <20> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:29:59:206] <21> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:29:59:206] <22> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:29:59:207] <23> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:29:59:207] <24> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:29:59:207] <25> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@75a30f
+[INFO]    [16:29:59:226] <26> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@5a7ff7
+[INFO]    [16:29:59:226] <27> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:29:59:226] <28> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:29:59:226] <29> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:29:59:226] <30> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:29:59:227] <31> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:29:59:227] <32> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:29:59:227] <33> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:29:59:227] <34> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:29:59:227] <35> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:29:59:227] <36> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:05:507] <43> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:05:507] <44> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:05:507] <45> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:05:507] <46> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:05:508] <47> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:05:508] <48> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:05:508] <49> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:05:508] <50> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:05:508] <51> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:05:508] <52> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:05:508] <53> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@2f1d7a
+[INFO]    [16:30:05:510] <54> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@5efe34
+[INFO]    [16:30:05:511] <55> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:05:511] <56> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:05:511] <57> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:05:511] <58> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:05:511] <59> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:05:511] <60> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:05:511] <61> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:05:511] <62> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:05:512] <63> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:05:512] <64> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:10:408] <69> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.actions.EclipseCrapProjectBuilderAgitarTest.testConstructor() line 56, using security settings associated with "<unknown>".
+[INFO]    [16:30:19:261] <73> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:19:261] <74> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:19:261] <75> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:19:261] <76> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:19:262] <77> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:19:262] <78> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:19:262] <79> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:19:262] <80> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:19:262] <81> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:19:263] <82> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:19:263] <83> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@1f05a1
+[INFO]    [16:30:19:281] <84> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@510b03
+[INFO]    [16:30:19:281] <85> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:19:282] <86> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:19:282] <87> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:19:282] <88> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:19:282] <89> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:19:282] <90> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:19:282] <91> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:19:282] <92> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:19:282] <93> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:19:283] <94> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:20:122] <95> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.actions.EclipseSuperRunnerCoverageStrategyAgitarTest.testExecuteWithAggressiveMocks() line 38, using security settings associated with "<unknown>".
+[INFO]    [16:30:22:618] <97> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:22:645] <98> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:22:645] <99> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:22:646] <100> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:22:646] <101> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:22:646] <102> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:22:647] <103> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:22:647] <104> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:22:647] <105> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:22:648] <106> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:22:648] <107> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@2b6836
+[INFO]    [16:30:22:650] <108> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@ab90e2
+[INFO]    [16:30:22:650] <109> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:22:650] <110> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:22:650] <111> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:22:650] <112> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:22:651] <113> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:22:651] <114> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:22:651] <115> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:22:651] <116> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:22:651] <117> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:22:652] <118> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:31:218] <130> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:31:218] <131> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:31:218] <132> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:31:218] <133> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:31:218] <134> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:31:219] <135> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:31:219] <136> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:31:219] <137> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:31:219] <138> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:31:219] <139> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:31:219] <140> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@ad0e9f
+[INFO]    [16:30:31:238] <141> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@fa8363
+[INFO]    [16:30:31:238] <142> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:31:238] <143> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:31:238] <144> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:31:238] <145> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:31:238] <146> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:31:238] <147> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:31:239] <148> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:31:239] <149> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:31:239] <150> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:31:239] <151> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:574] <153> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:574] <154> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:574] <155> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:574] <156> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:574] <157> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:574] <158> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:575] <159> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:575] <160> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:577] <161> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:577] <162> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:577] <163> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@2cc289
+[INFO]    [16:30:37:604] <164> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@5888f7
+[INFO]    [16:30:37:604] <165> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:604] <166> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:604] <167> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:604] <168> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:604] <169> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:604] <170> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:605] <171> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:605] <172> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:605] <173> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:605] <174> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:758] <175> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:759] <176> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:759] <177> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:759] <178> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:759] <179> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:759] <180> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:759] <181> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:759] <182> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:759] <183> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:760] <184> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:760] <185> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@1935d
+[INFO]    [16:30:37:761] <186> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@1fc79a
+[INFO]    [16:30:37:761] <187> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:761] <188> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:762] <189> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:762] <190> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:762] <191> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:762] <192> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:762] <193> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:762] <194> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:762] <195> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:762] <196> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:823] <197> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:823] <198> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:823] <199> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:824] <200> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:824] <201> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:824] <202> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:824] <203> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:824] <204> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:824] <205> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:825] <206> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:37:825] <207> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@37c18b
+[INFO]    [16:30:37:826] <208> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@400fd9
+[INFO]    [16:30:37:827] <209> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:37:827] <210> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:37:827] <211> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:37:827] <212> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:37:827] <213> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:37:827] <214> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:37:827] <215> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:37:828] <216> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:37:828] <217> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:37:828] <218> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:45:009] <220> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.actions.Crap4jActionAgitarTest.testSelectionChanged() line 174, using security settings associated with "<unknown>".
+[INFO]    [16:30:47:571] <222> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.actions.Crap4jActionAgitarTest.testRun1() line 103, using security settings associated with "<unknown>".
+[INFO]    [16:30:48:389] <224> userlog  Permission denied: FilePermission "read /System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar" was denied to org.crap4j.crap4jeclipse.actions.Crap4jActionAgitarTest.testRun2() line 128, using security settings associated with "<unknown>".
+[INFO]    [16:30:48:916] <225> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:48:917] <226> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:48:917] <227> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:48:917] <228> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:48:917] <229> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:48:917] <230> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:48:917] <231> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:48:917] <232> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:48:918] <233> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:48:918] <234> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:48:918] <235> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@ee53fc
+[INFO]    [16:30:48:937] <236> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@636311
+[INFO]    [16:30:48:938] <237> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:48:938] <238> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:48:938] <239> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:48:938] <240> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:48:938] <241> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:48:938] <242> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:48:938] <243> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:48:939] <244> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:48:939] <245> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:48:939] <246> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:50:672] <249> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:50:672] <250> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:50:672] <251> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:50:672] <252> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:50:673] <253> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:50:673] <254> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:50:673] <255> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:50:673] <256> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:50:673] <257> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:50:673] <258> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:30:50:673] <259> diagnostic.ReflectionCacheRegistry  Thread[main,5,main] Popping loader: com.agitar.common.util.ReflectionCacheRegistry$ClassLoaderHolder@bb65ee
+[INFO]    [16:30:50:675] <260> diagnostic.ReflectionCacheRegistry  pushing loader: com.agitar.testrunner.InstrumentingClassLoader@a0f9cb
+[INFO]    [16:30:50:675] <261> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToMethodMap
+[INFO]    [16:30:50:675] <262> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.invocation.Invoke.memberMap
+[INFO]    [16:30:50:675] <263> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.stringToStaticMethodMap
+[INFO]    [16:30:50:675] <264> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.mockingbird.instrumenter.MockingbirdSubclassCache
+[INFO]    [16:30:50:675] <265> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.MethodCache.memberMap
+[INFO]    [16:30:50:676] <266> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.interceptor.Interceptor.classMap
+[INFO]    [16:30:50:676] <267> diagnostic.ClassCacheMap  Clearing ClassCacheMap: ClassInfoCache
+[INFO]    [16:30:50:676] <268> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.internalNameToClassMap
+[INFO]    [16:30:50:676] <269> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.classToInternalNameMap
+[INFO]    [16:30:50:676] <270> diagnostic.ClassCacheMap  Clearing ClassCacheMap: com.agitar.lib.mockingbird.ClassCache.primitiveInternalNameToClassMap
+[INFO]    [16:31:10:969] <288> userlog.TBEInstrumenterHelper-->  Could not instrument org.eclipse.core.databinding.observable.Realm (not in project classpath: no path available)
