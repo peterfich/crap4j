@@ -7,7 +7,7 @@
 			<classDirs>
 				<fileset dir="/tmp/crap4jant/testProjectDir/path1">
 					<include name="**/*.class" />
-					<exclude name="**/Test*.class" />
+					<exclude name="**/DefaultTest*.class" />
 				</fileset>
 				<pathElement location="/tmp/crap4jant/testProjectDir/path2" />
 			</classDirs>

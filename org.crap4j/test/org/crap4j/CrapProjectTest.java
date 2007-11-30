@@ -51,7 +51,7 @@ public class CrapProjectTest extends TestCase {
 
 	private void createDefaultProject() throws IOException {
 		testDirRoot = "CrapProjectTestDir";
-		projectFolder = fileSystemUtil.createTestFileSystem(testDirRoot+Long.toString(System.currentTimeMillis()));
+		projectFolder = fileSystemUtil.createTestFileSystem(testDirRoot);
 		projectName = "testCrapProjectCtorDir";
 		projectDir = fileSystemUtil.makeDir(projectFolder, projectName);
 		srcDir = fileSystemUtil.makeDir(projectDir, "src");
