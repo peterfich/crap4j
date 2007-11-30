@@ -17,6 +17,15 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.5"/>
     <property name="source" value="1.5"/>
+	
+	<property name="retroweaver.home" value="${project_dir}" />
+	<taskdef name="retroweaver" classname="net.sourceforge.retroweaver.ant.RetroWeaverTask">
+	  <classpath>
+	    <pathelement location="${retroweaver.home}/lib/retroweaver-all-2.0.2.jar"/>
+	  </classpath>
+	</taskdef>
+	
+	
     <path id="JUnit 3.libraryclasspath">
         <pathelement location="${eclipse_home}/plugins/org.junit_3.8.2.v200706111738/junit.jar"/>
     </path>
@@ -100,6 +109,7 @@
 		<copy file="${build_dir}/org.crap4j.jar" todir="${project_dir}/dist/crap4j/lib"/> 					
 		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${project_dir}/dist/crap4j/lib"/>
 		<copy file="${project_dir}/lib/asmlib.jar" todir="${project_dir}/dist/crap4j/lib"/>
+		<copy file="${project_dir}/lib/retroweaver-all-2.0.2.jar" todir="${project_dir}/dist/crap4j/lib"/>
 		
 		<mkdir dir="${project_dir}/dist/crap4j/lib/com.agitar.eclipse.api_4.2.0.401405" />
 		
@@ -132,6 +142,7 @@
 		<mkdir dir="${build_dir}/dist/crap4j/lib" />
 		<copy file="${project_dir}/lib/asmlib.jar" todir="${build_dir}/dist/crap4j/lib"/>
 		<copy file="${project_dir}/lib/args4j-2.0.1.jar" todir="${build_dir}/dist/crap4j/lib"/>
+		<copy file="${project_dir}/lib/retroweaver-all-2.0.2.jar" todir="${build_dir}/dist/crap4j/lib"/>
 	</target>
 	
 	<target name="copy_resources" depends="make_build_dir">
@@ -165,6 +176,10 @@
             <src path="agitar/test"/>
             <classpath refid="crap4j.classpath"/>
         </javac>
+		<retroweaver srcdir="${classes_dir}"/>
+		<retroweaver srcdir="test_bin"/>
+		<retroweaver srcdir="integration_tests_bin"/>
+		<retroweaver srcdir="agitar/test_bin"/>
 	</target>
 		
     <target name="init">
