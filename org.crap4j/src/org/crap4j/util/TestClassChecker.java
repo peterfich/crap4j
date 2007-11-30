@@ -31,7 +31,7 @@ public class TestClassChecker {
 
   private boolean isJUnit4TestClass(String[] constantPoolStrings) {
     for (int i = 0; i < constantPoolStrings.length; i++) {
-      if (constantPoolStrings[i].equals("Lorg/junit/Test;")) {
+      if (constantPoolStrings[i].equals("Lorg/junit/Test;") || constantPoolStrings[i].equals("Ljunit/framework/Test;")) {
           return true;
       }
     }    
