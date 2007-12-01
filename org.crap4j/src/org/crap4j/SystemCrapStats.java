@@ -238,7 +238,7 @@ private String server;
     
     String url = server+"stats/new?stat[project_hash]="+crapProject.getProjectId().toString()+
                   "&amp;stat[project_url]="+projectName +
-                  "&amp;stat[crap]="+URLEncoder.encode(nf.format(crapMethodPercent()))+
+                  "&amp;stat[crap]="+URLEncoder.encode(FormatUtil.getUSNumberFormatter().format(crapMethodPercent()))+
                   "&amp;stat[crap_load]="+Integer.toString(crapWorkLoad)+
                   "&amp;stat[crap_methods]="+Integer.toString(crapMethodCount)+
                   "&amp;stat[total_methods]="+Integer.toString(methodCount)+

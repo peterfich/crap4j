@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="src" output="agitar/test_bin" path="agitar/test"/>
 	<classpathentry kind="src" output="integration_tests_bin" path="integration_tests"/>
 	<classpathentry kind="src" output="test_bin" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
