@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class FileUtil {
@@ -244,5 +245,25 @@ public class FileUtil {
       }
       return withoutNonTestFiles;
     }
+
+  public static List<String> directoriesOnly(List<String> classDirs) {
+    List<String> directories = new ArrayList<String>();
+    for (String pathElement : directories) {
+      if (new File(pathElement).isDirectory()) {
+        directories.add(pathElement);
+      }
+    }
+    return directories;
+  }
+
+  public static List<String> directoriesAndJarsOnly(List<String> classDirs) {
+    List<String> directories = new ArrayList<String>();
+    for (String pathElement : classDirs) {
+      if (pathElement.endsWith(".jar") || new File(pathElement).isDirectory()) {
+        directories.add(pathElement);
+      }
+    }
+    return directories;
+  }
   
 }

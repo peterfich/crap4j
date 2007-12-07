@@ -176,10 +176,12 @@
             <src path="agitar/test"/>
             <classpath refid="crap4j.classpath"/>
         </javac>
+<!--
 		<retroweaver srcdir="${classes_dir}"/>
 		<retroweaver srcdir="test_bin"/>
 		<retroweaver srcdir="integration_tests_bin"/>
 		<retroweaver srcdir="agitar/test_bin"/>
+-->
 	</target>
 		
     <target name="init">

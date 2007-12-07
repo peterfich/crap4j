@@ -49,6 +49,11 @@ public class Crap4jAntTaskTest extends BuildFileTest{
   protected void tearDown() throws Exception {
     super.tearDown();
     fileSystemUtil.removeDirsCreated();
+    testDirRoot = null;
+    defaultClassDir1 = null;
+    defaultTestDir2 = null;
+    defaultTestDir1 = null;
+
   }
 
   private void createDefaultProject() throws Exception {
