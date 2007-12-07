@@ -162,6 +162,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 //    if (selection instanceof IStructuredSelection && getOpenSelectedProjects(selection).size() > 0) {
+	  
       this.selection = selection;
       //enable
 //      action.setEnabled(true);
