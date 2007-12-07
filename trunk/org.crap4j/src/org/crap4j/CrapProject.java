@@ -194,8 +194,8 @@ public class CrapProject {
 
 	public List<String> allClasspaths() {
 		List<String> all = new ArrayList<String>();
-		all.addAll(classDirs());
-		all.addAll(testClassDirs());
+		all.addAll(FileUtil.directoriesAndJarsOnly(classDirs()));
+		all.addAll(FileUtil.directoriesAndJarsOnly(testClassDirs()));
 		all.addAll(libClasspaths());
 		return all;
 	}

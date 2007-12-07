@@ -32,11 +32,20 @@ public class AntBuilder {
 
 		String template = antFileTemplate();
 		// do sub replacements first because they contain nested replacements for project_name
-		template = template.replaceAll("#CLASSPATH_ELEMENTS#", replacePathElementsForPattern(makeForwardSlashes(project.allClasspaths()), "#CLASS_DIR#", pathElementTemplate()));
-		template = template.replaceAll("#TEST_FILESETS#", replaceFileSetWithPattern(makeForwardSlashes(project.testClassDirs()), "#CLASS_DIR#"));
-		template = template.replaceAll("#CLASSDIRS#", replacePathElementsForPattern(makeForwardSlashes(project.classDirs()), "#CLASS_DIR#", pathElementTemplate()));
-		template = template.replaceAll("#SOURCEDIRS#", replacePathElementsForPattern(makeForwardSlashes(project.sourceDirs()), "#CLASS_DIR#", pathElementTemplate()));
-		template = template.replaceAll("#LIBPATH#", replacePathElementsForPattern(makeForwardSlashes(project.libClasspaths()), "#CLASS_DIR#", pathElementTemplate()));
+		template = template.replaceAll("#CLASSPATH_ELEMENTS#", replacePathElementsForPattern(makeForwardSlashes(project.allClasspaths()), 
+		                                                                                     "#CLASS_DIR#", 
+		                                                                                     pathElementTemplate()));
+		template = template.replaceAll("#TEST_FILESETS#", replaceFileSetWithPattern(makeForwardSlashes(project.testClassDirs()), 
+		                                                                            "#CLASS_DIR#"));
+//		template = template.replaceAll("#CLASSDIRS#", replacePathElementsForPattern(makeForwardSlashes(FileUtil.directoriesAndJarsOnly(project.classDirs())), 
+//		                                                                            "#CLASS_DIR#", 
+//		                                                                            pathElementTemplate()));
+//		template = template.replaceAll("#SOURCEDIRS#", replacePathElementsForPattern(makeForwardSlashes(FileUtil.directoriesAndJarsOnly(project.sourceDirs())), 
+//		                                                                             "#CLASS_DIR#", 
+//		                                                                             pathElementTemplate()));
+//		template = template.replaceAll("#LIBPATH#", replacePathElementsForPattern(makeForwardSlashes(project.libClasspaths()), 
+//		                                                                          "#CLASS_DIR#", 
+//		                                                                          pathElementTemplate()));
 		
 		template = template.replaceAll("#PROJECT_NAME#", PROJECT_NAME);
 //		template = template.replaceAll("#ECLIPSE_INSTALL_DIR#",Main.getInstance().ECLIPSE_HOME);
@@ -187,7 +196,11 @@ public class AntBuilder {
 	private String replaceFileSetWithPattern(List<String> paths, String pattern) {
 		StringBuilder filesets = new StringBuilder();
 		for (String classdir : paths) {
-			filesets.append(filesetTemplate().replaceAll(pattern, classdir)).append("\n");
+		  if (new File(classdir).isDirectory()) {
+		    filesets.append(filesetTemplate().replaceAll(pattern, classdir)).append("\n");
+		  } else {
+		    filesets.append(pathElementTemplate().replaceAll(pattern, classdir)).append("\n");
+		  }
 		}
 		return filesets.toString();
 	}
