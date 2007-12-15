@@ -312,7 +312,9 @@ public class AntBuilderTest extends TestCase {
          "      <pathElement location=\"/private/tmp/CrapProjectTestDir/project1/test_bin\"/>" +
          "    </classpath>" +
          "    <batchtest todir=\"${test.results.dir}\">" +
-         "      <pathElement location=\"/private/tmp/CrapProjectTestDir/project1/test_bin/DefaultTestCaseClass.class\" />" +
+         "      <fileset dir=\"${basedir}\">" +
+         "      <include name=\"test_bin/DefaultTestCaseClass.class\" />" +
+         "      </fileset>" +
          "    </batchtest>" +
          "  </super-runner>" +
          "</target>" +

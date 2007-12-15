@@ -36,7 +36,7 @@ public class AntBuilder {
 		                                                                                     "#CLASS_DIR#", 
 		                                                                                     pathElementTemplate()));
 		template = template.replaceAll("#TEST_FILESETS#", replaceFileSetWithPattern(makeForwardSlashes(project.testClassDirs()), 
-		                                                                            "#CLASS_DIR#"));
+		                                                                            "#CLASS_DIR#", project.projectDir()));
 //		template = template.replaceAll("#CLASSDIRS#", replacePathElementsForPattern(makeForwardSlashes(FileUtil.directoriesAndJarsOnly(project.classDirs())), 
 //		                                                                            "#CLASS_DIR#", 
 //		                                                                            pathElementTemplate()));
@@ -193,19 +193,24 @@ public class AntBuilder {
 		return pathElements.toString();
 	}
 	
-	private String replaceFileSetWithPattern(List<String> paths, String pattern) {
+	private String replaceFileSetWithPattern(List<String> paths, String pattern, String projectDir) {
 		StringBuilder filesets = new StringBuilder();
 		for (String classdir : paths) {
 		  if (new File(classdir).isDirectory()) {
 		    filesets.append(filesetTemplate().replaceAll(pattern, classdir)).append("\n");
 		  } else {
-		    filesets.append(pathElementTemplate().replaceAll(pattern, classdir)).append("\n");
+		    //filesets.append(fileTemplate().replaceAll(pattern, shortName(projectDir, classdir))).append("\n");
+		    filesets.append(fileTemplate().replaceAll(pattern, classdir)).append("\n");
 		  }
 		}
 		return filesets.toString();
 	}
 
-	public static String pathElementTemplate() {
+	private String shortName(String projectDir, String classdir) {
+    return classdir.substring(projectDir.length() + 1);
+  }
+
+  public static String pathElementTemplate() {
 		return "				<pathElement location=\"#CLASS_DIR#\"/>";
 	}
 	
@@ -216,6 +221,15 @@ public class AntBuilder {
 				"				</fileset>";
 	}
 	
+	public static String fileTemplate() {
+    return  "       <file name=\"#CLASS_DIR#\" />\n";
+  }
+	
+	public static String filesetTestTemplate() {
+    return  "       <fileset dir=\"#TEST_DIR#\">\n" +
+        "        <include name=\"#CLASS_DIR#\" />\n" +
+        "       </fileset>";
+  }
 	private String buildFileName(String string, String antFile2) {
 		return string + File.separator + antFile2;
 	}
