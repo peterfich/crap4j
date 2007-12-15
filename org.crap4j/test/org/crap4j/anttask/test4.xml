@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="MyTask" basedir="/tmp" default="run_crap4j" >
+	<taskdef name="crap4j" classname="org.crap4j.anttask.Crap4jAntTask" classpath="/Users/bobevans/Documents/projects/crap4j/org.crap4j/bin" />
+	
+
+	
+	<target name="run_crap4j">
+		<crap4j projectdir = "/tmp/crap4jant/testProjectDir" outputDir="/tmp//crap4jant/testProjectDir/output" >
+			<classes>
+				<pathElement location="/tmp/crap4jant/testProjectDir/path1" />
+			</classes>
+			<srces>
+				<pathElement location="/tmp//crap4jant/testProjectDir/src" />
+			</srces>
+			<testClasses>				
+				<fileset dir="/tmp/crap4jant/testProjectDir/testpath1">
+					<include name="**/*Test.class" />
+				</fileset>
+			</testClasses>
+			<libClasspath>
+			</libClasspath>
+		</crap4j>
+	</target>
+</project>
