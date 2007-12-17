@@ -1,7 +1,5 @@
 package org.crap4j.crap4jeclipse.actions;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +8,10 @@ import org.crap4j.CrapProject;
 import org.crap4j.crap4jeclipse.Activator;
 import org.crap4j.crap4jeclipse.Crap4jEclipseLog;
 import org.crap4j.crap4jeclipse.preferences.PreferenceConstants;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Preferences;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -24,9 +19,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.IWorkingSet;
-import org.eclipse.ui.PartInitException;
-
-import org.objectweb.asm.tree.analysis.AnalyzerException;
 
 
 /**
@@ -52,15 +44,19 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-    if (selection == null)
+    if (selection == null) {
+      MessageDialog.openError(window.getShell(), "No Open Project", "The project you selected is not open. Please open it to run Crap4j.");
       return;
+    } else {
 //    ISelection selection = ((WWinPluginAction)action).getSelection();
 //    if (selection instanceof IStructuredSelection) {
       ArrayList<IJavaProject> openProjects = getOpenSelectedProjects(selection);
       if (openProjects.size() > 0) {
-//        displayMsgAboutOpenProjects(openProjects);
-        runCrap4jOnProject(openProjects, selection);
+        if (displayMsgAboutOpenProjects(openProjects)) {
+          runCrap4jOnProject(openProjects, selection);
+        }
       }
+    }
 	}
 
   private void runCrap4jOnProject(ArrayList<IJavaProject> openProjects, ISelection selection) {
@@ -93,34 +89,73 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
       runJob(runner, ecpb.getCrapProject());
     } catch (Throwable t) {
       Crap4jEclipseLog.logError("Crap4j Error on project: "+firstProject.getPath(),t);
+      MessageDialog.openError(window.getShell(), "Could not run Crap4j", "the crap4j run could not complete. Please check the Error Log for messages.");
     }
 //    Job job = new  Crap4jJob(runner, ecpb.getCrapProject());
+//    job.setUser(true);
 //    job.schedule();
   }
 
-  class Crap4jJob extends Job {
-    private Crap4jRunner runner;
-    private CrapProject project;
-    public Crap4jJob(Crap4jRunner runner, CrapProject project) {
-      super("Crap4j Job");
-      this.runner = runner;
-      this.project = project;
-    }
-    @Override
-    protected IStatus run(IProgressMonitor monitor) {
-      monitor.beginTask("Crap4j running tests", 1);
-      try {
-        runJob(runner, project);
-        monitor.worked(1);
-        monitor.done();
-        return Status.OK_STATUS;
-      } catch (Exception e) {
-        e.printStackTrace();
-      }       
-      return Status.OK_STATUS;
-    }
-  }
+//  class Crap4jJob extends Job {
+//    private Crap4jRunner runner;
+//    private CrapProject project;
+//    public Crap4jJob(Crap4jRunner runner, CrapProject project) {
+//      super("Crap4j Job");
+//      this.runner = runner;
+//      this.project = project;
+//    }
+//    @Override
+//    protected IStatus run(IProgressMonitor monitor) {
+//      monitor.beginTask("Crap4j running tests", 1);
+//      try {
+//        runner.doProject(project);
+//        monitor.worked(1);
+//        monitor.done();
+//        
+//        if (isModal(this)) {
+//          // The progress dialog is still open so
+//          // just open the message
+//          showResults();
+//       } else {
+//         setProperty(IProgressConstants.KEEP_PROPERTY, Boolean.TRUE);
+//         setProperty(IProgressConstants.ACTION_PROPERTY, getReservationCompletedAction());
+//       }
+//        return Status.OK_STATUS;
+//      } catch (Exception e) {
+//        e.printStackTrace();
+//      }       
+//      return Status.OK_STATUS;
+//    }
+//    protected Action getReservationCompletedAction() {
+//      return new Action("View reservation status") {
+//        public void run() {
+//          MessageDialog.openInformation(Display.getCurrent().getActiveShell(), 
+//                    "Reservation Complete", 
+//                    "Your reservation has been completed");
+//        }
+//      };
+//    }
+//    protected void showResults() {
+//      Display.getDefault().asyncExec(new Runnable() {
+//         public void run() {
+//            getReservationCompletedAction().run();
+//         }
+//      });
+//   }
+//
+//
+//
+//    public boolean isModal(Job job) {
+//      Boolean isModal = (Boolean)job.getProperty(
+//                             IProgressConstants.PROPERTY_IN_DIALOG);
+//      if(isModal == null) return false;
+//      return isModal.booleanValue();
+//   }
+//    
+//  }
 
+
+  
   private void runJob(Crap4jRunner runner, final CrapProject project) throws Exception /* Evil eclipse plugin builds arrghh  IOException, AnalyzerException, PartInitException, MalformedURLException*/ {
     runner.doProject(project);
   }
@@ -141,18 +176,20 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
     return openProjects;
   }
 
-//  private void displayMsgAboutOpenProjects(ArrayList<IJavaProject> openProjects) {
-//    StringBuilder buf = new StringBuilder();
-//    for (IJavaProject project : openProjects) {
-//      buf.append(project.getElementName());
-//    }
-//    String openProjectsList = buf.toString();
-//    MessageDialog.openInformation(
-//        window.getShell(),
-//        "Crap4jEclipse Plug-in",
-//        "Running Crap4j on "+openProjectsList);
-//  }
-//
+  private boolean displayMsgAboutOpenProjects(ArrayList<IJavaProject> openProjects) {
+    StringBuilder buf = new StringBuilder();
+    for (IJavaProject project : openProjects) {
+      buf.append(project.getElementName());
+    }
+    String openProjectsList = buf.toString();
+    return (MessageDialog.openConfirm(
+        window.getShell(),
+        "Crap4jEclipse Plug-in",
+        "Running Crap4j on project, "+openProjectsList+".\n\n" +
+        		"First, any tests that can be found, will be run in the junit runner.\n" +
+        		"Finally, a browser will popup with your report when it is done."));
+  }
+
 	/**
 	 * Selection in the workbench has been changed. We 
 	 * can change the state of the 'real' action here
