@@ -44,7 +44,7 @@ public class TestClassChecker {
   }
 
   private boolean extendsAgitarTestCase(String superclassName) {
-    return superclassName.equals("com.agitar.lib.AgitarTestCase");
+    return superclassName.equals("com.agitar.lib.AgitarTestCase") || superclassName.equals("com.agitar.lib.junit.AgitarTestCase");
   }
 
   private boolean extendsJunitTestCase(String superclassName) {
