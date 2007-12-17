@@ -50,18 +50,7 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
         assertTrue("Test call resulted in expected outcome", true);
     }
     
-    public void testCrap4jJobConstructor() throws Throwable {
-        Main main = (Main) callPrivateMethod("org.crap4j.Main", "<init>", new Class[] {String.class, String.class, String.class, String.class, String.class}, null, new Object[] {"testCrap4jJobCrap4jHome", "testCrap4jJobAgitatorEclipseApiPlugin", "testCrap4jJobAgitatorEclipseCoveragePluginDir", "testCrap4jJobJunitLib", "testCrap4jJobAntHome"});
-        Crap4jRunner runner = new Crap4jRunner(true, false, true, new AntSuperrunnerCoverageStrategy(main), 100.0F, 1000.0F, 0.0F, "testCrap4jJobServer");
-        Crap4jAction.Crap4jJob crap4jJob = new Crap4jAction().new Crap4jJob(runner, null);
-        assertNull("crap4jJob.project", getPrivateField(crap4jJob, "project"));
-        assertNull("crap4jJob.thread", getPrivateField(crap4jJob, "thread"));
-        assertEquals("crap4jJob.flags", new Integer(0), getPrivateField(crap4jJob, "flags"));
-        assertNull("crap4jJob.listeners", getPrivateField(crap4jJob, "listeners"));
-        assertSame("crap4jJob.runner", runner, getPrivateField(crap4jJob, "runner"));
-        assertEquals("crap4jJob.priority", new Integer(30), getPrivateField(crap4jJob, "priority"));
-        assertEquals("crap4jJob.name", "Crap4j Job", getPrivateField(crap4jJob, "name"));
-    }
+    
     
     public void testDispose() throws Throwable {
         new Crap4jAction().dispose();
@@ -241,19 +230,6 @@ public class Crap4jActionAgitarTest extends AgitarTestCase {
     public void testSetActivePart() throws Throwable {
         new Crap4jAction().setActivePart(null, new Crap4jView());
         assertTrue("Test call resulted in expected outcome", true);
-    }
-    
-    public void testCrap4jJobRunThrowsNullPointerException() throws Throwable {
-        Main main = (Main) callPrivateMethod("org.crap4j.Main", "<init>", new Class[] {String.class, String.class, String.class, String.class, String.class}, null, new Object[] {"testCrap4jJobCrap4jHome", "testCrap4jJobAgitatorEclipseApiPlugin", "testCrap4jJobAgitatorEclipseCoveragePluginDir", "testCrap4jJobJunitLib", "testCrap4jJobAntHome"});
-        Crap4jRunner runner = new Crap4jRunner(true, false, true, new AntSuperrunnerCoverageStrategy(main), 100.0F, 1000.0F, 0.0F, "testCrap4jJobServer");
-        Crap4jAction.Crap4jJob crap4jJob = new Crap4jAction().new Crap4jJob(runner, null);
-        try {
-            crap4jJob.run(null);
-            fail("Expected NullPointerException to be thrown");
-        } catch (NullPointerException ex) {
-            assertNull("ex.getMessage()", ex.getMessage());
-            assertThrownBy(Crap4jAction.Crap4jJob.class, ex);
-        }
     }
     
     public void testEvaluateSelectionThrowsIllegalStateException() throws Throwable {

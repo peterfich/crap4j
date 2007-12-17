@@ -32,8 +32,8 @@ public class EclipseSuperRunnerCoverageStrategy implements
     try {
       FileUtil.ensureCleanDirectory(crapProject.getCoverageDir());
     } catch (IOException e1) {
-      e1.printStackTrace();
-      return;
+      Crap4jEclipseLog.logError(e1);
+      throw new RuntimeException(e1);
     }
 
     if (FileUtil.hasTestClassFiles(crapProject.allTestClasses())) { 
@@ -53,6 +53,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
         testrunner.launch(selection, "run");
       } catch (Throwable t) {
     	  Crap4jEclipseLog.logError("Could not run tests on project: "+crapProject.getProjectName(), t);
+    	  throw new RuntimeException(t);
       }
     } else {
       finishComputingCrap(runner, crapProject);
@@ -67,6 +68,7 @@ public class EclipseSuperRunnerCoverageStrategy implements
           openURL(crapProject.getReportHtmlFile().toURL());
         } catch (Throwable t) {
           Crap4jEclipseLog.logError("Could not read results on project: "+crapProject.getProjectName(), t);
+          throw new RuntimeException(t);
         }
       }
     };
