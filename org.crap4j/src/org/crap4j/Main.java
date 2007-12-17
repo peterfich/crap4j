@@ -117,9 +117,13 @@ public class Main {
 		URL foo = Main.class.getResource("foo");
 		String filePath = foo.getPath();
 
-		int lastIndexOf = filePath.lastIndexOf("/lib/");
+		int lastIndexOf = filePath.lastIndexOf(File.pathSeparator+"lib"+File.pathSeparator);
 		if (lastIndexOf == -1) {
-			return filePath.substring(0, filePath.lastIndexOf("/bin/"));
+			int lastIndexOfBin = filePath.lastIndexOf(File.pathSeparator+"bin"+File.pathSeparator);
+			if (lastIndexOfBin < filePath.length())
+			  return filePath.substring(0, lastIndexOfBin);
+			else
+			  throw new IllegalArgumentException("Cannot figure out Crap4j Home!!");
 		} else
 		  return filePath.substring(5, lastIndexOf);
 	}

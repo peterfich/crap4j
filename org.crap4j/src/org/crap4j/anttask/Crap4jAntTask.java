@@ -79,6 +79,7 @@ public class Crap4jAntTask extends Task {
 			Main.createMain().run(p, isDebug(), isDontTest(), isDownloadAverages(), getServer());
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new BuildException(e);
 		}
 	}
 

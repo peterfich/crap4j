@@ -68,7 +68,7 @@ public class Crap4jRunner {
                                             crapPercentCriticalThreshold,
                                             new StatsDownloader(server).getAverage(downloadAverages), server);
     s.writeReport();
-    System.out.println(s.toString());
+    //System.out.println(s.toString());
   }
 
   private List<? extends Crap> buildMethodCrap(List<MethodCoverage> covs,
