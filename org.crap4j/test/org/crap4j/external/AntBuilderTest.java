@@ -239,7 +239,7 @@ public class AntBuilderTest extends TestCase {
      File classFile = fileSystemUtil.addDefaultClassToDefaultPackage(classDir);
      File testClassFile = fileSystemUtil.addDefaultTestClassToDefaultPackage(testDir1);
 
-     // the difference a test class instead of a directory!
+     // the difference: a test class instead of a directory!
      List<String> testClassDirs = new ArrayList<String>();
      testClassDirs.add(testClassFile.getCanonicalPath());
 
