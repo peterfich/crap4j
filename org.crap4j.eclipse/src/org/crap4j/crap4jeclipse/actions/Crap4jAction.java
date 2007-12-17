@@ -132,7 +132,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
     ArrayList<IJavaProject> openProjects= new ArrayList<IJavaProject>();
     for (int i= 0; i < array.length; i++) {
       Object curr = array[i];
-      if (curr instanceof IJavaProject && ((IJavaProject)curr).isOpen()) {
+      if (curr instanceof IJavaProject && ((IJavaProject)curr).getProject().isOpen()) {
         openProjects.add((IJavaProject) curr);
       } else if (curr instanceof IWorkingSet) {
         evaluateSelection(((IWorkingSet) curr).getElements(), openProjects);
