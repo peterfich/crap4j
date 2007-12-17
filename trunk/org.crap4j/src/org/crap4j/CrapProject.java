@@ -210,6 +210,8 @@ public class CrapProject {
 
   private List<File> getClassesInDirList(List<String> classDirs2) {
     List<File> classNames = new ArrayList<File>();
+    if (classDirs2 == null)
+      return classNames;
     for (String dirName : classDirs2) {
 			classNames.addAll(getClassesIn(dirName));
 		}

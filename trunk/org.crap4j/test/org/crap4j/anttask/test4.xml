@@ -13,8 +13,8 @@
 				<pathElement location="/tmp//crap4jant/testProjectDir/src" />
 			</srces>
 			<testClasses>				
-				<fileset dir="/tmp/crap4jant/testProjectDir/testpath1">
-					<include name="**/*Test.class" />
+				<fileset dir="/tmp/crap4jant/testProjectDir/test_bin">
+					<include name="**/*TestCaseClass.class" />
 				</fileset>
 			</testClasses>
 			<libClasspath>

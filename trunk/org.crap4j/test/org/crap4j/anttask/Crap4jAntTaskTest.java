@@ -75,6 +75,7 @@ public class Crap4jAntTaskTest extends BuildFileTest{
     
     fileSystemUtil.addDefaultClassToDefaultPackage(classDir);
     fileSystemUtil.addDefaultTestClassToDefaultPackage(classDir);
+    
   }
 
 	public void testProjectDirSetButNotExist() throws Exception {
@@ -177,7 +178,18 @@ public class Crap4jAntTaskTest extends BuildFileTest{
                  Crap4jAntTaskTest.stringPath(t.getClasses()));
   }
 
-  public static String stringPath(Path classDirs2) throws IOException {
+  public void testTestDirSetWithClasses() throws Exception {
+    configureProject("test/org/crap4j/anttask/test4.xml");
+    fileSystemUtil.addDefaultTestClassToDefaultPackage(testDir1);
+    executeTarget("run_crap4j");
+    Target target = (Target) getProject().getTargets().get("run_crap4j");
+    Task[] tasks = target.getTasks();
+    Crap4jAntTask t = (Crap4jAntTask) tasks[0];
+    assertEquals(projectDir+ File.separator + defaultTestDir1 + File.separator + "DefaultTestCaseClass.class", 
+                 Crap4jAntTaskTest.stringPath(t.getTestClasses()));
+  }
+    
+    public static String stringPath(Path classDirs2) throws IOException {
     StringBuilder b = new StringBuilder();
     boolean first = true;
     for (String s : classDirs2.list()) {

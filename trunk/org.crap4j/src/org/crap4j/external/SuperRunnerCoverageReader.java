@@ -55,6 +55,7 @@ public class SuperRunnerCoverageReader {
 //          if (Main.getInstance(getCrap4jHome(), getAgitatorEclipseApiPlugin(crap4jHome), getAgitatorEclipseCoveragePluginDir(crap4jHome), getJunitLib(agitatorEclipseApiPlugin), getAntHome(agitatorEclipseApiPlugin)).debug)
             System.err.println("Could not read coverage file: "
                 + covFile.getAbsolutePath());
+            //throw new RuntimeException(e);
         }
       }
       return list;
