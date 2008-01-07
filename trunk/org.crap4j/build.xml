@@ -101,6 +101,7 @@
 			<fileset dir="${project_dir}/cli_ant_resources"/>
 	    </copy>
 	    -->
+		<copy file="${project_dir}/../RELEASE_NOTES.txt" todir="${project_dir}/dist/crap4j/" />
 		<copy file="${project_dir}/doc/example_build.xml" todir="${project_dir}/dist/crap4j/doc" />
 		<copy file="${project_dir}/doc/projectConfig.sample" todir="${project_dir}/dist/crap4j/doc" />
 		
