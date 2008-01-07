@@ -22,8 +22,8 @@
     <property name="source" value="1.5"/>
     <path id="Plug-in Dependencies.libraryclasspath">
         <pathelement location="${eclipse_home}/plugins/org.eclipse.ui_3.3.1.M20070910-0800b.jar"/>
-        <pathelement location="${eclipse_home}/plugins/org.eclipse.swt_3.3.1.v3346j.jar"/>
-        <pathelement location="${eclipse_home}/plugins/org.eclipse.swt.carbon.macosx_3.3.1.v3346i.jar"/>
+        <pathelement location="${eclipse_home}/plugins/org.eclipse.swt_3.3.2.v3347.jar"/>
+        <pathelement location="${eclipse_home}/plugins/org.eclipse.swt.carbon.macosx_3.3.2.v3347a.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.jface_3.3.1.M20070910-0800b.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.core.commands_3.3.0.I20070605-0010.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.ui.workbench_3.3.1.M20070921-1200.jar"/>
@@ -78,14 +78,14 @@
         <pathelement location="${eclipse_home}/plugins/com.agitar.eclipse.api_${juf_version}/lib/junit.jar"/>
         <pathelement location="${eclipse_home}/plugins/com.agitar.eclipse.api_${juf_version}/lib/xalan.jar"/>
         <pathelement location="${eclipse_home}/plugins/com.agitar.eclipse.junit.runner_${juf_version}/com.agitar.eclipse.junit.runner.jar"/>
-        <pathelement location="${eclipse_home}/plugins/org.eclipse.jdt.junit_3.3.1.r331_v20070829.jar"/>
+    	<pathelement location="${eclipse_home}/plugins/org.eclipse.jdt.junit_3.3.1.r331_v20070829.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.jdt.launching_3.3.1.v20070808_r331.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.core.filebuffers_3.3.1.r331_v20070829.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.debug.core_3.3.1.v20070731_r331.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.help_3.3.1.v20070726_33x.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.jface.text_3.3.1.r331_v20070629.jar"/>
         <pathelement location="${eclipse_home}/plugins/org.eclipse.text_3.3.0.v20070606-0010.jar"/>
-    </path>
+</path>
     <path id="org.crap4j.eclipse.classpath">
         <pathelement location="bin"/>
         <path refid="Plug-in Dependencies.libraryclasspath"/>
