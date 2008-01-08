@@ -37,24 +37,31 @@ public class EclipseSuperRunnerCoverageStrategy implements
     }
 
     if (FileUtil.hasTestClassFiles(crapProject.allTestClasses())) { 
-      RunJUnitTestsShortcut testrunner = new RunJUnitTestsShortcut();
-      TestRunListener.addListener(new Crap4jTestListenerListener() {
-        public void cancelled() {
-        	Crap4jEclipseLog.logInfo("cancelled the test run on project: "+crapProject.getProjectName());
-          TestRunListener.removeListener(this);
-          finishComputingCrap(runner, crapProject);
-        }
-        public void finished() {
-          finishComputingCrap(runner, crapProject);
-          TestRunListener.removeListener(this);
-        }
-      });
+      
+      Display.getDefault().asyncExec(new Runnable() {
+        public void run() {
+        
       try {
+        RunJUnitTestsShortcut testrunner = new RunJUnitTestsShortcut();
+        TestRunListener.addListener(new Crap4jTestListenerListener() {
+          public void cancelled() {
+            Crap4jEclipseLog.logInfo("cancelled the test run on project: "+crapProject.getProjectName());
+            TestRunListener.removeListener(this);
+            finishComputingCrap(runner, crapProject);
+          }
+          public void finished() {
+            finishComputingCrap(runner, crapProject);
+            TestRunListener.removeListener(this);
+          }
+        });
         testrunner.launch(selection, "run");
       } catch (Throwable t) {
     	  Crap4jEclipseLog.logError("Could not run tests on project: "+crapProject.getProjectName(), t);
     	  throw new RuntimeException(t);
       }
+
+        }
+     });
     } else {
       finishComputingCrap(runner, crapProject);
     }

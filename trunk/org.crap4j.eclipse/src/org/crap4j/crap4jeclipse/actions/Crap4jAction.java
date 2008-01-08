@@ -8,17 +8,25 @@ import org.crap4j.CrapProject;
 import org.crap4j.crap4jeclipse.Activator;
 import org.crap4j.crap4jeclipse.Crap4jEclipseLog;
 import org.crap4j.crap4jeclipse.preferences.PreferenceConstants;
+import org.eclipse.core.resources.WorkspaceJob;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Preferences;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.progress.IProgressConstants;
 
 
 /**
@@ -52,9 +60,9 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
 //    if (selection instanceof IStructuredSelection) {
       ArrayList<IJavaProject> openProjects = getOpenSelectedProjects(selection);
       if (openProjects.size() > 0) {
-        if (displayMsgAboutOpenProjects(openProjects)) {
+//        if (displayMsgAboutOpenProjects(openProjects)) {
           runCrap4jOnProject(openProjects, selection);
-        }
+//        }
       }
     }
 	}
@@ -86,73 +94,74 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
                                           crapPercentCriticalThreshold, 
                                           server);
     try {
-      runJob(runner, ecpb.getCrapProject());
+//      runJob(runner, ecpb.getCrapProject());
     } catch (Throwable t) {
       Crap4jEclipseLog.logError("Crap4j Error on project: "+firstProject.getPath(),t);
       MessageDialog.openError(window.getShell(), "Could not run Crap4j", "the crap4j run could not complete. Please check the Error Log for messages.");
     }
-//    Job job = new  Crap4jJob(runner, ecpb.getCrapProject());
-//    job.setUser(true);
-//    job.schedule();
+    Crap4jJob job = new  Crap4jJob(runner, ecpb.getCrapProject());
+    job.setUser(true);
+    job.schedule();
   }
 
-//  class Crap4jJob extends Job {
-//    private Crap4jRunner runner;
-//    private CrapProject project;
-//    public Crap4jJob(Crap4jRunner runner, CrapProject project) {
-//      super("Crap4j Job");
-//      this.runner = runner;
-//      this.project = project;
-//    }
-//    @Override
-//    protected IStatus run(IProgressMonitor monitor) {
-//      monitor.beginTask("Crap4j running tests", 1);
-//      try {
-//        runner.doProject(project);
-//        monitor.worked(1);
-//        monitor.done();
-//        
-//        if (isModal(this)) {
-//          // The progress dialog is still open so
-//          // just open the message
+  class Crap4jJob extends WorkspaceJob {
+    private Crap4jRunner runner;
+    private CrapProject project;
+    public Crap4jJob(Crap4jRunner runner, CrapProject project) {
+      super("Crap4j Job");
+      this.runner = runner;
+      this.project = project;
+    }
+
+    @Override
+    public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+      monitor.beginTask("Crap4j running tests", 1);
+      try {
+        runner.doProject(project);
+        monitor.worked(1);
+        monitor.done();
+        
+        if (isModal(this)) {
+          // The progress dialog is still open so
+          // just open the message
 //          showResults();
-//       } else {
+       } else {
 //         setProperty(IProgressConstants.KEEP_PROPERTY, Boolean.TRUE);
 //         setProperty(IProgressConstants.ACTION_PROPERTY, getReservationCompletedAction());
-//       }
-//        return Status.OK_STATUS;
-//      } catch (Exception e) {
-//        e.printStackTrace();
-//      }       
-//      return Status.OK_STATUS;
-//    }
-//    protected Action getReservationCompletedAction() {
-//      return new Action("View reservation status") {
-//        public void run() {
-//          MessageDialog.openInformation(Display.getCurrent().getActiveShell(), 
-//                    "Reservation Complete", 
-//                    "Your reservation has been completed");
-//        }
-//      };
-//    }
-//    protected void showResults() {
-//      Display.getDefault().asyncExec(new Runnable() {
-//         public void run() {
-//            getReservationCompletedAction().run();
-//         }
-//      });
-//   }
-//
-//
-//
-//    public boolean isModal(Job job) {
-//      Boolean isModal = (Boolean)job.getProperty(
-//                             IProgressConstants.PROPERTY_IN_DIALOG);
-//      if(isModal == null) return false;
-//      return isModal.booleanValue();
-//   }
-//    
-//  }
+       }
+        return Status.OK_STATUS;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }       
+      return Status.OK_STATUS;
+    }
+    protected Action getReservationCompletedAction() {
+      return new Action("View reservation status") {
+        public void run() {
+          MessageDialog.openInformation(Display.getCurrent().getActiveShell(), 
+                    "Reservation Complete", 
+                    "Your reservation has been completed");
+        }
+      };
+    }
+    protected void showResults() {
+      Display.getDefault().asyncExec(new Runnable() {
+         public void run() {
+            getReservationCompletedAction().run();
+         }
+      });
+   }
+
+
+
+    public boolean isModal(WorkspaceJob job) {
+      Boolean isModal = (Boolean)job.getProperty(
+                             IProgressConstants.PROPERTY_IN_DIALOG);
+      if(isModal == null) return false;
+      return isModal.booleanValue();
+   }
+    
+  }
 
 
   
@@ -178,6 +187,7 @@ public class Crap4jAction implements IWorkbenchWindowActionDelegate, IObjectActi
 
   private boolean displayMsgAboutOpenProjects(ArrayList<IJavaProject> openProjects) {
     StringBuilder buf = new StringBuilder();
+    
     for (IJavaProject project : openProjects) {
       buf.append(project.getElementName());
     }
