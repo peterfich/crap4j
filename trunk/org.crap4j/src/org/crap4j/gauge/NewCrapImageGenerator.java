@@ -140,7 +140,7 @@ public class NewCrapImageGenerator {
     graphics.setFont(bigger);
     FontMetrics fm = graphics.getFontMetrics();
     String yourScore = "- Your Score";
-    String avgScore = "- Avg Score ("+Float.toString(globalAverage)+")";
+    String avgScore = "- Avg Score ("+FormatUtil.getNumberFormatter().format(globalAverage)+")";
     int yourScoreWidth =  (int)fm.getStringBounds(yourScore, graphics).getWidth();
     int avgScoreWidth =  (int)fm.getStringBounds(avgScore, graphics).getWidth();
     int spacer = 200;

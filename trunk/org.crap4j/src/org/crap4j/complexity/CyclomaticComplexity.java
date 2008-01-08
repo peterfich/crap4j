@@ -231,7 +231,7 @@ public class CyclomaticComplexity {
 			mn.accept(complexityCounter);
 			return complexityCounter.complexity;
 		} catch (RuntimeException e) {
-			System.err.println("Caught Exception " + e.getMessage());
+			System.err.println("Caught Exception on method: " +mn.name+ " "  + e.getMessage());
 			e.printStackTrace();
 			return 1;
 		}
@@ -328,7 +328,7 @@ class ComplexityMethodVisitor implements MethodVisitor {
 	
 		public AnnotationVisitor visitArray(String name) {
 			// TODO Auto-generated method stub
-			return null;
+			return new NullAnnotationVisitor();
 		}
 	
 		public void visitEnd() {
