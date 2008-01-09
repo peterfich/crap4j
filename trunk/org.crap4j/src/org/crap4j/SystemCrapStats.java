@@ -212,8 +212,9 @@ private String server;
 
   private void writeStats(MyStringBuilder s) {
     s.start("<stats>");
-    NumberFormat nf = writeEachStat(s);
-    String projectName = URLEncoder.encode(crapProject.getProjectName());
+    NumberFormat nf = FormatUtil.getNumberFormatter();
+    writeEachStat(s, nf);
+    
     int ones = crapLessThan(2.0f);
     int twos = (crapBetween(2.0f, 4.0f));
     int fours = (crapBetween(4.0f, 8.0f));
@@ -224,15 +225,17 @@ private String server;
     int one28s = (crapBetween(128.0f, 256.0f));
     int two56s = (crapGE(256.0f));
     
-    writeShareUrl(s, projectName, ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
+    String projectName = URLEncoder.encode(crapProject.getProjectName());
+    writeShareUrl(s, projectName, 
+                  ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
     
-    writeHistogram(s, nf, ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
+    writeHistogram(s, nf, 
+                   ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
     s.end("</stats>");
   }
 
-  private NumberFormat writeEachStat(MyStringBuilder s) {
+  private NumberFormat writeEachStat(MyStringBuilder s, NumberFormat nf) {
     XmlUtil.itemToXml(s, "name", name);
-    NumberFormat nf = FormatUtil.getNumberFormatter();
     XmlUtil.itemToXml(s, "totalCrap", nf.format(total));
     XmlUtil.itemToXml(s, "crap", nf.format(crapNumber));
     XmlUtil.itemToXml(s, "median", nf.format(median));
@@ -268,11 +271,8 @@ private String server;
   private void writeHistogram(MyStringBuilder s, NumberFormat nf, int ones, int twos, int fours, int eights,
                               int sixteens, int thirtytwos, int sixtyfours, int one28s, int two56s) {
     s.start("<histogram>");
-    int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
-    Arrays.sort(places);
-    int largest = places[places.length-1];
-    float scale = 170.0f / (float)largest;
-    int minHeight = 20;
+    float scale = computeScaleBasedOnLargest(ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s,
+                                             two56s);
     makeHist(s, "one", Integer.toString(ones), nf.format(adjustedHeight(ones, scale)));
     makeHist(s, "two", Integer.toString(twos), nf.format(adjustedHeight(twos, scale)));
     makeHist(s, "four", Integer.toString(fours), nf.format(adjustedHeight(fours, scale)));
@@ -283,6 +283,16 @@ private String server;
     makeHist(s, "one28", Integer.toString(one28s), nf.format(adjustedHeight(one28s, scale)));
     makeHist(s, "two56", Integer.toString(two56s), nf.format(adjustedHeight(two56s, scale)));
     s.end("</histogram>");
+  }
+
+  private float computeScaleBasedOnLargest(int ones, int twos, int fours, int eights, int sixteens, int thirtytwos,
+                                           int sixtyfours, int one28s, int two56s) {
+    int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
+    Arrays.sort(places);
+    int largest = places[places.length-1];
+    float maxHeight = 170.0f;
+    float scale = maxHeight / (float)largest;
+    return scale;
   }
 
   private void writeShareUrl(MyStringBuilder s, String projectName, int ones, int twos, int fours, int eights,
