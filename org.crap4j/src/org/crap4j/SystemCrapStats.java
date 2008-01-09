@@ -204,7 +204,33 @@ private String server;
     MyStringBuilder s = new MyStringBuilder();
     s.start("<crap_result>");
     crapProject.toXml(s);
+    writeStats(s);
+    writeMethods(s);
+    s.end("</crap_result>");
+    return s.toString();
+  }
+
+  private void writeStats(MyStringBuilder s) {
     s.start("<stats>");
+    NumberFormat nf = writeEachStat(s);
+    String projectName = URLEncoder.encode(crapProject.getProjectName());
+    int ones = crapLessThan(2.0f);
+    int twos = (crapBetween(2.0f, 4.0f));
+    int fours = (crapBetween(4.0f, 8.0f));
+    int eights = (crapBetween(8.0f, 16.0f));
+    int sixteens = (crapBetween(16.0f, 32.0f));
+    int thirtytwos = (crapBetween(32.0f, 64.0f));
+    int sixtyfours = (crapBetween(64.0f, 128.0f));
+    int one28s = (crapBetween(128.0f, 256.0f));
+    int two56s = (crapGE(256.0f));
+    
+    writeShareUrl(s, projectName, ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
+    
+    writeHistogram(s, nf, ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s);
+    s.end("</stats>");
+  }
+
+  private NumberFormat writeEachStat(MyStringBuilder s) {
     XmlUtil.itemToXml(s, "name", name);
     NumberFormat nf = FormatUtil.getNumberFormatter();
     XmlUtil.itemToXml(s, "totalCrap", nf.format(total));
@@ -225,17 +251,42 @@ private String server;
     XmlUtil.itemToXml(s, "globalCraploadAverageDiff", nf.format(globalStats.getCrapLoadAverageDiff(crapWorkLoad)));
     XmlUtil.itemToXml(s, "globalCrapMethodAverageDiff", nf.format(globalStats.getCrapMethodAverageDiff(crapMethodCount)));
     XmlUtil.itemToXml(s, "globalTotalMethodAverageDiff", nf.format(globalStats.getTotalMethodAverageDiff(methodCount)));
-    String projectName = URLEncoder.encode(crapProject.getProjectName());
-    int ones = crapLessThan(2.0f);
-    int twos = (crapBetween(2.0f, 4.0f));
-    int fours = (crapBetween(4.0f, 8.0f));
-    int eights = (crapBetween(8.0f, 16.0f));
-    int sixteens = (crapBetween(16.0f, 32.0f));
-    int thirtytwos = (crapBetween(32.0f, 64.0f));
-    int sixtyfours = (crapBetween(64.0f, 128.0f));
-    int one28s = (crapBetween(128.0f, 256.0f));
-    int two56s = (crapGE(256.0f));
-    
+    return nf;
+  }
+
+  private void writeMethods(MyStringBuilder s) {
+    s.start("<methods>");
+    List<? extends Crap> crapValues = getSubjects();
+    Collections.sort(crapValues, Crap.comparator);
+    MethodCrap.setCrapLoadThreshold(crapThreshold);
+    for (Crap crap : crapValues) {
+      crap.toXml(s);
+    }
+    s.end("</methods>");
+  }
+
+  private void writeHistogram(MyStringBuilder s, NumberFormat nf, int ones, int twos, int fours, int eights,
+                              int sixteens, int thirtytwos, int sixtyfours, int one28s, int two56s) {
+    s.start("<histogram>");
+    int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
+    Arrays.sort(places);
+    int largest = places[places.length-1];
+    float scale = 170.0f / (float)largest;
+    int minHeight = 20;
+    makeHist(s, "one", Integer.toString(ones), nf.format(adjustedHeight(ones, scale)));
+    makeHist(s, "two", Integer.toString(twos), nf.format(adjustedHeight(twos, scale)));
+    makeHist(s, "four", Integer.toString(fours), nf.format(adjustedHeight(fours, scale)));
+    makeHist(s, "eight", Integer.toString(eights), nf.format(adjustedHeight(eights, scale)));
+    makeHist(s, "sixteen", Integer.toString(sixteens), nf.format(adjustedHeight(sixteens, scale)));
+    makeHist(s, "thirtytwo", Integer.toString(thirtytwos), nf.format(adjustedHeight(thirtytwos, scale)));
+    makeHist(s, "sixtyfour", Integer.toString(sixtyfours), nf.format(adjustedHeight(sixtyfours, scale)));
+    makeHist(s, "one28", Integer.toString(one28s), nf.format(adjustedHeight(one28s, scale)));
+    makeHist(s, "two56", Integer.toString(two56s), nf.format(adjustedHeight(two56s, scale)));
+    s.end("</histogram>");
+  }
+
+  private void writeShareUrl(MyStringBuilder s, String projectName, int ones, int twos, int fours, int eights,
+                             int sixteens, int thirtytwos, int sixtyfours, int one28s, int two56s) {
     String url = server+"stats/new?stat[project_hash]="+crapProject.getProjectId().toString()+
                   "&amp;stat[project_url]="+projectName +
                   "&amp;stat[crap]="+URLEncoder.encode(FormatUtil.getUSNumberFormatter().format(crapMethodPercent()))+
@@ -253,34 +304,6 @@ private String server;
                   "&amp;stat[two56s]="+Integer.toString(two56s)
                   ;
     XmlUtil.itemToXml(s, "shareStatsUrl", url);
-    s.start("<histogram>");
-    
-    int[] places = {ones, twos, fours, eights, sixteens, thirtytwos, sixtyfours, one28s, two56s};
-    Arrays.sort(places);
-    int largest = places[places.length-1];
-    float scale = 170.0f / (float)largest;
-    int minHeight = 20;
-    makeHist(s, "one", Integer.toString(ones), nf.format(adjustedHeight(ones, scale)));
-    makeHist(s, "two", Integer.toString(twos), nf.format(adjustedHeight(twos, scale)));
-    makeHist(s, "four", Integer.toString(fours), nf.format(adjustedHeight(fours, scale)));
-    makeHist(s, "eight", Integer.toString(eights), nf.format(adjustedHeight(eights, scale)));
-    makeHist(s, "sixteen", Integer.toString(sixteens), nf.format(adjustedHeight(sixteens, scale)));
-    makeHist(s, "thirtytwo", Integer.toString(thirtytwos), nf.format(adjustedHeight(thirtytwos, scale)));
-    makeHist(s, "sixtyfour", Integer.toString(sixtyfours), nf.format(adjustedHeight(sixtyfours, scale)));
-    makeHist(s, "one28", Integer.toString(one28s), nf.format(adjustedHeight(one28s, scale)));
-    makeHist(s, "two56", Integer.toString(two56s), nf.format(adjustedHeight(two56s, scale)));
-    s.end("</histogram>");
-    s.end("</stats>");
-    s.start("<methods>");
-    List<? extends Crap> crapValues = getSubjects();
-    Collections.sort(crapValues, Crap.comparator);
-    MethodCrap.setCrapLoadThreshold(crapThreshold);
-    for (Crap crap : crapValues) {
-      crap.toXml(s);
-    }
-    s.end("</methods>");
-    s.end("</crap_result>");
-    return s.toString();
   }
 
   private float adjustedHeight(int ones, float scale) {
