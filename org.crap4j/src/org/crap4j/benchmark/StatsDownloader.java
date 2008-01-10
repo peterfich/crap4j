@@ -49,7 +49,7 @@ public class StatsDownloader {
       }
     } catch (Exception e) {
       // TODO Auto-generated catch block
-      e.printStackTrace();
+      //e.printStackTrace();
     }
     return GlobalStats.NULL_STATS;
   }
