@@ -1,0 +1,4 @@
+.idea
+*.iml
+org.crap4j/bin
+org.crap4j/test_bin
